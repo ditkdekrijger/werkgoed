@@ -1,6 +1,6 @@
 # Button
 
-De actieknop in pilvorm. Gebruik `signal` voor de ene hoofdactie per scherm, `ink` (marine) en `outline` voor de rest, `light` en `outline-light` op `marine`, en `link` voor een tekstactie met een oranje onderlijn.
+De actieknop in pilvorm. Gebruik `signal` (oranje) voor de ene hoofdactie per scherm, `ink` (marine) en `outline` voor de rest, `light` en `outline-light` op `marine`, en `link` voor een tekstactie met een oranje onderlijn.
 
 - Tekst heeft een werkwoord en de jij-vorm: "Kies je beroep", "Plan je voetscan".
 - De pijl staat standaard achter de tekst. Zet `arrow={false}` voor een knop als "Klantportaal" of "Winkelwagen".

@@ -20,12 +20,16 @@ a{color:inherit;text-decoration:none}
 .wg-h2{font-size:clamp(34px,4.6vw,68px)}
 .wg-nav a:hover,.wg-nav a[aria-current="page"]{text-decoration:underline;text-decoration-color:#ff6a13;text-decoration-thickness:3px;text-underline-offset:6px}
 .wg-ul:hover{text-decoration:underline;text-decoration-color:#ff6a13;text-decoration-thickness:2px;text-underline-offset:4px}
-.wg-tile:hover{border-color:#16212c;background:#f5f3ee}
+.wg-tile:hover{border-color:#16212c}
 .wg-pill:hover{border-color:#16212c}
+.wg-menuknop:hover{border-color:#ff6a13}
+.wg-iconknop:hover{border-color:#16212c}
+.wg-mega-toep:hover{background:#f5f3ee}
 .wg-faq summary{list-style:none;cursor:pointer}
 .wg-faq summary::-webkit-details-marker{display:none}
 .wg-faq[open] .wg-faq-plus{transform:rotate(45deg)}
 .wg-step:hover{background:#16212c;color:#ffffff}
+.wg-foto{display:block;width:100%;height:100%;object-fit:cover}
 </style>
 </helmet>
 <div style="--gutter:clamp(20px,4.2vw,72px);width:100%;max-width:1440px;margin:0 auto;box-sizing:border-box;background:var(--surface);color:var(--ink);font-family:var(--font-sans)">
@@ -33,53 +37,77 @@ a{color:inherit;text-decoration:none}
 <!-- topbalk -->
 <div class="wg-night" style="background:var(--marine);color:var(--on-night);font:500 13px/1.3 var(--font-sans)">
 <div style="display:flex;flex-wrap:wrap;gap:6px 32px;justify-content:space-between;padding:10px var(--gutter)">
-<div style="display:flex;flex-wrap:wrap;gap:4px 24px;color:var(--on-night-muted)"><span>Uit voorraad leverbaar</span><span>Snelle levering</span><span>Gratis verzending vanaf €100 excl. btw</span></div>
-<div style="display:flex;flex-wrap:wrap;gap:4px 24px;color:var(--on-night-muted)"><span>Showroom open van 08:30 tot 17:30</span><a href="tel:0184701212" style="color:var(--on-night)">0184-701212</a></div>
+<div style="display:flex;flex-wrap:wrap;gap:4px 24px;color:var(--on-night-muted)"><span style="display:inline-flex;align-items:center;gap:8px"><x-import component-from-global-scope="Werkgoed.Icoon" naam="voorraad" size="16"></x-import>Uit voorraad leverbaar</span><span style="display:inline-flex;align-items:center;gap:8px"><x-import component-from-global-scope="Werkgoed.Icoon" naam="levering" size="16"></x-import>Snelle levering</span><span style="display:inline-flex;align-items:center;gap:8px"><x-import component-from-global-scope="Werkgoed.Icoon" naam="verzending" size="16"></x-import>Gratis verzending vanaf €100 excl. btw</span></div>
+<div style="display:flex;flex-wrap:wrap;gap:4px 24px;color:var(--on-night-muted)"><span style="display:inline-flex;align-items:center;gap:8px"><x-import component-from-global-scope="Werkgoed.Icoon" naam="klok" size="16"></x-import>Showroom open van 08:30 tot 17:30</span><a href="tel:0184701212" style="display:inline-flex;align-items:center;gap:8px;color:var(--on-night)"><x-import component-from-global-scope="Werkgoed.Icoon" naam="telefoon" size="16"></x-import>0184-701212</a></div>
 </div>
 </div>
 
 <!-- header -->
-<header style="display:flex;flex-wrap:wrap;align-items:center;gap:16px 32px;padding:20px var(--gutter);border-bottom:1px solid var(--line)">
-<a href="Main.dc.html" aria-label="Werkgoed, naar de homepage" style="display:flex;flex-direction:column;line-height:1">
-<span style="font:800 34px/1 var(--font-sans);font-variation-settings:'wdth' 90;letter-spacing:-.045em">werkgoed<span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--signal);margin-left:3px"></span></span>
-<span class="wg-small" style="color:var(--ink-muted);margin-top:4px">bedrijfskleding &amp; PBM</span>
-</a>
-<nav class="wg-nav" aria-label="Hoofdmenu" style="display:flex;flex-wrap:wrap;gap:8px 28px;font:600 16px/1.3 var(--font-sans);flex:1 1 420px">
-<a href="Main.dc.html#beroep">Per beroep</a><a href="Main.dc.html#soort">Werkkleding</a><a href="Main.dc.html#soort">Werkschoenen</a><a href="Main.dc.html#soort">Handschoenen</a><a href="Main.dc.html#soort">PBM</a><a href="Main.dc.html#merken">Merken</a><a href="Main.dc.html#showroom">Showroom</a>
+<header style="position:relative;display:flex;flex-wrap:wrap;align-items:center;gap:16px 36px;padding:18px var(--gutter);border-bottom:1px solid var(--line)">
+<a href="Main.dc.html" aria-label="Werkgoed, naar de homepage" style="display:block;line-height:0"><img src="/_blob/4ae74013851478061537ab80687f318f" alt="Werkgoed, werkt beter" style="height:52px;width:auto"></a>
+<nav class="wg-nav" aria-label="Hoofdmenu" style="display:flex;flex-wrap:wrap;align-items:center;gap:8px 28px;font:600 16px/1.3 var(--font-sans);flex:1 1 420px">
+<button type="button" class="wg-menuknop" aria-expanded="{{menuOpen}}" aria-controls="assortiment" onClick="{{toggleMenu}}" style="display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 14px 0 16px;border-radius:var(--radius-pill);border:1px solid {{menuRand}};background:{{menuBg}};color:{{menuKleur}};font:600 16px/1 var(--font-sans);cursor:pointer"><x-import component-from-global-scope="Werkgoed.Icoon" naam="menu" size="20"></x-import>Assortiment<span style="display:inline-flex;transform:{{menuDraai}}"><x-import component-from-global-scope="Werkgoed.Icoon" naam="omlaag" size="18"></x-import></span></button>
+<a href="Main.dc.html#beroep">Per beroep</a><a href="Main.dc.html#merken">Merken</a><a href="Main.dc.html#showroom">Showroom</a><a href="tel:0184701212">Advies</a>
 </nav>
-<div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center">
-<label style="display:flex;align-items:center;gap:8px;border:1px solid var(--line-strong);border-radius:var(--radius-pill);padding:0 20px;height:48px;min-width:200px;box-sizing:border-box">
-<span class="wg-small" style="color:var(--ink-muted)">Zoek</span>
-<input type="search" placeholder="schoen, jas, handschoen" style="border:0;outline:0;background:transparent;font:400 15px var(--font-sans);color:var(--ink);flex:1;min-width:0;height:44px">
+<div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center">
+<label style="display:flex;align-items:center;gap:10px;border:1px solid var(--line-strong);border-radius:var(--radius-pill);padding:0 18px;height:48px;min-width:220px;box-sizing:border-box;color:var(--ink-muted)"><x-import component-from-global-scope="Werkgoed.Icoon" naam="zoek" size="20"></x-import><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Zoek</span>
+<input type="search" placeholder="Zoek schoen, jas of merk" style="border:0;outline:0;background:transparent;font:400 15px var(--font-sans);color:var(--ink);flex:1;min-width:0;height:44px">
 </label>
-<x-import component-from-global-scope="Werkgoed.Button" variant="outline" arrow="{{no}}" href="#">Klantportaal</x-import>
-<x-import component-from-global-scope="Werkgoed.Button" variant="ink" arrow="{{no}}" href="#">Winkelwagen</x-import>
+<a href="#" class="wg-iconknop" aria-label="Klantportaal" style="display:grid;place-items:center;width:48px;height:48px;border-radius:50%;border:1px solid var(--line-strong)"><x-import component-from-global-scope="Werkgoed.Icoon" naam="account" size="22"></x-import></a>
+<a href="#" class="wg-iconknop" aria-label="Winkelwagen" style="display:grid;place-items:center;width:48px;height:48px;border-radius:50%;background:var(--marine);color:var(--on-night)"><x-import component-from-global-scope="Werkgoed.Icoon" naam="wagen" size="22"></x-import></a>
+</div>
+
+<!-- uitklapmenu assortiment -->
+<div id="assortiment" style="display:{{menuDisplay}};position:absolute;left:0;right:0;top:100%;z-index:20;background:var(--surface);color:var(--ink);border-top:1px solid var(--line);border-bottom:3px solid var(--vlam)">
+<div style="display:flex;flex-wrap:wrap;gap:40px 40px;padding:40px var(--gutter) 48px">
+<div style="flex:3 1 600px;min-width:0;display:flex;flex-direction:column;gap:24px">
+<span class="wg-label" style="color:var(--ink-muted)">soort</span>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:32px 24px"><div style="display:flex;flex-direction:column;gap:14px"><span style="display:flex;align-items:center;gap:10px;font:700 18px/1.2 var(--font-sans);font-variation-settings:'wdth' 90"><x-import component-from-global-scope="Werkgoed.Icoon" naam="jas" size="24"></x-import>Werkkleding</span><ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;font:500 16px/1.3 var(--font-sans)"><li><a class="wg-ul" href="#">Jassen</a></li><li><a class="wg-ul" href="#">Broeken</a></li><li><a class="wg-ul" href="#">Overalls</a></li><li><a class="wg-ul" href="#">Shirts en truien</a></li><li><a class="wg-ul" href="#">Softshells en bodywarmers</a></li><li><a class="wg-ul" href="#">Regenkleding</a></li><li><a class="wg-ul" href="#">Signaalkleding</a></li></ul></div><div style="display:flex;flex-direction:column;gap:14px"><span style="display:flex;align-items:center;gap:10px;font:700 18px/1.2 var(--font-sans);font-variation-settings:'wdth' 90"><x-import component-from-global-scope="Werkgoed.Icoon" naam="schoen" size="24"></x-import>Werkschoenen</span><ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;font:500 16px/1.3 var(--font-sans)"><li><a class="wg-ul" href="#">Lage werkschoenen</a></li><li><a class="wg-ul" href="#">Hoge werkschoenen</a></li><li><a class="wg-ul" href="#">Laarzen</a></li><li><a class="wg-ul" href="#">Inlegzolen</a></li><li><a class="wg-ul" href="#">Voetscan en maat</a></li></ul></div><div style="display:flex;flex-direction:column;gap:14px"><span style="display:flex;align-items:center;gap:10px;font:700 18px/1.2 var(--font-sans);font-variation-settings:'wdth' 90"><x-import component-from-global-scope="Werkgoed.Icoon" naam="handschoen" size="24"></x-import>Werkhandschoenen</span><ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;font:500 16px/1.3 var(--font-sans)"><li><a class="wg-ul" href="#">Montage</a></li><li><a class="wg-ul" href="#">Snijbestendig</a></li><li><a class="wg-ul" href="#">Lassen</a></li><li><a class="wg-ul" href="#">Chauffeurs</a></li><li><a class="wg-ul" href="#">Winter</a></li></ul></div><div style="display:flex;flex-direction:column;gap:14px"><span style="display:flex;align-items:center;gap:10px;font:700 18px/1.2 var(--font-sans);font-variation-settings:'wdth' 90"><x-import component-from-global-scope="Werkgoed.Icoon" naam="helm" size="24"></x-import>PBM</span><ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;font:500 16px/1.3 var(--font-sans)"><li><a class="wg-ul" href="#">Helmen</a></li><li><a class="wg-ul" href="#">Gehoorbescherming</a></li><li><a class="wg-ul" href="#">Adembescherming</a></li><li><a class="wg-ul" href="#">Veiligheidsbrillen</a></li><li><a class="wg-ul" href="#">Valbeveiliging</a></li></ul></div></div>
+</div>
+<div style="flex:1 1 230px;min-width:0;display:flex;flex-direction:column;gap:24px;border-left:1px solid var(--line);padding-left:32px">
+<span class="wg-label" style="color:var(--ink-muted)">merken</span>
+<ul style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 20px;font:500 16px/1.3 var(--font-sans)"><li><a class="wg-ul" href="#">HAIX</a></li><li><a class="wg-ul" href="#">LOWA Work</a></li><li><a class="wg-ul" href="#">Sixton</a></li><li><a class="wg-ul" href="#">Solid Gear</a></li><li><a class="wg-ul" href="#">Grisport Safety</a></li><li><a class="wg-ul" href="#">PUMA Safety</a></li><li><a class="wg-ul" href="#">Redbrick</a></li><li><a class="wg-ul" href="#">Snickers Workwear</a></li><li><a class="wg-ul" href="#">Tricorp Workwear</a></li><li><a class="wg-ul" href="#">Santino</a></li><li><a class="wg-ul" href="#">Dassy</a></li><li><a class="wg-ul" href="#">Havep</a></li><li><a class="wg-ul" href="#">BLS</a></li><li><a class="wg-ul" href="#">KASK</a></li></ul>
+<a class="wg-ul" href="Main.dc.html#merken" style="font:600 16px/1.3 var(--font-sans)">Alle merken →</a>
+</div>
+<div style="flex:1 1 240px;min-width:0;display:flex;flex-direction:column;gap:16px;border-left:1px solid var(--line);padding-left:32px">
+<span class="wg-label" style="color:var(--ink-muted)">toepassing</span>
+<ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px"><li><a class="wg-mega-toep" href="Lasgoed.dc.html" style="display:flex;align-items:center;gap:12px;min-height:44px;padding:0 10px;border-radius:var(--radius-sm);font:600 16px/1.2 var(--font-sans)"><span style="display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--beroep-las);color:var(--beroep-las-deep)"><x-import component-from-global-scope="Werkgoed.Icoon" naam="las" size="18"></x-import></span>Lasser</a></li><li><a class="wg-mega-toep" href="Straatgoed.dc.html" style="display:flex;align-items:center;gap:12px;min-height:44px;padding:0 10px;border-radius:var(--radius-sm);font:600 16px/1.2 var(--font-sans)"><span style="display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--beroep-straat);color:var(--beroep-straat-deep)"><x-import component-from-global-scope="Werkgoed.Icoon" naam="straat" size="18"></x-import></span>Stratenmaker</a></li><li><a class="wg-mega-toep" href="Bouwgoed.dc.html" style="display:flex;align-items:center;gap:12px;min-height:44px;padding:0 10px;border-radius:var(--radius-sm);font:600 16px/1.2 var(--font-sans)"><span style="display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--beroep-bouw);color:var(--beroep-bouw-deep)"><x-import component-from-global-scope="Werkgoed.Icoon" naam="bouw" size="18"></x-import></span>Bouwer</a></li><li><a class="wg-mega-toep" href="#" style="display:flex;align-items:center;gap:12px;min-height:44px;padding:0 10px;border-radius:var(--radius-sm);font:600 16px/1.2 var(--font-sans)"><span style="display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--beroep-techniek);color:var(--beroep-techniek-deep)"><x-import component-from-global-scope="Werkgoed.Icoon" naam="techniek" size="18"></x-import></span>Monteur</a></li><li><a class="wg-mega-toep" href="#" style="display:flex;align-items:center;gap:12px;min-height:44px;padding:0 10px;border-radius:var(--radius-sm);font:600 16px/1.2 var(--font-sans)"><span style="display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--beroep-magazijn);color:var(--beroep-magazijn-deep)"><x-import component-from-global-scope="Werkgoed.Icoon" naam="magazijn" size="18"></x-import></span>Magazijnmedewerker</a></li><li><a class="wg-mega-toep" href="#" style="display:flex;align-items:center;gap:12px;min-height:44px;padding:0 10px;border-radius:var(--radius-sm);font:600 16px/1.2 var(--font-sans)"><span style="display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--beroep-chauffeur);color:var(--beroep-chauffeur-deep)"><x-import component-from-global-scope="Werkgoed.Icoon" naam="chauffeur" size="18"></x-import></span>Chauffeur</a></li><li><a class="wg-mega-toep" href="#" style="display:flex;align-items:center;gap:12px;min-height:44px;padding:0 10px;border-radius:var(--radius-sm);font:600 16px/1.2 var(--font-sans)"><span style="display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--beroep-groen);color:var(--beroep-groen-deep)"><x-import component-from-global-scope="Werkgoed.Icoon" naam="groen" size="18"></x-import></span>Hovenier</a></li><li><a class="wg-mega-toep" href="#" style="display:flex;align-items:center;gap:12px;min-height:44px;padding:0 10px;border-radius:var(--radius-sm);font:600 16px/1.2 var(--font-sans)"><span style="display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--beroep-schilder);color:var(--beroep-schilder-deep)"><x-import component-from-global-scope="Werkgoed.Icoon" naam="schilder" size="18"></x-import></span>Schilder</a></li></ul>
+</div>
+<a href="Main.dc.html#showroom" style="position:relative;flex:1 1 220px;min-width:0;max-width:300px;min-height:320px;border-radius:var(--radius-card);overflow:hidden;color:var(--on-night)">
+<img class="wg-foto" src="/_blob/6bdd95d6ecbd918a1370a9976eb22927" alt="" style="position:absolute;inset:0">
+<span style="position:absolute;left:0;right:0;bottom:0;padding:20px;display:flex;flex-direction:column;gap:6px;background:var(--marine)">
+<span class="wg-label" style="color:var(--on-night-muted)">showroom</span>
+<span style="font:700 22px/1.1 var(--font-sans);font-variation-settings:'wdth' 90">Pas je werkschoen bij ons in Hardinxveld</span>
+</span>
+</a>
+</div>
 </div>
 </header>
 
-<!-- hero -->
-<section style="display:flex;flex-wrap:wrap;gap:48px;align-items:center;padding:clamp(40px,6vw,96px) var(--gutter) clamp(72px,9vw,140px)">
-<div style="flex:1 1 520px;min-width:0;display:flex;flex-direction:column;gap:32px;align-items:flex-start">
-<x-import component-from-global-scope="Werkgoed.Badge" tone="marine">bedrijfskleding en PBM</x-import>
-<x-import component-from-global-scope="Werkgoed.Heading" size="display" accent="goed.">Past altijd</x-import>
-<p class="wg-lead" style="margin:0;max-width:36ch">Bij &rsquo;t werk wat je doet. Wij kennen het werk van lassers, stratenmakers, bouwers en monteurs, en weten wat je dan nodig hebt.</p>
-<div style="display:flex;flex-wrap:wrap;gap:12px">
+<!-- hero: de belofte, vol in beeld -->
+<section style="padding:clamp(36px,5vw,80px) var(--gutter) clamp(56px,7vw,112px)">
+<h1 class="wg-heading" style="margin:0;font:800 clamp(44px,7.9vw,116px)/.92 var(--font-sans);font-variation-settings:'wdth' 82;letter-spacing:-.045em">Past altijd <mark class="wg-mark">goed.</mark><br>Bij &rsquo;t werk wat je doet.</h1>
+<div style="display:flex;flex-wrap:wrap;gap:40px 48px;margin-top:clamp(32px,4vw,56px);align-items:stretch">
+<div style="flex:1 1 340px;min-width:0;display:flex;flex-direction:column;gap:28px;justify-content:space-between">
+<p class="wg-lead" style="margin:0;max-width:34ch">Wij kennen het werk van lassers, stratenmakers, bouwers en monteurs. En we weten wat je dan nodig hebt, van helm tot werkschoen.</p>
+<div style="display:flex;flex-direction:column;gap:14px">
+<span class="wg-label" style="color:var(--ink-muted)">welk werk doe jij?</span>
+<div style="display:flex;flex-wrap:wrap;gap:8px">
+<a class="wg-pill" href="Lasgoed.dc.html" style="display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px 0 8px;border-radius:var(--radius-pill);background:var(--beroep-las);border:1px solid transparent;font:600 15px/1 var(--font-sans)"><span style="display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--surface);color:var(--beroep-las-deep)"><x-import component-from-global-scope="Werkgoed.Icoon" naam="las" size="18"></x-import></span>Lasgoed</a>
+<a class="wg-pill" href="Straatgoed.dc.html" style="display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px 0 8px;border-radius:var(--radius-pill);background:var(--beroep-straat);border:1px solid transparent;font:600 15px/1 var(--font-sans)"><span style="display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--surface);color:var(--beroep-straat-deep)"><x-import component-from-global-scope="Werkgoed.Icoon" naam="straat" size="18"></x-import></span>Straatgoed</a>
+<a class="wg-pill" href="Bouwgoed.dc.html" style="display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px 0 8px;border-radius:var(--radius-pill);background:var(--beroep-bouw);border:1px solid transparent;font:600 15px/1 var(--font-sans)"><span style="display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--surface);color:var(--beroep-bouw-deep)"><x-import component-from-global-scope="Werkgoed.Icoon" naam="bouw" size="18"></x-import></span>Bouwgoed</a>
+<a class="wg-pill" href="#beroep" style="display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:var(--radius-pill);border:1px solid var(--line-strong);font:600 15px/1 var(--font-sans)">Alle beroepen</a>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:12px">
 <x-import component-from-global-scope="Werkgoed.Button" variant="signal" href="#beroep">Kies je beroep</x-import>
 <x-import component-from-global-scope="Werkgoed.Button" variant="outline" arrow="{{no}}" href="#showroom">Kom langs in de showroom</x-import>
 </div>
 </div>
-<div style="flex:1 1 360px;min-width:0;display:flex;justify-content:center">
-<div style="position:relative;width:100%;max-width:540px;aspect-ratio:4/5;background:var(--canvas);border-radius:var(--radius-sheet);padding:24px;box-sizing:border-box;overflow:hidden">
-<span class="wg-small" style="color:var(--ink-muted);max-width:26ch;display:block">Foto: een klant aan het werk, in beeld met kleding en PBM [EIGEN FOTO]</span>
-<div style="position:absolute;left:16px;right:16px;bottom:16px;background:var(--surface);border-radius:var(--radius-card);padding:20px;display:flex;flex-direction:column;gap:14px">
-<span class="wg-label" style="color:var(--ink-muted)">welk werk doe jij?</span>
-<div style="display:flex;flex-wrap:wrap;gap:8px">
-<a class="wg-pill" href="Lasgoed.dc.html" style="display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border-radius:var(--radius-pill);background:var(--beroep-las);border:1px solid transparent;font:600 15px/1 var(--font-sans)"><span aria-hidden="true" style="width:8px;height:8px;border-radius:50%;background:var(--beroep-las-deep)"></span>Lasgoed</a>
-<a class="wg-pill" href="Straatgoed.dc.html" style="display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border-radius:var(--radius-pill);background:var(--beroep-straat);border:1px solid transparent;font:600 15px/1 var(--font-sans)"><span aria-hidden="true" style="width:8px;height:8px;border-radius:50%;background:var(--beroep-straat-deep)"></span>Straatgoed</a>
-<a class="wg-pill" href="Bouwgoed.dc.html" style="display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border-radius:var(--radius-pill);background:var(--beroep-bouw);border:1px solid transparent;font:600 15px/1 var(--font-sans)"><span aria-hidden="true" style="width:8px;height:8px;border-radius:50%;background:var(--beroep-bouw-deep)"></span>Bouwgoed</a>
-<a class="wg-pill" href="#beroep" style="display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:var(--radius-pill);border:1px solid var(--line-strong);font:600 15px/1 var(--font-sans)">Alle beroepen</a>
 </div>
-</div>
+<div style="flex:2 1 560px;min-width:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));gap:12px;min-height:520px">
+<div style="grid-column:span 2;grid-row:span 2;border-radius:var(--radius-sheet);overflow:hidden;background:var(--canvas)"><img class="wg-foto" src="/_blob/ba871752485c5a0ec3eb9a47f5a0e42b" alt="Monteur in een wind- en waterdichte werkjas van Dassy aan het werk in de staalbouw"></div>
+<div style="border-radius:var(--radius-card);overflow:hidden;background:var(--canvas)"><img class="wg-foto" src="/_blob/5352b1286406cabb986dd27508640452" alt="Bouwvakker in een softshell jack van Snickers Workwear draagt een buis op de bouwplaats"></div>
+<div style="border-radius:var(--radius-card);overflow:hidden;background:var(--canvas)"><img class="wg-foto" src="/_blob/194eef2839742df9f5a62e3be4fd04a3" alt="Werken op hoogte met een KASK veiligheidshelm"></div>
 </div>
 </div>
 </section>
@@ -115,24 +143,31 @@ a{color:inherit;text-decoration:none}
 
 <!-- zo werkt het -->
 <section style="padding:clamp(56px,8vw,128px) var(--gutter) 0">
+<div style="display:flex;flex-wrap:wrap;gap:24px 48px;align-items:flex-end;margin-bottom:40px">
+<div style="flex:1 1 420px;display:flex;flex-direction:column;gap:24px">
+<span class="wg-label" style="color:var(--ink-muted)">wie wij zijn</span>
+<x-import component-from-global-scope="Werkgoed.Heading" size="h2" accent="die het werk kent.">Een ploeg</x-import>
+</div>
+<div style="flex:1.3 1 480px;min-width:0;aspect-ratio:1004/650;border-radius:var(--radius-card);overflow:hidden;background:var(--canvas)"><img class="wg-foto" src="/_blob/aa66271e9f65dd927ab58f85b6b7b34e" alt="Het team van Werkgoed in de showroom in Hardinxveld-Giessendam"></div>
+</div>
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px">
 <x-import component-from-global-scope="Werkgoed.Card" tone="sunken">
 <div style="display:flex;flex-direction:column;gap:16px;min-height:220px;padding:var(--space-2)">
-<span style="font:800 48px/1 var(--font-sans);font-variation-settings:'wdth' 75;color:var(--ink-muted)">01</span>
+<span style="display:flex;justify-content:space-between;align-items:center"><span style="font:800 48px/1 var(--font-sans);font-variation-settings:'wdth' 75;color:var(--ink-muted)">01</span><x-import component-from-global-scope="Werkgoed.Icoon" naam="advies" size="32"></x-import></span>
 <h3 class="wg-heading wg-h3" style="margin:auto 0 0">Jij vertelt wat je doet.</h3>
 <p class="wg-body" style="margin:0">Lassen, straten, bouwen, monteren. Je werk is ons beginpunt, niet de catalogus.</p>
 </div>
 </x-import>
 <x-import component-from-global-scope="Werkgoed.Card" tone="canvas">
 <div style="display:flex;flex-direction:column;gap:16px;min-height:220px;padding:var(--space-2)">
-<span style="font:800 48px/1 var(--font-sans);font-variation-settings:'wdth' 75;color:var(--ink-muted)">02</span>
+<span style="display:flex;justify-content:space-between;align-items:center"><span style="font:800 48px/1 var(--font-sans);font-variation-settings:'wdth' 75;color:var(--ink-muted)">02</span><x-import component-from-global-scope="Werkgoed.Icoon" naam="helm" size="32"></x-import></span>
 <h3 class="wg-heading wg-h3" style="margin:auto 0 0">Wij kennen de praktijk.</h3>
 <p class="wg-body" style="margin:0">Waar je kleding slijt, waar het misgaat en welke normen tellen. Per beroep, per taak.</p>
 </div>
 </x-import>
 <x-import component-from-global-scope="Werkgoed.Card" tone="marine">
 <div style="display:flex;flex-direction:column;gap:16px;min-height:220px;padding:var(--space-2)">
-<span style="font:800 48px/1 var(--font-sans);font-variation-settings:'wdth' 75;color:var(--signal)">03</span>
+<span style="display:flex;justify-content:space-between;align-items:center"><span style="font:800 48px/1 var(--font-sans);font-variation-settings:'wdth' 75;color:var(--vlam)">03</span><x-import component-from-global-scope="Werkgoed.Icoon" naam="voorraad" size="32"></x-import></span>
 <h3 class="wg-heading wg-h3" style="margin:auto 0 0">Jij krijgt wat past.</h3>
 <p class="wg-body" style="margin:0;color:var(--on-night-muted)">Kleding en PBM die kloppen met je werk. Uit voorraad leverbaar, of passen in de showroom.</p>
 </div>
@@ -149,8 +184,12 @@ a{color:inherit;text-decoration:none}
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:40px">
 <sc-for list="{{categorieen}}" as="c" hint-placeholder-count="4">
 <x-import component-from-global-scope="Werkgoed.Card" tone="{{c.tone}}">
-<div style="display:flex;flex-direction:column;gap:24px;min-height:400px;padding:var(--space-2)">
+<div style="display:flex;flex-direction:column;gap:20px;min-height:440px;padding:var(--space-2)">
+<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
 <h3 class="wg-heading wg-h3" style="margin:0;font-size:clamp(26px,2.4vw,36px)">{{c.naam}}</h3>
+<x-import component-from-global-scope="Werkgoed.Icoon" naam="{{c.icoon}}" size="32"></x-import>
+</div>
+<img src="{{c.foto}}" alt="{{c.alt}}" style="width:96px;height:96px;border-radius:var(--radius-tile);object-fit:cover">
 <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;flex:1">
 <sc-for list="{{c.items}}" as="i" hint-placeholder-count="5">
 <li style="border-top:1px solid {{c.line}}"><a class="wg-ul" href="#" style="display:flex;justify-content:space-between;gap:12px;padding:13px 0;font:500 17px/1.3 var(--font-sans)"><span>{{i}}</span><span aria-hidden="true">→</span></a></li>
@@ -177,9 +216,14 @@ a{color:inherit;text-decoration:none}
 </div>
 <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-top:40px">
 <sc-for list="{{merken}}" as="m" hint-placeholder-count="14">
-<a class="wg-tile" href="#" style="display:flex;flex-direction:column;justify-content:space-between;gap:32px;min-height:140px;border:1px solid var(--line);border-radius:var(--radius-tile);padding:20px;box-sizing:border-box;transition:background-color .16s ease,border-color .16s ease">
+<a class="wg-tile" href="#" style="display:flex;flex-direction:column;justify-content:space-between;gap:28px;min-height:150px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-tile);padding:20px;box-sizing:border-box;transition:background-color .16s ease,border-color .16s ease">
 <span class="wg-small" style="color:var(--ink-muted)">{{m.soort}}</span>
+<sc-if value="{{m.logo}}" hint-placeholder-val="{{yes}}">
+<img src="{{m.logo}}" alt="{{m.naam}}" style="height:44px;width:auto;max-width:100%;object-fit:contain;object-position:left center;align-self:flex-start">
+</sc-if>
+<sc-if value="{{m.geenLogo}}" hint-placeholder-val="{{no}}">
 <span style="font:700 26px/1.05 var(--font-sans);font-variation-settings:'wdth' 90;letter-spacing:-.03em">{{m.naam}}</span>
+</sc-if>
 </a>
 </sc-for>
 </div>
@@ -193,7 +237,7 @@ a{color:inherit;text-decoration:none}
 </div>
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:24px 16px;margin-top:40px">
 <sc-for list="{{producten}}" as="p" hint-placeholder-count="4">
-<x-import component-from-global-scope="Werkgoed.ProductKaart" merk="{{p.merk}}" naam="{{p.naam}}" prijs-ex="{{p.prijsEx}}" prijs-in="{{p.prijsIn}}" voorraad="{{p.voorraad}}" href="#"></x-import>
+<x-import component-from-global-scope="Werkgoed.ProductKaart" merk="{{p.merk}}" naam="{{p.naam}}" prijs-ex="{{p.prijsEx}}" prijs-in="{{p.prijsIn}}" voorraad="{{p.voorraad}}" image="{{p.foto}}" href="#"></x-import>
 </sc-for>
 </div>
 </section>
@@ -202,20 +246,21 @@ a{color:inherit;text-decoration:none}
 <div style="margin-top:clamp(56px,8vw,128px)">
 <x-import component-from-global-scope="Werkgoed.Streep" height="{{streepHoogte}}"></x-import>
 </div>
-<section id="showroom" class="wg-night" style="background:var(--marine);color:var(--on-night);padding:clamp(56px,8vw,128px) var(--gutter);display:flex;flex-wrap:wrap;gap:48px;align-items:center;border-bottom:1px solid rgba(255,255,255,.2)">
+<section id="showroom" class="wg-night" style="background:var(--marine);color:var(--on-night);padding:clamp(56px,8vw,128px) var(--gutter);display:flex;flex-wrap:wrap;gap:48px;align-items:flex-end;border-bottom:1px solid rgba(255,255,255,.2)">
 <div style="flex:1 1 480px;min-width:0;display:flex;flex-direction:column;gap:28px;align-items:flex-start">
 <span class="wg-label" style="color:var(--on-night-muted)">showroom en voetscan</span>
-<x-import component-from-global-scope="Werkgoed.Heading" size="h2" tone="night" accent="proef je aan.">De juiste schoen</x-import>
-<p class="wg-lead" style="margin:0;max-width:40ch;color:var(--on-night-muted)">Loop binnen langs de A15, pas je werkschoen en laat je voet scannen. Zo weet je zeker dat het past.</p>
+<x-import component-from-global-scope="Werkgoed.Heading" size="h2" tone="night" accent="pas je bij ons.">Je werkschoen</x-import>
+<p class="wg-lead" style="margin:0;max-width:40ch;color:var(--on-night-muted)">Loop binnen langs de A15. Pas je werkschoen en laat je voeten scannen, dan weet je zeker dat hij goed zit.</p>
+<div style="width:100%;aspect-ratio:3/2;border-radius:var(--radius-card);overflow:hidden;margin-top:8px"><img class="wg-foto" src="/_blob/6bdd95d6ecbd918a1370a9976eb22927" alt="De showroom van Werkgoed in Hardinxveld-Giessendam"></div>
 <div style="display:flex;flex-wrap:wrap;gap:12px">
 <x-import component-from-global-scope="Werkgoed.Button" variant="signal" href="#">Plan je voetscan</x-import>
 <x-import component-from-global-scope="Werkgoed.Button" variant="outline-light" arrow="{{no}}" href="#">Route naar de showroom</x-import>
 </div>
 </div>
 <div style="flex:1 1 320px;min-width:0;display:flex;flex-direction:column;border-top:1px solid rgba(255,255,255,.2)">
-<div style="padding:20px 0;border-bottom:1px solid rgba(255,255,255,.2)"><span class="wg-label" style="color:var(--on-night-muted)">adres</span><div style="font:700 24px/1.2 var(--font-sans);font-variation-settings:'wdth' 90;margin-top:6px">Wiedhaak 1<br>3371 KD Hardinxveld-Giessendam</div></div>
-<div style="padding:20px 0;border-bottom:1px solid rgba(255,255,255,.2)"><span class="wg-label" style="color:var(--on-night-muted)">open</span><div style="font:700 24px/1.2 var(--font-sans);font-variation-settings:'wdth' 90;margin-top:6px">08:30 tot 17:30</div></div>
-<div style="padding:20px 0;border-bottom:1px solid rgba(255,255,255,.2)"><span class="wg-label" style="color:var(--on-night-muted)">bel of mail</span><div style="font:700 24px/1.2 var(--font-sans);font-variation-settings:'wdth' 90;margin-top:6px">0184-701212<br>info@werkgoed.nl</div></div>
+<div style="padding:20px 0;border-bottom:1px solid rgba(255,255,255,.2)"><span class="wg-label" style="display:flex;align-items:center;gap:8px;color:var(--on-night-muted)"><x-import component-from-global-scope="Werkgoed.Icoon" naam="locatie" size="18"></x-import>adres</span><div style="font:700 24px/1.2 var(--font-sans);font-variation-settings:'wdth' 90;margin-top:6px">Wiedhaak 1<br>3371 KD Hardinxveld-Giessendam</div></div>
+<div style="padding:20px 0;border-bottom:1px solid rgba(255,255,255,.2)"><span class="wg-label" style="display:flex;align-items:center;gap:8px;color:var(--on-night-muted)"><x-import component-from-global-scope="Werkgoed.Icoon" naam="klok" size="18"></x-import>open</span><div style="font:700 24px/1.2 var(--font-sans);font-variation-settings:'wdth' 90;margin-top:6px">08:30 tot 17:30</div></div>
+<div style="padding:20px 0;border-bottom:1px solid rgba(255,255,255,.2)"><span class="wg-label" style="display:flex;align-items:center;gap:8px;color:var(--on-night-muted)"><x-import component-from-global-scope="Werkgoed.Icoon" naam="telefoon" size="18"></x-import>bel of mail</span><div style="font:700 24px/1.2 var(--font-sans);font-variation-settings:'wdth' 90;margin-top:6px">0184-701212<br>info@werkgoed.nl</div></div>
 </div>
 </section>
 
@@ -238,13 +283,16 @@ a{color:inherit;text-decoration:none}
 <span class="wg-label" style="color:var(--on-night-muted)">onze webshops</span>
 <a class="wg-ul" href="#">Haix werkschoenen</a><a class="wg-ul" href="#">LOWA werkschoenen</a><a class="wg-ul" href="#">Cofra werkschoenen</a><a class="wg-ul" href="#">BLS adembescherming</a>
 </div>
-<div style="flex:1 1 200px;display:flex;flex-direction:column;gap:12px;font:400 16px/1.4 var(--font-sans)">
+<div style="flex:1 1 220px;display:flex;flex-direction:column;gap:14px;font:400 16px/1.4 var(--font-sans)">
 <span class="wg-label" style="color:var(--on-night-muted)">contact</span>
-<span>Wiedhaak 1<br>3371 KD Hardinxveld-Giessendam</span><a class="wg-ul" href="tel:0184701212">0184-701212</a><a class="wg-ul" href="mailto:info@werkgoed.nl">info@werkgoed.nl</a>
+<span style="display:flex;gap:10px"><x-import component-from-global-scope="Werkgoed.Icoon" naam="locatie" size="20"></x-import><span>Wiedhaak 1<br>3371 KD Hardinxveld-Giessendam</span></span>
+<a class="wg-ul" href="tel:0184701212" style="display:flex;gap:10px;align-items:center"><x-import component-from-global-scope="Werkgoed.Icoon" naam="telefoon" size="20"></x-import>0184-701212</a>
+<a class="wg-ul" href="mailto:info@werkgoed.nl" style="display:flex;gap:10px;align-items:center"><x-import component-from-global-scope="Werkgoed.Icoon" naam="mail" size="20"></x-import>info@werkgoed.nl</a>
 </div>
 </div>
-<div style="overflow:hidden;padding:8px 0 24px">
-<div style="font:800 clamp(72px,19vw,280px)/.9 var(--font-sans);font-variation-settings:'wdth' 90;letter-spacing:-.05em">werkgoed<span style="display:inline-block;width:.1em;height:.1em;border-radius:50%;background:var(--signal);margin-left:.02em"></span></div>
+<div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px;padding:8px 0 40px">
+<img src="/_blob/dd24f422379e7ed500375de8e10eb692" alt="Werkgoed, werkt beter" style="height:clamp(56px,7vw,96px);width:auto">
+<span style="font:700 clamp(28px,3.4vw,48px)/1.02 var(--font-sans);font-variation-settings:'wdth' 90;letter-spacing:-.03em;max-width:16ch;text-align:right">Past altijd goed. Bij &rsquo;t werk wat je doet.</span>
 </div>
 <div style="display:flex;flex-wrap:wrap;gap:12px 32px;justify-content:space-between;border-top:1px solid rgba(255,255,255,.2);padding-top:24px;font:400 14px/1.4 var(--font-sans);color:var(--on-night-muted)">
 <span>2026 Werkgoed bedrijfskleding en PBM</span>
@@ -254,15 +302,16 @@ a{color:inherit;text-decoration:none}
 
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":7000}}'>
+<script type="text/x-dc" data-dc-script data-props='{"menuOpen":{"editor":"boolean","default":false},"$preview":{"width":1440,"height":7400}}'>
 class Component extends DCLogic {
   constructor(props) {
     super(props);
-    this.state = { merk: 'Alle' };
+    this.state = { merk: 'Alle', menu: !!this.props.menuOpen };
   }
   renderVals() {
-    const D = {"beroepen": [{"k": "las", "naam": "las", "href": "Lasgoed.dc.html", "regel": "Vonken, spatten, hitte en lasrook.", "risicos": ["vonk", "hitte", "stof"]}, {"k": "straat", "naam": "straat", "href": "Straatgoed.dc.html", "regel": "Op je knieën, langs de weg, in elk weer.", "risicos": ["zicht", "knielen", "regen"]}, {"k": "bouw", "naam": "bouw", "href": "Bouwgoed.dc.html", "regel": "Hoogte, stof en lawaai op de bouwplaats.", "risicos": ["hoogte", "stof", "lawaai"]}, {"k": "techniek", "naam": "techniek", "href": "#", "regel": "Kruipen, knielen en precies werken.", "risicos": ["knielen", "snijden", "zicht"]}, {"k": "magazijn", "naam": "magazijn", "href": "#", "regel": "Tussen pallets, heftrucks en koude hallen.", "risicos": ["zicht", "kou", "snijden"]}, {"k": "chauffeur", "naam": "chauffeurs", "href": "#", "regel": "Urenlang rijden, laden en lossen.", "risicos": ["zicht", "kou", "snijden"]}, {"k": "groen", "naam": "groen", "href": "#", "regel": "Buiten met machines, takken en weer.", "risicos": ["lawaai", "regen", "snijden"]}, {"k": "schilder", "naam": "schilders", "href": "#", "regel": "Spatten, dampen en lange dagen op de trap.", "risicos": ["chemie", "stof", "hoogte"]}], "zones": [{"zone": "hoofd", "titel": "Hoofd en nek", "eis": "Een lasmuts van vlamvertragende stof onder je helm. Anders vallen spatten in je kraag.", "product": "Lasmutsen", "normen": ["EN ISO 11611"]}, {"zone": "ogen", "titel": "Ogen en gezicht", "eis": "Een lashelm met automatisch filter. Bij slijpen een veiligheidsbril eronder.", "product": "Lashelmen en veiligheidsbrillen", "normen": ["EN 175", "EN 379", "EN 166"]}, {"zone": "adem", "titel": "Adem", "eis": "Lasrook wil je niet inademen. Eerst afzuiging bij de bron, adembescherming waar dat niet genoeg is.", "product": "Adembescherming en helmen met luchttoevoer", "normen": ["EN 12941"]}, {"zone": "romp", "titel": "Romp en armen", "eis": "Laskleding die niet doorbrandt. Hoge kraag, afgedekte zakken, geen open naden.", "product": "Lasjassen en lasoveralls", "normen": ["EN ISO 11611", "EN ISO 11612"]}, {"zone": "handen", "titel": "Handen", "eis": "Dik leer voor elektrode en MAG. Dun en soepel voor TIG.", "product": "Lashandschoenen", "normen": ["EN 12477"]}, {"zone": "voeten", "titel": "Voeten", "eis": "Een zool die tegen hitte kan en geen open veters, of een flap erover.", "product": "Lasschoenen", "normen": ["EN ISO 20345"]}], "merken": [{"naam": "HAIX", "soort": "Schoenen"}, {"naam": "LOWA Work", "soort": "Schoenen"}, {"naam": "Sixton", "soort": "Schoenen"}, {"naam": "Solid Gear", "soort": "Schoenen"}, {"naam": "Grisport Safety", "soort": "Schoenen"}, {"naam": "PUMA Safety", "soort": "Schoenen"}, {"naam": "Redbrick", "soort": "Schoenen"}, {"naam": "Snickers Workwear", "soort": "Kleding"}, {"naam": "Tricorp Workwear", "soort": "Kleding"}, {"naam": "Santino", "soort": "Kleding"}, {"naam": "Dassy", "soort": "Kleding"}, {"naam": "Havep", "soort": "Kleding"}, {"naam": "BLS", "soort": "PBM"}, {"naam": "KASK", "soort": "PBM"}]};
-    const m = this.state.merk;
+    const D = {"img": {"team": "/_blob/aa66271e9f65dd927ab58f85b6b7b34e", "showroom": "/_blob/6bdd95d6ecbd918a1370a9976eb22927", "kask": "/_blob/194eef2839742df9f5a62e3be4fd04a3", "dassy": "/_blob/ba871752485c5a0ec3eb9a47f5a0e42b", "softshell": "/_blob/5352b1286406cabb986dd27508640452", "cat-schoenen": "/_blob/3fa09de26265afb3a92ed90702a867ce", "cat-kleding": "/_blob/bb9730ca26aab2baa20074ae290bce05", "cat-handschoenen": "/_blob/576c366d46fdf08e691f351a8af86916", "cat-pbm": "/_blob/69d3bb3a4c5c22bc3a90957a583a6813", "p-haix": "/_blob/46f4364adf2c6fcdde83e26778323e9f", "p-handschoen": "/_blob/0253301706a21c19007a14f946f956f5", "p-havep": "/_blob/86877bea416e24339641f118d529da85", "p-solidgear": "/_blob/b6cb072cf00b07c1c4b5979c78adf5a4"}, "logos": {"HAIX": "/_blob/ea570573ef87b8cab77592de82ad327a", "Havep": "/_blob/f56842a87f12f497d2c61b2490da4075", "KASK": "/_blob/e124e7d3d2a0775e17ca8e38ae4a34e3", "LOWA Work": "/_blob/ddc8f69f618971cb1c3beab339d5e0d7", "PUMA Safety": "/_blob/d9309ee79d0d07965b2775c1a3f602bf", "Santino": "/_blob/23ff82094926bae989f72f53e530eaa7", "Snickers Workwear": "/_blob/1ecab9d540eee71e5d4c87291c076d45", "Tricorp Workwear": "/_blob/482924746975dedfc61ad3b37b5c4211"}, "beroepen": [{"k": "las", "naam": "las", "href": "Lasgoed.dc.html", "regel": "Vonken, spatten, hitte en lasrook.", "risicos": ["vonk", "hitte", "stof"]}, {"k": "straat", "naam": "straat", "href": "Straatgoed.dc.html", "regel": "Op je knieën, langs de weg, in elk weer.", "risicos": ["zicht", "knielen", "regen"]}, {"k": "bouw", "naam": "bouw", "href": "Bouwgoed.dc.html", "regel": "Hoogte, stof en lawaai op de bouwplaats.", "risicos": ["hoogte", "stof", "lawaai"]}, {"k": "techniek", "naam": "techniek", "href": "#", "regel": "Kruipen, knielen en precies werken.", "risicos": ["knielen", "snijden", "zicht"]}, {"k": "magazijn", "naam": "magazijn", "href": "#", "regel": "Tussen pallets, heftrucks en koude hallen.", "risicos": ["zicht", "kou", "snijden"]}, {"k": "chauffeur", "naam": "chauffeurs", "href": "#", "regel": "Urenlang rijden, laden en lossen.", "risicos": ["zicht", "kou", "snijden"]}, {"k": "groen", "naam": "groen", "href": "#", "regel": "Buiten met machines, takken en weer.", "risicos": ["lawaai", "regen", "snijden"]}, {"k": "schilder", "naam": "schilders", "href": "#", "regel": "Spatten, dampen en lange dagen op de trap.", "risicos": ["chemie", "stof", "hoogte"]}], "zones": [{"zone": "hoofd", "titel": "Hoofd en nek", "eis": "Een lasmuts van vlamvertragende stof onder je helm. Anders vallen spatten in je kraag.", "product": "Lasmutsen", "normen": ["EN ISO 11611"]}, {"zone": "ogen", "titel": "Ogen en gezicht", "eis": "Een lashelm met automatisch filter. Bij slijpen een veiligheidsbril eronder.", "product": "Lashelmen en veiligheidsbrillen", "normen": ["EN 175", "EN 379", "EN 166"]}, {"zone": "adem", "titel": "Adem", "eis": "Lasrook wil je niet inademen. Eerst afzuiging bij de bron, adembescherming waar dat niet genoeg is.", "product": "Adembescherming en helmen met luchttoevoer", "normen": ["EN 12941"]}, {"zone": "romp", "titel": "Romp en armen", "eis": "Laskleding die niet doorbrandt. Hoge kraag, afgedekte zakken, geen open naden.", "product": "Lasjassen en lasoveralls", "normen": ["EN ISO 11611", "EN ISO 11612"]}, {"zone": "handen", "titel": "Handen", "eis": "Dik leer voor elektrode en MAG. Dun en soepel voor TIG.", "product": "Lashandschoenen", "normen": ["EN 12477"]}, {"zone": "voeten", "titel": "Voeten", "eis": "Een zool die tegen hitte kan en geen open veters, of een flap erover.", "product": "Lasschoenen", "normen": ["EN ISO 20345"]}], "merken": [{"naam": "HAIX", "soort": "Schoenen"}, {"naam": "LOWA Work", "soort": "Schoenen"}, {"naam": "Sixton", "soort": "Schoenen"}, {"naam": "Solid Gear", "soort": "Schoenen"}, {"naam": "Grisport Safety", "soort": "Schoenen"}, {"naam": "PUMA Safety", "soort": "Schoenen"}, {"naam": "Redbrick", "soort": "Schoenen"}, {"naam": "Snickers Workwear", "soort": "Kleding"}, {"naam": "Tricorp Workwear", "soort": "Kleding"}, {"naam": "Santino", "soort": "Kleding"}, {"naam": "Dassy", "soort": "Kleding"}, {"naam": "Havep", "soort": "Kleding"}, {"naam": "BLS", "soort": "PBM"}, {"naam": "KASK", "soort": "PBM"}]};
+    const s = this.state;
+    const m = s.merk;
     const filters = ['Alle', 'Schoenen', 'Kleding', 'PBM'];
     const dark = 'rgba(255,255,255,.2)';
     const light = 'rgba(22,33,44,.16)';
@@ -270,21 +319,28 @@ class Component extends DCLogic {
       yes: true,
       no: false,
       streepHoogte: 24,
+      menuOpen: s.menu ? 'true' : 'false',
+      menuDisplay: s.menu ? 'block' : 'none',
+      menuBg: s.menu ? 'var(--marine)' : 'transparent',
+      menuKleur: s.menu ? 'var(--on-night)' : 'var(--ink)',
+      menuRand: s.menu ? 'var(--marine)' : 'var(--ink)',
+      menuDraai: s.menu ? 'rotate(180deg)' : 'none',
+      toggleMenu: () => this.setState({ menu: !s.menu }),
       beroepen: D.beroepen,
       zones: D.zones,
       categorieen: [
-        { naam: 'Werkkleding', tone: 'sunken', line: light, items: ['Jassen', 'Broeken', 'Overalls', 'Shirts en truien', 'Regenkleding'] },
-        { naam: 'Werkschoenen', tone: 'marine', line: dark, items: ['Lage werkschoenen', 'Hoge werkschoenen', 'Laarzen', 'Inlegzolen', 'Voetscan en maat'] },
-        { naam: 'Werkhandschoenen', tone: 'canvas', line: light, items: ['Montage', 'Snijbestendig', 'Lashandschoenen', 'Chauffeurs', 'Winter'] },
-        { naam: 'PBM', tone: 'surface', line: light, items: ['Hoofd en gezicht', 'Gehoor', 'Ademhaling', 'Veiligheidsbrillen', 'Valbeveiliging'] }
+        { naam: 'Werkkleding', icoon: 'jas', foto: D.img['cat-kleding'], alt: 'Werkbroeken van Snickers Workwear', tone: 'sunken', line: light, items: ['Jassen', 'Broeken', 'Overalls', 'Shirts en truien', 'Regenkleding'] },
+        { naam: 'Werkschoenen', icoon: 'schoen', foto: D.img['cat-schoenen'], alt: 'Werkschoenen van HAIX', tone: 'marine', line: dark, items: ['Lage werkschoenen', 'Hoge werkschoenen', 'Laarzen', 'Inlegzolen', 'Voetscan en maat'] },
+        { naam: 'Werkhandschoenen', icoon: 'handschoen', foto: D.img['cat-handschoenen'], alt: 'Werkhandschoenen', tone: 'canvas', line: light, items: ['Montage', 'Snijbestendig', 'Lashandschoenen', 'Chauffeurs', 'Winter'] },
+        { naam: 'PBM', icoon: 'helm', foto: D.img['cat-pbm'], alt: 'Veiligheidshelm van KASK', tone: 'surface', line: light, items: ['Hoofd en gezicht', 'Gehoor', 'Ademhaling', 'Veiligheidsbrillen', 'Valbeveiliging'] }
       ],
       merkFilters: filters.map((f) => ({ naam: f, active: f === m, pick: () => this.setState({ merk: f }) })),
-      merken: D.merken.filter((x) => m === 'Alle' || x.soort === m),
+      merken: D.merken.filter((x) => m === 'Alle' || x.soort === m).map((x) => Object.assign({}, x, { logo: D.logos[x.naam] || '', geenLogo: !D.logos[x.naam] })),
       producten: [
-        { merk: 'Werkhandschoenen', naam: 'Chauffeurshandschoenen 10419', prijsEx: 'Vanaf €2,99', prijsIn: '€3,62' },
-        { merk: 'Havep', naam: 'Gore-Tex jas Revolve 50468', prijsEx: 'Vanaf €379,95', prijsIn: '€459,74' },
-        { merk: 'HAIX', naam: 'Black Eagle 50 Mid S3', prijsEx: 'Vanaf €148,68', prijsIn: '€179,90', voorraad: true },
-        { merk: 'Solid Gear', naam: 'Prime GTX S7S Mid BOA', prijsEx: 'Vanaf €305,50', prijsIn: '€369,66' }
+        { merk: 'Werkhandschoenen', naam: 'Chauffeurshandschoenen 10419', prijsEx: 'Vanaf €2,99', prijsIn: '€3,62', foto: D.img['p-handschoen'] },
+        { merk: 'Havep', naam: 'Gore-Tex jas Revolve 50468', prijsEx: 'Vanaf €379,95', prijsIn: '€459,74', foto: D.img['p-havep'] },
+        { merk: 'HAIX', naam: 'Black Eagle 50 Mid S3', prijsEx: 'Vanaf €148,68', prijsIn: '€179,90', voorraad: true, foto: D.img['p-haix'] },
+        { merk: 'Solid Gear', naam: 'Prime GTX S7S Mid BOA', prijsEx: 'Vanaf €305,50', prijsIn: '€369,66', foto: D.img['p-solidgear'] }
       ]
     };
   }

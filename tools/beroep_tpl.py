@@ -15,8 +15,8 @@ BODY = '''
 <x-import component-from-global-scope="Werkgoed.Button" variant="outline" arrow="{{no}}" href="tel:0184701212">Bel een kenner</x-import>
 </div>
 </div>
-<div style="flex:1 1 320px;min-width:0;max-width:480px;aspect-ratio:4/5;background:var(--surface);border-radius:var(--radius-sheet);padding:24px;box-sizing:border-box;display:flex;align-items:flex-end">
-<span class="wg-small" style="color:var(--ink-muted);max-width:28ch">Foto: [[FOTO]] [EIGEN FOTO]</span>
+<div style="flex:1 1 320px;min-width:0;max-width:520px;aspect-ratio:4/5;background:var(--surface);border-radius:var(--radius-sheet);overflow:hidden">
+<img class="wg-foto" src="[[HEROIMG]]" alt="[[HEROALT]]">
 </div>
 </div>
 
@@ -194,11 +194,11 @@ BODY = '''
 <x-import component-from-global-scope="Werkgoed.Streep" height="{{streepHoogte}}"></x-import>
 '''
 
-SCRIPT = '''<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":[[H]]}}'>
+SCRIPT = '''<script type="text/x-dc" data-dc-script data-props='{"menuOpen":{"editor":"boolean","default":false},"$preview":{"width":1440,"height":[[H]]}}'>
 class Component extends DCLogic {
   constructor(props) {
     super(props);
-    this.state = { taak: 0, uit: {}, aantal: 5, soort: 'Alles' };
+    this.state = { taak: 0, uit: {}, aantal: 5, soort: 'Alles', menu: !!this.props.menuOpen };
   }
   renderVals() {
     const D = [[DATA]];
@@ -216,7 +216,7 @@ class Component extends DCLogic {
       no: false,
       icoonMaat: 28,
       streepHoogte: 24,
-      taken: D.taken.map((t, i) => ({ naam: t.naam, active: i === s.taak, pick: () => this.setState({ taak: i }) })),
+[[MENU_JS]]      taken: D.taken.map((t, i) => ({ naam: t.naam, active: i === s.taak, pick: () => this.setState({ taak: i }) })),
       taak: taak,
       momenten: D.momenten,
       zones: D.zones,

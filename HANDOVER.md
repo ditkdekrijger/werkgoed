@@ -8,6 +8,19 @@ Redesign van werkgoed.nl, next level. Kernboodschap: "Past altijd goed. Bij 't w
 
 Schrijfregels van Dick: Nederlands, je en jij, kort en direct, geen gedachtestreepjes of em-dashes in teksten.
 
+## Update: versie 3 (18 november 2026, eind van de middag)
+
+Op verzoek van Dick:
+- **Geel is weg.** Oranje (`vlam`, `#ff6a13`) is het enige accent: hoofdknop, markering in koppen, de Streep, het oproepvlak. `signal` is nu een alias van `vlam`. De beroepstint van Straatgoed is rode klinker geworden in plaats van fluogeel.
+- **De belofte vol in beeld**: de hero van Home is "Past altijd goed. Bij 't werk wat je doet." over de hele breedte, met een fotocollage eronder.
+- **Foto's van werkgoed.nl** (team, showroom, sfeerbeelden van Dassy, Snickers en KASK, categorie- en productfoto's) staan als assets op het canvas. Kopieën in `assets/fotos/`. Lasgoed gebruikt nu een staalbouwfoto; een echte lasfoto ontbreekt nog.
+- **Het echte logo** van werkgoed.nl (W-blok, WERKGOED, "werkt beter!") in header en footer, met het blok in oranje. Ook als asset in het design system (groep Logos). Kopie in `assets/logo/`.
+- **Merklogo's**: 8 van 14 opgehaald van de merksites (HAIX, LOWA, PUMA Safety, Snickers, Tricorp, Santino, Havep, KASK), in `assets/merken/`. Sixton, Solid Gear, Grisport, Redbrick, Dassy en BLS staan nog als tekst: hun sites waren niet bereikbaar. Vraag Werkgoed of de merken om logobestanden.
+- **Iconen** in topbalk, header, menu, categorieën, showroom en footer. De set heeft er 22 bij (assortiment en service).
+- **Uitklapmenu "Assortiment"** in de header op elke pagina: soort, merken en toepassing (lasser, stratenmaker en meer), plus een showroomtegel. Op het canvas klik je op Assortiment; de tweak `menuOpen` zet het standaard open.
+- Showroomkop is nu "Je werkschoen pas je bij ons."
+
+
 ## Update: Werkgoed 2.0 (18 november 2026, middag)
 
 **Design system versie 2.** Minder zwart, wit en geel. Het palet komt nu uit de werkplaats:

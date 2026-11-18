@@ -10,7 +10,7 @@ body { margin: 0; font-family: var(--font-sans); background: var(--surface); col
 .wg-mark-on-night { color: var(--on-signal); background: var(--signal); padding: 0 .12em; border-radius: .08em; }
 
 :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
-.wg-night :focus-visible, .wg-card-night :focus-visible, .wg-card-marine :focus-visible { outline-color: var(--signal); }
+.wg-night :focus-visible, .wg-card-night :focus-visible, .wg-card-marine :focus-visible { outline-color: var(--vlam); }
 
 /* Button */
 .wg-btn { display: inline-flex; align-items: center; gap: var(--space-2); box-sizing: border-box; min-height: 48px; padding: 0 var(--space-5); border-radius: var(--radius-pill); border: 1px solid transparent; font: 600 16px/1 var(--font-sans); letter-spacing: -.005em; text-decoration: none; cursor: pointer; white-space: nowrap; transition: background-color .16s ease, color .16s ease, border-color .16s ease; }
@@ -19,6 +19,7 @@ body { margin: 0; font-family: var(--font-sans); background: var(--surface); col
 .wg-btn:hover .wg-btn-arrow { transform: translateX(3px); }
 .wg-btn-signal { background: var(--signal); color: var(--on-signal); }
 .wg-btn-signal:hover { background: var(--marine); color: var(--on-night); }
+.wg-btn .wg-icoon { margin: 0 -2px; }
 .wg-btn-ink { background: var(--marine); color: var(--on-night); }
 .wg-btn-ink:hover { background: var(--signal); color: var(--on-signal); }
 .wg-btn-outline { background: transparent; color: var(--ink); border-color: var(--ink); }
@@ -34,7 +35,7 @@ body { margin: 0; font-family: var(--font-sans); background: var(--surface); col
 .wg-tag { display: inline-flex; align-items: center; gap: var(--space-2); min-height: 44px; box-sizing: border-box; padding: 0 var(--space-5); border-radius: var(--radius-pill); border: 1px solid var(--line-strong); background: transparent; color: var(--ink); font: 600 15px/1 var(--font-sans); cursor: pointer; transition: background-color .16s ease, border-color .16s ease, color .16s ease; }
 .wg-tag:hover { border-color: var(--ink); }
 .wg-tag[aria-pressed="true"] { background: var(--marine); color: var(--on-night); border-color: var(--marine); }
-.wg-tag[aria-pressed="true"] .wg-tag-dot { background: var(--signal); }
+.wg-tag[aria-pressed="true"] .wg-tag-dot { background: var(--vlam); }
 .wg-tag-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--line-strong); transition: background-color .16s ease; }
 
 /* Badge */
@@ -99,7 +100,7 @@ body { margin: 0; font-family: var(--font-sans); background: var(--surface); col
 .wg-lk-stage { flex: 0 1 360px; min-width: 240px; margin: 0 auto; box-sizing: border-box; padding: clamp(20px, 3vw, 40px); border-radius: var(--radius-sheet); background: var(--lk-tint, var(--canvas)); }
 .wg-lk-fig { position: relative; width: 100%; max-width: 260px; margin: 0 auto; aspect-ratio: 200 / 440; color: var(--lk-deep, var(--marine)); }
 .wg-lk-fig svg { position: absolute; inset: 0; width: 100%; height: 100%; }
-.wg-lk-pin { position: absolute; transform: translate(-50%, -50%); display: grid; place-items: center; width: 36px; height: 36px; padding: 0; border-radius: 50%; border: 2px solid var(--ink); background: var(--signal); color: var(--on-signal); font: 700 15px/1 var(--font-sans); font-variant-numeric: tabular-nums; cursor: pointer; transition: background-color .16s ease, transform .16s ease; }
+.wg-lk-pin { position: absolute; transform: translate(-50%, -50%); display: grid; place-items: center; width: 36px; height: 36px; padding: 0; border-radius: 50%; border: 2px solid var(--ink); background: var(--surface); color: var(--ink); font: 700 15px/1 var(--font-sans); font-variant-numeric: tabular-nums; cursor: pointer; transition: background-color .16s ease, transform .16s ease; }
 .wg-lk-pin:hover { transform: translate(-50%, -50%) scale(1.08); }
 .wg-lk-pin[aria-pressed="true"] { background: var(--vlam); color: var(--on-vlam); transform: translate(-50%, -50%) scale(1.15); }
 .wg-lk-list { flex: 1 1 380px; min-width: 0; list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }

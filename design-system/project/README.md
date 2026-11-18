@@ -21,16 +21,15 @@ De basis is werkgoed.nl: de topbalk met levertijd en gratis verzending, de hoofd
 
 ### Kleur
 
-Het palet komt uit de werkplaats, niet uit een kleurwaaier: het marine van een klassieke werkjas, het canvas van een bouwbroek, kalk en beton, het signaalgeel van een hesje en het fluo-oranje van een afzetting.
+Het palet komt uit de werkplaats, niet uit een kleurwaaier: het marine van een klassieke werkjas, het canvas van een bouwbroek, kalk en beton, en het fluo-oranje van een afzetting en een signaaljas. Geel zit niet meer in het merk.
 
-- Verhouding: ongeveer 60 procent wit en `surface-sunken` (kalk), 25 procent `marine` en `canvas`, 10 procent beroepstinten, 5 procent `signal` en `vlam`. Geel en oranje zijn kruiden, geen saus.
+- Verhouding: ongeveer 60 procent wit en `surface-sunken` (kalk), 25 procent `marine` en `canvas`, 10 procent beroepstinten, 5 procent oranje. Oranje is het kruid, geen saus.
 - `ink` is een zeer donker marine, geen zwart. Labels en bijschriften `ink-muted`.
-- `marine` is het donkere vlak: topbalk, het vraagpaneel, de showroom en de footer. Tekst erop is `on-night`. (`night` bestaat nog als alias.)
-- `canvas` is het warme vlak voor sheets en kaarten die rust geven, zoals de advieskaart of de pakketbouwer.
-- `signal` is het merkaccent: de ene hoofdknop, de markering in een kop en de Streep. Nooit tekstkleur op wit. Tekst erop is `on-signal`.
-- `vlam` is de steunkleur. Hij markeert wat aandacht vraagt: risicobadges (`vlam-soft` met icoon in `vlam-ink`), het gekozen punt op de lichaamskaart, de onderlijn van een link en één aanbiedingsbadge. Nooit een groot vlak.
+- `marine` is het donkere vlak: topbalk, het vraagpaneel, de showroom en de footer. Tekst erop is `on-night`.
+- `canvas` is het warme vlak voor sheets en kaarten die rust geven.
+- `vlam` (fluo-oranje) is het enige accent: de hoofdknop, de markering in een kop, de Streep, risicobadges, het gekozen punt op de lichaamskaart, de onderlijn van links en één oproepvlak per pagina. `signal` is een alias van `vlam` en blijft bestaan zodat oude code werkt. Oranje is nooit tekstkleur op wit; gebruik daar `vlam-ink`. Tekst op oranje is `on-vlam`.
 - `staal` is voor informatie: normcodes en hun rand.
-- Elk beroep heeft een vaste tint en een diepe kleur: `beroep-las` (leer van een lasschort), `beroep-straat` (fluo van de weg), `beroep-bouw` (canvas), `beroep-techniek` (staal), `beroep-magazijn` (beton), `beroep-chauffeur` (cabineblauw), `beroep-groen` (blad), `beroep-schilder` (gebroken wit), elk met een `-deep`. De tint is het vlak van de beroepskaart, de hero en de lichaamskaart. De diepe kleur zet "goed" in het woordmerk, de iconen, het figuur en de tijden in de werkdag. Tekst op een tint is altijd `ink`.
+- Elk beroep heeft een vaste tint en een diepe kleur: `beroep-las` (leer van een lasschort), `beroep-straat` (rode klinker), `beroep-bouw` (canvas), `beroep-techniek` (staal), `beroep-magazijn` (beton), `beroep-chauffeur` (cabineblauw), `beroep-groen` (blad), `beroep-schilder` (gebroken wit), elk met een `-deep`. De tint is het vlak van de beroepskaart en de lichaamskaart. De diepe kleur zet "goed" in het woordmerk, de iconen, het figuur en de tijden in de werkdag. Tekst op een tint is altijd `ink`.
 - Status heeft altijd een woord: `ok` bij "Uit voorraad", `alert` bij "Niet leverbaar". Kleur alleen is nooit de boodschap.
 
 ### Typografie
@@ -39,16 +38,18 @@ Het palet komt uit de werkplaats, niet uit een kleurwaaier: het marine van een k
 - `wg-mega` (800, breedte 80%) is alleen voor het beroepswoordmerk bovenaan een beroepspagina: "las" in `ink`, "goed" in gewicht 500 en de diepe beroepskleur.
 - `wg-code` (breedte 75%, tabelcijfers) voor normcodes, artikelnummers en tijden.
 - Verder `wg-display`, `wg-h1`, `wg-h2`, `wg-h3` voor koppen en `wg-lead`, `wg-body`, `wg-small`, `wg-label`, `wg-price` voor de rest.
-- Accentwoord in een kop: één woord of de slotzin krijgt een `signal`-markering (component `Heading` met `accent`). Eén per kop, nooit in lopende tekst.
+- Accentwoord in een kop: één woord of de slotzin krijgt een oranje markering (component `Heading` met `accent`, of `<mark class="wg-mark">`). Eén per kop, nooit in lopende tekst.
+- De belofte staat op de homepage vol in beeld, over de hele breedte: "Past altijd goed. Bij 't werk wat je doet." in 800, breedte 82%, met "goed." gemarkeerd.
 
 ### Vorm, ruimte en beweging
 
 - Pil (`radius-pill`) voor knoppen, tags en badges, sheet (`radius-sheet`, alleen bovenhoeken) voor grote vlakken die over elkaar schuiven, kaart (`radius-card`), tegel (`radius-tile`, foto 3:2). Geen schaduwen. Diepte komt uit overlappende sheets, tintverschil en lijnen van 1px (`line`).
 - Ruimte: schaal `space-1` tot `space-10` (4, 8, 12, 16, 24, 32, 48, 64, 96, 128). Zijmarge clamp(20px, 4.2vw, 72px), sectie clamp(56px, 8vw, 128px), maximale breedte 1440px.
-- De Streep: een diagonale band in `signal` en `marine` (component `Streep`) verwijst naar afzetting en werkkleding. Maximaal één per pagina, als scheiding boven de showroom of de footer.
-- Beeld: eigen foto's van klanten die werken, in beeld met hun kleding en PBM. Geen stockbeeld. Productfoto's uit de webshop op `surface-sunken`.
+- De Streep: een diagonale band in oranje en `marine` (component `Streep`) verwijst naar afzetting en werkkleding. Maximaal één per pagina, als scheiding boven de showroom of de footer.
+- Beeld: foto's van werkgoed.nl en van de merken die Werkgoed voert, mensen aan het werk met hun kleding en PBM, altijd beeldvullend (`object-fit: cover`) in een kaart of sheet. Eigen foto's van klanten gaan voor. Geen generiek stockbeeld. Productfoto's uit de webshop op `surface-sunken`.
+- Merken tonen we met hun eigen logo op een witte tegel. Een logo dat alleen in wit bestaat zetten we in `ink`.
 - Beweging: kort en strak. Knop, tag en punt verkleuren in 160 ms. Niets beweegt continu. Respecteer `prefers-reduced-motion`.
-- Focus: een ring van 3px in `focus` met 3px afstand. Op `marine` is de ring `signal`.
+- Focus: een ring van 3px in `focus` met 3px afstand. Op `marine` is de ring oranje.
 
 ## Het beroepsmodel
 
@@ -68,11 +69,21 @@ Eisen, tips en normen komen van Werkgoed zelf. Wat nu in de componenten en pagin
 
 ## Iconografie
 
-Er is nog geen eigen iconenset. Gebruik component `Icoon`: lijniconen op een 24-raster met lijn 1,5px, ronde uiteinden, kleur `currentColor`. Er zijn iconen voor de acht beroepen en voor de risico's (vonk, hitte, regen, kou, zicht, lawaai, stof, snijden, chemie, knielen, hoogte). Geen emoji. Vervang de set zodra Werkgoed een eigen set heeft.
+Component `Icoon`: lijniconen op een 24-raster met lijn 1,5px, ronde uiteinden, kleur `currentColor`. Voorlopige set tot Werkgoed een eigen set heeft.
+
+- Beroepen: las, straat, bouw, techniek, magazijn, chauffeur, groen, schilder.
+- Risico's: vonk, hitte, regen, kou, zicht, lawaai, stof, snijden, chemie, knielen, hoogte.
+- Assortiment: jas, broek, schoen, handschoen, helm, voet.
+- Service en interface: levering, voorraad, verzending, klok, telefoon, mail, locatie, advies, zoek, wagen, account, menu, sluit, omlaag, pijl, check.
+- Gebruik: in de topbalk voor de beloftes (16px), in de header voor zoeken, account en winkelwagen (20 tot 22px), in het uitklapmenu en op categoriekaarten (24 tot 32px). Geen emoji.
 
 ## Logo
 
-Er is geen logo aangeleverd. Zet de naam voorlopig als tekst: "werkgoed" in gewicht 800, breedte 90%, kleine letters, met een kleine `signal`-stip erachter, en daaronder "bedrijfskleding & PBM" in `wg-small`. Vervang dit door het echte logo zodra het in `assets/Logos` staat.
+Het logo komt van werkgoed.nl: het W-blok met de woordmerk WERKGOED en de regel "werkt beter!". In dit systeem staat het W-blok in oranje en de letters in `ink` op licht, of in wit op `marine`. Hoogte in de header 52px, in de footer 56 tot 96px. Vraag Werkgoed om het originele logobestand in alle varianten.
+
+## Navigatie
+
+De header heeft een uitklapmenu "Assortiment" (net als grote vakwinkels): soort (werkkleding, werkschoenen, werkhandschoenen, PBM met hun subgroepen), merken en toepassing (lasser, stratenmaker, bouwer en de andere beroepen, met hun beroepskleur). Rechts een fototegel naar de showroom. Daarnaast de links Per beroep, Merken, Showroom en Advies.
 
 ## Gebruik in code
 

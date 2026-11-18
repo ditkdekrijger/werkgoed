@@ -18,7 +18,7 @@ def zone(z, titel, eis, product, normen):
 LAS = {
     'k': 'las', 'naam': 'las', 'titel': 'Lasgoed', 'persoon': 'lasser', 'mv': 'lassers', 'h': 6900,
     'regel': 'Vonken, spatten, hitte en lasrook. Wij weten wat dat met je kleding doet, en wat je ertegen draagt.',
-    'foto': 'een lasser aan het werk, met lashelm, lasjas en handschoenen goed in beeld',
+    'heroimg': 'dassy', 'heroalt': 'Monteur in de staalbouw in een wind- en waterdichte werkjas van Dassy',
     'dagintro': 'Van omkleden tot opruimen. Elk moment vraagt iets anders van je kleding.',
     'dagfoto': 'de werkplaats, een lasser die boven het hoofd last',
     'data': {
@@ -75,7 +75,7 @@ LAS = {
 STRAAT = {
     'k': 'straat', 'naam': 'straat', 'titel': 'Straatgoed', 'persoon': 'stratenmaker', 'mv': 'stratenmakers', 'h': 6900,
     'regel': 'Op je knieën, langs de weg, in weer en wind. Wij weten waar je kleding het eerst slijt.',
-    'foto': 'een stratenmaker op de knieën in het zandbed, signaalkleding en kniestukken in beeld',
+    'heroimg': 'softshell', 'heroalt': 'Bouwvakker in een softshell jack van Snickers Workwear draagt een buis over de bouwplaats',
     'dagintro': 'Vroeg in het donker, laat in de regen. Je kleding moet de hele dag mee.',
     'dagfoto': 'een werkvak langs de weg in de ochtend',
     'data': {
@@ -132,7 +132,7 @@ STRAAT = {
 BOUW = {
     'k': 'bouw', 'naam': 'bouw', 'titel': 'Bouwgoed', 'persoon': 'bouwer', 'mv': 'bouwers', 'h': 6900,
     'regel': 'Hoogte, stof, lawaai en weer. Op de bouw komt alles samen. Wij weten wat je wanneer nodig hebt.',
-    'foto': 'een timmerman op de steiger, helm met kinband en werkbroek met holsterzakken in beeld',
+    'heroimg': 'kask', 'heroalt': 'Werken op hoogte met een KASK veiligheidshelm met kinband',
     'dagintro': 'Van de keet tot de bovenste vloer. Elke klus vraagt iets anders.',
     'dagfoto': 'een bouwplaats met steiger en betonvloer',
     'data': {

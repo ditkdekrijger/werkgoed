@@ -1,7 +1,7 @@
 import type * as React from 'react';
 
 export type BeroepSleutel = 'las' | 'straat' | 'bouw' | 'techniek' | 'magazijn' | 'chauffeur' | 'groen' | 'schilder';
-export type IcoonNaam = BeroepSleutel | 'vonk' | 'hitte' | 'regen' | 'kou' | 'zicht' | 'lawaai' | 'stof' | 'snijden' | 'chemie' | 'knielen' | 'hoogte' | 'pijl' | 'check';
+export type IcoonNaam = BeroepSleutel | 'vonk' | 'hitte' | 'regen' | 'kou' | 'zicht' | 'lawaai' | 'stof' | 'snijden' | 'chemie' | 'knielen' | 'hoogte' | 'jas' | 'broek' | 'schoen' | 'handschoen' | 'helm' | 'voet' | 'levering' | 'voorraad' | 'verzending' | 'klok' | 'telefoon' | 'mail' | 'locatie' | 'advies' | 'zoek' | 'wagen' | 'account' | 'menu' | 'sluit' | 'omlaag' | 'pijl' | 'check';
 
 export interface ButtonProps { variant?: 'signal' | 'ink' | 'outline' | 'light' | 'outline-light' | 'link'; arrow?: boolean; href?: string; onClick?: () => void; disabled?: boolean; className?: string; children?: React.ReactNode }
 export declare function Button(props: ButtonProps): React.ReactElement;
