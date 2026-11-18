@@ -1,0 +1,18 @@
+<!-- @dsCard group="Beroep" height=200 -->
+<!doctype html>
+<html lang="nl">
+<head><meta charset="utf-8"><title>Icoon</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var W = window.Werkgoed, h = React.createElement;
+  var rijen = [['las','straat','bouw','techniek','magazijn','chauffeur','groen','schilder'],['vonk','hitte','regen','kou','zicht','lawaai','stof','snijden','chemie','knielen','hoogte','pijl','check']];
+  ReactDOM.createRoot(document.getElementById('root')).render(h('div', null, rijen.map(function (r, k) {
+    return h('div', { key: k, className: 'wg-row', style: { gap: 20 } }, r.map(function (n) {
+      return h('span', { key: n, style: { display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, width: 64 } },
+        h(W.Icoon, { naam: n, size: 32 }), h('span', { className: 'wg-small', style: { color: 'var(--ink-muted)' } }, n));
+    }));
+  })));
+</script>
+</body>
+</html>

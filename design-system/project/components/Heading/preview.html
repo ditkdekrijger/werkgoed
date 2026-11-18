@@ -1,0 +1,18 @@
+<!-- @dsCard group="Typografie" height=360 -->
+<!doctype html>
+<html lang="nl">
+<head><meta charset="utf-8"><title>Heading</title></head>
+<body>
+<div id="root" style="padding:24px;display:flex;flex-direction:column;gap:20px"></div>
+<script>
+  var W = window.Werkgoed, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null,
+    h(W.Heading, { size: 'display', accent: 'goed.' }, 'Past altijd'),
+    h(W.Heading, { size: 'h2', accent: 'doe jij?' }, 'Wat voor werk'),
+    h(W.Heading, { size: 'h3' }, 'Zichtbaar in weer en wind'),
+    h('div', { className: 'wg-night', style: { background: 'var(--marine)', color: 'var(--on-night)', padding: 24, borderRadius: 'var(--radius-card)' } },
+      h(W.Heading, { size: 'h2', tone: 'night', accent: 'proef je aan.' }, 'De juiste schoen'))
+  ));
+</script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!-- @dsCard group="Beroep" height=720 -->
+<!doctype html>
+<html lang="nl">
+<head><meta charset="utf-8"><title>Lichaamskaart</title></head>
+<body>
+<div id="root" style="padding:24px"></div>
+<script>
+  var W = window.Werkgoed, h = React.createElement;
+  var zones = [
+    { zone: 'hoofd', titel: 'Hoofd en nek', eis: 'Een lasmuts van vlamvertragende stof onder de helm. Spatten vallen anders je kraag in.', product: 'Lasmutsen', normen: ['EN ISO 11611'] },
+    { zone: 'ogen', titel: 'Ogen en gezicht', eis: 'Een lashelm met automatisch filter, en een bril eronder voor het slijpen.', product: 'Lashelmen en veiligheidsbrillen', normen: ['EN 175', 'EN 379', 'EN 166'] },
+    { zone: 'adem', titel: 'Adem', eis: 'Lasrook wil je niet inademen. Afzuiging bij de bron, en adembescherming waar dat niet genoeg is.', product: 'Adembescherming' },
+    { zone: 'romp', titel: 'Romp en armen', eis: 'Laskleding die niet doorbrandt, met afgedekte zakken en een hoge kraag.', product: 'Lasjassen', normen: ['EN ISO 11611', 'EN ISO 11612'] },
+    { zone: 'handen', titel: 'Handen', eis: 'Dik leer voor elektrode en MIG/MAG, dun en soepel voor TIG.', product: 'Lashandschoenen', normen: ['EN 12477'] },
+    { zone: 'voeten', titel: 'Voeten', eis: 'Een hittebestendige zool en geen veters waar spatten in kunnen branden.', product: 'Veiligheidsschoenen', normen: ['EN ISO 20345'] }
+  ];
+  ReactDOM.createRoot(document.getElementById('root')).render(h(W.Lichaamskaart, { beroep: 'las', zones: zones }));
+</script>
+</body>
+</html>

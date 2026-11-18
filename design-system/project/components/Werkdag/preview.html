@@ -1,0 +1,16 @@
+<!-- @dsCard group="Beroep" height=520 -->
+<!doctype html>
+<html lang="nl">
+<head><meta charset="utf-8"><title>Werkdag</title></head>
+<body>
+<div id="root" style="padding:24px"></div>
+<script>
+  var W = window.Werkgoed, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h(W.Werkdag, { beroep: 'straat', momenten: [
+    { tijd: '06:30', titel: 'Aankomst langs de weg', tekst: 'Het is nog donker. Je moet gezien worden voordat je de eerste kegel zet.', risicos: ['zicht', 'kou'], goed: ['Signaaljas', 'Thermo onderlaag'] },
+    { tijd: '08:00', titel: 'Zandbed en straten', tekst: 'Uren op je knieën. Daar slijt je broek het eerst, en je knieën ook.', risicos: ['knielen'], goed: ['Kniestukken', 'Werkbroek met kniezakken'] },
+    { tijd: '10:30', titel: 'Stenen knippen en zagen', tekst: 'Stof, scherven en lawaai tegelijk.', risicos: ['stof', 'lawaai', 'zicht'], goed: ['Stofmasker', 'Gehoorbescherming', 'Veiligheidsbril'] }
+  ] }));
+</script>
+</body>
+</html>

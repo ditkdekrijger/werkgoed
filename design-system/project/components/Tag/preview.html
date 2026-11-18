@@ -1,0 +1,19 @@
+<!-- @dsCard group="Acties" height=90 -->
+<!doctype html>
+<html lang="nl">
+<head><meta charset="utf-8"><title>Tag</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var W = window.Werkgoed, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(
+    h('div', { className: 'wg-row' },
+      h(W.Tag, { active: true, dot: true }, 'Lasgoed'),
+      h(W.Tag, { dot: true }, 'Straatgoed'),
+      h(W.Tag, { dot: true }, 'Bouwgoed'),
+      h(W.Tag, null, 'Alles'),
+      h(W.Tag, null, 'Kleding'))
+  );
+</script>
+</body>
+</html>

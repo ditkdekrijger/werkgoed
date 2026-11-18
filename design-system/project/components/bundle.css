@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&display=swap');
+
+body { margin: 0; font-family: var(--font-sans); background: var(--surface); color: var(--ink); }
+.wg-row { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; padding: var(--space-4); }
+.wg-heading { margin: 0; font-family: var(--font-sans); font-variation-settings: 'wdth' 90; color: inherit; text-wrap: balance; }
+.wg-display, .wg-h1, .wg-h2, .wg-h3 { font-variation-settings: 'wdth' 90; }
+.wg-mega { font-variation-settings: 'wdth' 80; }
+.wg-code { font-variation-settings: 'wdth' 75; font-variant-numeric: tabular-nums; }
+.wg-mark { background: linear-gradient(transparent 54%, var(--signal) 54%, var(--signal) 92%, transparent 92%); color: inherit; padding: 0 .06em; margin: 0 -.06em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.wg-mark-on-night { color: var(--on-signal); background: var(--signal); padding: 0 .12em; border-radius: .08em; }
+
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+.wg-night :focus-visible, .wg-card-night :focus-visible, .wg-card-marine :focus-visible { outline-color: var(--signal); }
+
+/* Button */
+.wg-btn { display: inline-flex; align-items: center; gap: var(--space-2); box-sizing: border-box; min-height: 48px; padding: 0 var(--space-5); border-radius: var(--radius-pill); border: 1px solid transparent; font: 600 16px/1 var(--font-sans); letter-spacing: -.005em; text-decoration: none; cursor: pointer; white-space: nowrap; transition: background-color .16s ease, color .16s ease, border-color .16s ease; }
+.wg-btn[disabled] { opacity: .45; cursor: not-allowed; }
+.wg-btn-arrow { transition: transform .16s ease; }
+.wg-btn:hover .wg-btn-arrow { transform: translateX(3px); }
+.wg-btn-signal { background: var(--signal); color: var(--on-signal); }
+.wg-btn-signal:hover { background: var(--marine); color: var(--on-night); }
+.wg-btn-ink { background: var(--marine); color: var(--on-night); }
+.wg-btn-ink:hover { background: var(--signal); color: var(--on-signal); }
+.wg-btn-outline { background: transparent; color: var(--ink); border-color: var(--ink); }
+.wg-btn-outline:hover { background: var(--ink); color: var(--surface); }
+.wg-btn-light { background: var(--on-night); color: var(--marine); }
+.wg-btn-light:hover { background: var(--signal); color: var(--on-signal); }
+.wg-btn-outline-light { background: transparent; color: var(--on-night); border-color: var(--on-night); }
+.wg-btn-outline-light:hover { background: var(--on-night); color: var(--marine); }
+.wg-btn-link { background: transparent; color: var(--ink); padding: 0; min-height: 44px; border-radius: 0; text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 2px; text-decoration-color: var(--vlam); }
+.wg-btn-link:hover { text-decoration-color: var(--ink); }
+
+/* Tag */
+.wg-tag { display: inline-flex; align-items: center; gap: var(--space-2); min-height: 44px; box-sizing: border-box; padding: 0 var(--space-5); border-radius: var(--radius-pill); border: 1px solid var(--line-strong); background: transparent; color: var(--ink); font: 600 15px/1 var(--font-sans); cursor: pointer; transition: background-color .16s ease, border-color .16s ease, color .16s ease; }
+.wg-tag:hover { border-color: var(--ink); }
+.wg-tag[aria-pressed="true"] { background: var(--marine); color: var(--on-night); border-color: var(--marine); }
+.wg-tag[aria-pressed="true"] .wg-tag-dot { background: var(--signal); }
+.wg-tag-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--line-strong); transition: background-color .16s ease; }
+
+/* Badge */
+.wg-badge { display: inline-flex; align-items: center; gap: 6px; box-sizing: border-box; min-height: 28px; padding: 0 12px; border-radius: var(--radius-pill); font: 600 13px/1.2 var(--font-sans); letter-spacing: .01em; white-space: nowrap; }
+.wg-badge svg { width: 16px; height: 16px; flex: none; }
+.wg-badge-vlam { background: var(--vlam); color: var(--on-vlam); }
+.wg-badge-risico { background: var(--vlam-soft); color: var(--ink); }
+.wg-badge-risico svg { color: var(--vlam-ink); }
+.wg-badge-signal { background: var(--signal); color: var(--on-signal); }
+.wg-badge-marine { background: var(--marine); color: var(--on-night); }
+.wg-badge-outline { border: 1px solid var(--line-strong); color: var(--ink); background: transparent; }
+.wg-badge-norm { border: 1px solid var(--staal); color: var(--staal); background: transparent; font-variation-settings: 'wdth' 75; font-variant-numeric: tabular-nums; letter-spacing: .02em; }
+.wg-night .wg-badge-outline, .wg-card-marine .wg-badge-outline { border-color: rgba(255,255,255,.45); color: var(--on-night); }
+
+/* Icoon */
+.wg-icoon { display: inline-block; flex: none; vertical-align: middle; }
+
+/* Card */
+.wg-card { box-sizing: border-box; border-radius: var(--radius-card); padding: var(--space-5); color: var(--ink); }
+.wg-card-sunken { background: var(--surface-sunken); }
+.wg-card-canvas { background: var(--canvas); }
+.wg-card-surface { background: var(--surface); border: 1px solid var(--line); }
+.wg-card-night, .wg-card-marine { background: var(--marine); color: var(--on-night); }
+.wg-card-signal { background: var(--signal); color: var(--on-signal); }
+.wg-card-vlam { background: var(--vlam-soft); color: var(--ink); }
+
+/* Streep */
+.wg-streep { width: 100%; background: repeating-linear-gradient(-45deg, var(--signal) 0 16px, var(--marine) 16px 32px); }
+
+/* ProductKaart */
+.wg-product { display: flex; flex-direction: column; gap: var(--space-4); color: var(--ink); text-decoration: none; }
+.wg-product-foto { position: relative; aspect-ratio: 3 / 2; box-sizing: border-box; border-radius: var(--radius-tile); background: var(--surface-sunken); display: flex; align-items: flex-end; padding: var(--space-4); overflow: hidden; color: var(--ink-muted); font: 500 13px/1.3 var(--font-sans); }
+.wg-product-foto img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+.wg-product-foto .wg-badge { position: absolute; top: var(--space-3); left: var(--space-3); }
+.wg-product-body { display: flex; flex-direction: column; gap: 6px; }
+.wg-product-merk { color: var(--ink-muted); font: 500 14px/1.3 var(--font-sans); }
+.wg-product-naam { margin: 0; font: 600 20px/1.15 var(--font-sans); font-variation-settings: 'wdth' 90; letter-spacing: -.02em; }
+.wg-product:hover .wg-product-naam { text-decoration: underline; text-underline-offset: 4px; text-decoration-color: var(--vlam); text-decoration-thickness: 2px; }
+.wg-product-prijs { display: flex; align-items: baseline; gap: var(--space-2); flex-wrap: wrap; }
+.wg-price { font: 700 22px/1 var(--font-sans); letter-spacing: -.01em; }
+.wg-product-incl { color: var(--ink-muted); font: 500 14px/1.3 var(--font-sans); }
+.wg-voorraad { display: inline-flex; align-items: center; gap: 6px; font: 600 13px/1.3 var(--font-sans); }
+.wg-voorraad-ok { color: var(--ok); }
+.wg-voorraad-nee { color: var(--alert); }
+.wg-voorraad i { width: 8px; height: 8px; border-radius: 50%; background: currentColor; display: inline-block; }
+
+/* BeroepKaart */
+.wg-bk { position: relative; display: flex; flex-direction: column; gap: var(--space-4); box-sizing: border-box; min-height: 320px; padding: var(--space-5); border-radius: var(--radius-card); border: 1px solid transparent; background: var(--bk-tint, var(--canvas)); color: var(--ink); text-decoration: none; transition: border-color .16s ease; }
+.wg-bk:hover { border-color: var(--ink); }
+.wg-bk-top { display: flex; justify-content: space-between; align-items: flex-start; gap: var(--space-3); }
+.wg-bk-icoon { display: grid; place-items: center; width: 56px; height: 56px; border-radius: 50%; background: var(--surface); color: var(--bk-deep, var(--ink)); }
+.wg-bk-pijl { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line-strong); font: 600 18px/1 var(--font-sans); transition: background-color .16s ease, color .16s ease, border-color .16s ease; }
+.wg-bk:hover .wg-bk-pijl { background: var(--marine); border-color: var(--marine); color: var(--on-night); }
+.wg-bk-naam { margin: auto 0 0; font: 800 clamp(40px, 3.6vw, 56px)/.9 var(--font-sans); font-variation-settings: 'wdth' 80; letter-spacing: -.05em; }
+.wg-bk-goed { color: var(--bk-deep, var(--ink)); font-weight: 500; }
+.wg-bk-regel { margin: 0; font: 400 16px/1.45 var(--font-sans); color: var(--ink); max-width: 32ch; }
+.wg-bk-risicos { display: flex; flex-wrap: wrap; gap: 6px; }
+.wg-bk-risicos .wg-badge { background: var(--surface); }
+
+/* Lichaamskaart */
+.wg-lk { display: flex; flex-wrap: wrap; gap: clamp(24px, 4vw, 64px); align-items: flex-start; }
+.wg-lk-stage { flex: 0 1 360px; min-width: 240px; margin: 0 auto; box-sizing: border-box; padding: clamp(20px, 3vw, 40px); border-radius: var(--radius-sheet); background: var(--lk-tint, var(--canvas)); }
+.wg-lk-fig { position: relative; width: 100%; max-width: 260px; margin: 0 auto; aspect-ratio: 200 / 440; color: var(--lk-deep, var(--marine)); }
+.wg-lk-fig svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.wg-lk-pin { position: absolute; transform: translate(-50%, -50%); display: grid; place-items: center; width: 36px; height: 36px; padding: 0; border-radius: 50%; border: 2px solid var(--ink); background: var(--signal); color: var(--on-signal); font: 700 15px/1 var(--font-sans); font-variant-numeric: tabular-nums; cursor: pointer; transition: background-color .16s ease, transform .16s ease; }
+.wg-lk-pin:hover { transform: translate(-50%, -50%) scale(1.08); }
+.wg-lk-pin[aria-pressed="true"] { background: var(--vlam); color: var(--on-vlam); transform: translate(-50%, -50%) scale(1.15); }
+.wg-lk-list { flex: 1 1 380px; min-width: 0; list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.wg-lk-item { border-top: 1px solid var(--line); }
+.wg-lk-item:last-child { border-bottom: 1px solid var(--line); }
+.wg-lk-row { display: flex; align-items: center; gap: var(--space-4); width: 100%; min-height: 64px; padding: 12px 0; border: 0; background: transparent; color: var(--ink); text-align: left; cursor: pointer; font: 600 22px/1.2 var(--font-sans); font-variation-settings: 'wdth' 90; letter-spacing: -.02em; }
+.wg-lk-num { display: grid; place-items: center; flex: none; width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--line-strong); font: 700 14px/1 var(--font-sans); font-variant-numeric: tabular-nums; }
+.wg-lk-row[aria-expanded="true"] .wg-lk-num { background: var(--vlam); border-color: var(--vlam); color: var(--on-vlam); }
+.wg-lk-titel { flex: 1; }
+.wg-lk-plus { font: 400 24px/1 var(--font-sans); color: var(--ink-muted); }
+.wg-lk-detail { display: flex; flex-direction: column; gap: var(--space-3); padding: 0 0 var(--space-5) 48px; }
+.wg-lk-eis { margin: 0; font: 400 17px/1.55 var(--font-sans); max-width: 52ch; }
+.wg-lk-product { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2) var(--space-3); font: 600 16px/1.4 var(--font-sans); }
+.wg-lk-product span:first-child { color: var(--ink-muted); font-weight: 500; }
+
+/* Werkdag */
+.wg-dag { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.wg-dag-item { display: grid; grid-template-columns: minmax(72px, 120px) minmax(0, 1fr); gap: var(--space-5); padding: var(--space-5) 0; border-top: 1px solid var(--line); }
+.wg-dag-tijd { font: 700 clamp(28px, 3vw, 44px)/1 var(--font-sans); font-variation-settings: 'wdth' 75; font-variant-numeric: tabular-nums; letter-spacing: -.02em; color: var(--dag-deep, var(--ink)); }
+.wg-dag-body { display: flex; flex-direction: column; gap: var(--space-3); }
+.wg-dag-titel { margin: 0; font: 600 24px/1.15 var(--font-sans); font-variation-settings: 'wdth' 90; letter-spacing: -.02em; }
+.wg-dag-tekst { margin: 0; font: 400 17px/1.55 var(--font-sans); color: var(--ink-muted); max-width: 60ch; }
+.wg-dag-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+
+/* BeroepKiezer */
+.wg-kiezer { display: flex; flex-direction: column; gap: var(--space-5); }
+.wg-kiezer-tags { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+.wg-kiezer-panels { display: flex; flex-wrap: wrap; gap: var(--space-4); }
+.wg-kiezer-vraag, .wg-kiezer-pakket { flex: 1 1 340px; min-width: 0; box-sizing: border-box; border-radius: var(--radius-card); padding: clamp(24px, 3vw, 48px); display: flex; flex-direction: column; gap: var(--space-5); }
+.wg-kiezer-vraag { background: var(--marine); color: var(--on-night); }
+.wg-kiezer-vraag .wg-label { color: var(--on-night-muted); }
+.wg-kiezer-vraag .wg-lead { margin: 0; color: var(--on-night-muted); }
+.wg-kiezer-pakket { background: var(--kz-tint, var(--surface)); }
+.wg-kiezer-pakket .wg-label { color: var(--ink-muted); }
+.wg-kiezer-eisen, .wg-kiezer-links { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.wg-kiezer-eisen li { border-top: 1px solid rgba(255,255,255,.2); padding: var(--space-4) 0; font: 400 18px/1.4 var(--font-sans); }
+.wg-kiezer-links li { border-top: 1px solid var(--line); }
+.wg-kiezer-links a { display: flex; justify-content: space-between; align-items: center; gap: var(--space-4); padding: 18px 0; color: var(--ink); text-decoration: none; font: 600 22px/1.2 var(--font-sans); font-variation-settings: 'wdth' 90; letter-spacing: -.02em; }
+.wg-kiezer-links a:hover span:first-child { text-decoration: underline; text-underline-offset: 4px; text-decoration-color: var(--vlam); text-decoration-thickness: 2px; }
+.wg-kiezer-pakket .wg-btn { align-self: flex-start; margin-top: auto; }
+
+@media (max-width: 560px) {
+  .wg-dag-item { grid-template-columns: 1fr; gap: var(--space-2); }
+  .wg-lk-detail { padding-left: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wg-btn, .wg-btn-arrow, .wg-tag, .wg-lk-pin, .wg-bk, .wg-bk-pijl { transition: none; }
+}

@@ -1,0 +1,23 @@
+<!-- @dsCard group="Beroep" height=620 -->
+<!doctype html>
+<html lang="nl">
+<head><meta charset="utf-8"><title>BeroepKiezer</title></head>
+<body>
+<div id="root" style="padding:24px"></div>
+<script>
+  var W = window.Werkgoed, h = React.createElement;
+  var beroepen = [
+    { naam: 'Lasgoed', beroep: 'las', regel: 'Vonken, hitte en lasrook. Alles aan je kleding moet daar tegen kunnen.',
+      eisen: ['Laskleding die niet doorbrandt', 'Hoge kraag, afgedekte zakken, geen omslag', 'Lashandschoenen en een lashelm', 'Schoenen met hittebestendige zool'],
+      pakket: ['Lasjassen', 'Lasbroeken', 'Lashandschoenen', 'Lashelmen', 'Veiligheidsschoenen'] },
+    { naam: 'Straatgoed', beroep: 'straat', regel: 'Op je knieën, langs de weg, in elk weer.',
+      eisen: ['Gezien worden, ook in het donker', 'Kniebescherming in de broek', 'Droog blijven bij regen', 'Stof en lawaai bij het knippen'],
+      pakket: ['Signaaljassen', 'Werkbroeken met kniezakken', 'Kniestukken', 'Regenkleding', 'Werkschoenen'] },
+    { naam: 'Bouwgoed', beroep: 'bouw', regel: 'Hoogte, stof en lawaai op de bouwplaats.',
+      eisen: ['Helm, ook op de steiger', 'Stofmasker bij boren en slijpen', 'Gehoorbescherming', 'Schoenen met teen- en zoolbescherming'],
+      pakket: ['Werkbroeken', 'Softshell jassen', 'Veiligheidshelmen', 'Gehoorbescherming', 'Veiligheidsschoenen'] }
+  ];
+  ReactDOM.createRoot(document.getElementById('root')).render(h(W.BeroepKiezer, { beroepen: beroepen }));
+</script>
+</body>
+</html>

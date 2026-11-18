@@ -1,0 +1,15 @@
+<!-- @dsCard group="Motief" height=140 -->
+<!doctype html>
+<html lang="nl">
+<head><meta charset="utf-8"><title>Streep</title></head>
+<body>
+<div id="root" style="display:flex;flex-direction:column;gap:24px;padding:24px"></div>
+<script>
+  var W = window.Werkgoed, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null,
+    h(W.Streep, { height: 16 }),
+    h(W.Streep, { height: 32 })
+  ));
+</script>
+</body>
+</html>
