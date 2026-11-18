@@ -199,14 +199,99 @@
   /* Plaats van elk punt op het figuur, in procent van 200 x 440. */
   var ZONE_POS = { hoofd: [50, 2.8], ogen: [27, 9.1], gehoor: [73, 9.1], adem: [50, 17.5], romp: [50, 32], handen: [17, 53], benen: [40, 70], knieen: [61, 66], voeten: [63, 93.5] };
 
-  function Figuur() {
-    return h('svg', { viewBox: '0 0 200 440', 'aria-hidden': 'true', focusable: 'false' },
-      h('circle', { cx: 100, cy: 40, r: 22, fill: 'currentColor' }),
-      h('rect', { x: 62, y: 74, width: 76, height: 124, rx: 22, fill: 'currentColor' }),
-      h('path', { d: 'M70 96 L40 226 M130 96 L160 226', stroke: 'currentColor', strokeWidth: 22, strokeLinecap: 'round', fill: 'none' }),
-      h('path', { d: 'M82 188 L76 400 M118 188 L124 400', stroke: 'currentColor', strokeWidth: 26, strokeLinecap: 'round', fill: 'none' }),
-      h('rect', { x: 48, y: 396, width: 40, height: 22, rx: 11, fill: 'currentColor' }),
-      h('rect', { x: 112, y: 396, width: 40, height: 22, rx: 11, fill: 'currentColor' }));
+  /* Vakman per beroep: getekend figuur in de juiste uitrusting. viewBox 200 x 440. */
+  var OUTFIT = {
+    las: { jas: '#6b4a32', broek: '#3b4048', hand: '#c9965f', schoen: '#2b2f35', hoofd: 'lashelm', schort: '#8a5f3c' },
+    straat: { jas: '#ff6a13', broek: '#1c2d3f', hand: '#5d6670', schoen: '#2b2f35', hoofd: 'muts', reflectie: true, kniestuk: true, broekband: '#ff6a13' },
+    bouw: { jas: '#1c2d3f', broek: '#8a7350', hand: '#c9965f', schoen: '#4a3a28', hoofd: 'helm', helm: '#f5f3ee', kniestuk: true, holster: true },
+    techniek: { jas: '#2c5677', broek: '#2c5677', hand: '#3b4048', schoen: '#2b2f35', hoofd: 'bril', kniestuk: true, overall: true },
+    magazijn: { jas: '#5d6670', broek: '#1c2d3f', hand: '#3b4048', schoen: '#2b2f35', hoofd: 'stootpet', vest: '#ff6a13' },
+    chauffeur: { jas: '#1c2d3f', broek: '#5d6670', hand: '#c9965f', schoen: '#2b2f35', hoofd: 'geen', kraag: true },
+    groen: { jas: '#2f5a26', broek: '#2f5a26', hand: '#3b4048', schoen: '#4a3a28', hoofd: 'bosbouw', helm: '#ff6a13', zaagbroek: '#ff6a13' },
+    schilder: { jas: '#f4f2ee', broek: '#f4f2ee', hand: '#5f8a6a', schoen: '#d6d0c5', hoofd: 'pet', pet: '#f4f2ee', overall: true, vlekken: true }
+  };
+  var LIJN = '#16212c';
+  var HUID = '#e2bb98';
+
+  function Figuur(p) {
+    var o = OUTFIT[p.beroep] || OUTFIT.bouw;
+    var st = { stroke: LIJN, strokeWidth: 2.2, strokeLinejoin: 'round', strokeLinecap: 'round' };
+    function P(d, fill, extra) { return h('path', Object.assign({ d: d, fill: fill }, st, extra || {})); }
+    var els = [];
+    var k = 0;
+    function add(x) { els.push(h(React.Fragment, { key: k++ }, x)); }
+    /* schaduw */
+    add(h('ellipse', { cx: 100, cy: 424, rx: 66, ry: 8, fill: LIJN, opacity: 0.12 }));
+    /* benen */
+    add(P('M58 196 L142 196 L140 392 L108 392 L101 250 L99 250 L92 392 L60 392 Z', o.broek));
+    if (o.zaagbroek) add(P('M62 214 L96 214 L94 380 L64 380 Z M104 214 L138 214 L136 380 L106 380 Z', o.zaagbroek, { opacity: 0.95 }));
+    if (o.broekband) add(P('M60 346 L93 346 L92 360 L60 360 Z M107 346 L140 346 L140 360 L108 360 Z', '#d9dee3'));
+    if (o.kniestuk) add(P('M62 288 Q78 280 95 288 L94 318 Q78 324 62 318 Z M105 288 Q122 280 138 288 L138 318 Q122 324 106 318 Z', '#2b2f35'));
+    if (o.holster) add(P('M48 200 L62 200 L64 244 L50 246 Z M138 200 L152 200 L150 246 L136 244 Z', '#5f4b26'));
+    /* schoenen */
+    add(P('M58 388 L94 388 L96 410 Q96 420 86 420 L50 420 Q42 420 44 412 Q46 402 58 400 Z', o.schoen));
+    add(P('M106 388 L142 388 L142 400 Q154 402 156 412 Q158 420 150 420 L114 420 Q104 420 104 410 Z', o.schoen));
+    add(h('path', { d: 'M46 414 L95 414 M105 414 L156 414', stroke: '#ffffff', strokeWidth: 1.5, opacity: 0.35 }));
+    /* armen (mouwen) */
+    add(P('M62 96 C46 104 40 150 34 214 L56 216 C60 168 66 136 74 116 Z', o.jas));
+    add(P('M138 96 C154 104 160 150 166 214 L144 216 C140 168 134 136 126 116 Z', o.jas));
+    /* romp */
+    add(P('M62 92 Q100 80 138 92 L146 202 Q100 210 54 202 Z', o.jas));
+    if (o.overall) add(P('M70 196 L130 196', 'none'));
+    else add(P('M56 192 L144 192 L145 202 Q100 210 55 202 Z', '#2b2f35'));
+    add(h('path', { d: 'M100 92 L100 200', stroke: LIJN, strokeWidth: 1.6, opacity: 0.6 }));
+    add(P('M70 118 L92 118 L92 140 L70 140 Z M108 118 L130 118 L130 140 L108 140 Z', 'none', { strokeWidth: 1.6 }));
+    add(h('rect', { x: 72, y: 106, width: 11, height: 11, rx: 2.5, fill: o.jas === '#ff6a13' ? '#1c2d3f' : '#ff6a13' }));
+    if (o.schort) add(P('M74 104 Q100 98 126 104 L130 236 Q100 244 70 236 Z', o.schort));
+    if (o.vest) {
+      add(P('M64 96 L88 90 L90 196 L58 196 Z M136 96 L112 90 L110 196 L142 196 Z', o.vest));
+      add(P('M60 150 L90 150 L90 160 L60 160 Z M110 150 L141 150 L141 160 L110 160 Z', '#d9dee3', { strokeWidth: 1.4 }));
+    }
+    if (o.reflectie) {
+      add(P('M56 150 L144 150 L145 162 L55 162 Z', '#d9dee3', { strokeWidth: 1.4 }));
+      add(P('M38 176 L58 178 L57 188 L37 186 Z M162 176 L142 178 L143 188 L163 186 Z', '#d9dee3', { strokeWidth: 1.4 }));
+    }
+    if (o.vlekken) {
+      add(h('circle', { cx: 82, cy: 168, r: 4, fill: '#5f8a6a' }));
+      add(h('circle', { cx: 120, cy: 300, r: 5, fill: '#c9965f' }));
+      add(h('circle', { cx: 74, cy: 340, r: 3, fill: '#5f8a6a' }));
+    }
+    /* kraag en nek */
+    add(P('M90 74 L110 74 L110 90 Q100 96 90 90 Z', HUID));
+    add(P(o.kraag ? 'M80 86 Q100 98 120 86 L118 76 Q100 86 82 76 Z' : 'M82 88 L100 104 L118 88 L112 84 L100 94 L88 84 Z', o.jas));
+    /* handen */
+    add(P('M32 210 L58 212 L60 234 Q58 246 46 246 Q32 246 30 232 Z', o.hand));
+    add(P('M168 210 L142 212 L140 234 Q142 246 154 246 Q168 246 170 232 Z', o.hand));
+    /* hoofd */
+    add(h('ellipse', Object.assign({ cx: 100, cy: 48, rx: 20, ry: 24, fill: HUID }, st)));
+    if (o.hoofd !== 'lashelm') {
+      add(h('path', { d: 'M92 46 h.01 M108 46 h.01', stroke: LIJN, strokeWidth: 4, strokeLinecap: 'round' }));
+      add(h('path', { d: 'M94 60 Q100 63 106 60', stroke: LIJN, strokeWidth: 1.8, fill: 'none', strokeLinecap: 'round' }));
+    }
+    if (o.hoofd === 'lashelm') {
+      add(P('M78 50 Q78 20 100 18 Q122 20 122 50 L120 70 Q100 80 80 70 Z', '#2a3038'));
+      add(P('M86 38 L114 38 L113 56 L87 56 Z', '#151a1f'));
+      add(h('path', { d: 'M89 42 L100 42', stroke: '#ff6a13', strokeWidth: 3, strokeLinecap: 'round' }));
+    } else if (o.hoofd === 'helm' || o.hoofd === 'bosbouw') {
+      add(P('M76 40 Q76 16 100 15 Q124 16 124 40 Z', o.helm));
+      add(P('M70 40 L130 40 L130 46 L70 46 Z', o.helm));
+      add(h('path', { d: 'M100 15 L100 40', stroke: LIJN, strokeWidth: 1.6 }));
+      if (o.hoofd === 'bosbouw') {
+        add(P('M80 46 L120 46 L118 66 L82 66 Z', 'rgba(22,33,44,.25)', { strokeWidth: 1.6 }));
+        add(h('path', { d: 'M84 52 H116 M84 58 H116 M90 46 V66 M100 46 V66 M110 46 V66', stroke: LIJN, strokeWidth: 0.8, opacity: 0.7 }));
+        add(P('M70 42 Q64 52 70 62 L78 60 L78 44 Z M130 42 Q136 52 130 62 L122 60 L122 44 Z', '#2b2f35'));
+      }
+    } else if (o.hoofd === 'muts') {
+      add(P('M79 40 Q80 20 100 19 Q120 20 121 40 Z', '#1c2d3f'));
+      add(P('M78 36 L122 36 L122 44 L78 44 Z', '#1c2d3f'));
+    } else if (o.hoofd === 'stootpet' || o.hoofd === 'pet') {
+      add(P('M79 38 Q80 20 100 20 Q120 20 121 38 Z', o.hoofd === 'pet' ? o.pet : '#1c2d3f'));
+      add(P('M80 38 L134 38 Q136 44 128 44 L80 44 Z', o.hoofd === 'pet' ? o.pet : '#1c2d3f'));
+    } else {
+      add(P('M80 40 Q80 20 100 21 Q120 20 120 40 Q112 30 100 30 Q88 30 80 40 Z', '#4a3a28'));
+    }
+    if (o.hoofd === 'bril') add(P('M86 42 L114 42 L113 50 Q106 52 100 48 Q94 52 87 50 Z', 'rgba(156,195,227,.6)', { strokeWidth: 1.6 }));
+    return h('svg', { viewBox: '0 0 200 440', 'aria-hidden': 'true', focusable: 'false' }, els);
   }
 
   function Lichaamskaart(p) {
@@ -219,7 +304,7 @@
     return h('div', { className: cx('wg-lk', p.className), style: style },
       h('div', { className: 'wg-lk-stage' },
         h('div', { className: 'wg-lk-fig' },
-          h(Figuur),
+          h(Figuur, { beroep: b }),
           zones.map(function (z, k) {
             var pos = ZONE_POS[z.zone] || [50, 50];
             return h('button', {

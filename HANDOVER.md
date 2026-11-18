@@ -8,6 +8,14 @@ Redesign van werkgoed.nl, next level. Kernboodschap: "Past altijd goed. Bij 't w
 
 Schrijfregels van Dick: Nederlands, je en jij, kort en direct, geen gedachtestreepjes of em-dashes in teksten.
 
+## Update: versie 5, losse klikbare site (18 november 2026, eind van de dag)
+
+- **Klikbare site**: https://claude.ai/artifact/L5CR8TUZsFS6p6J2tUoRGb. Eén link, alle 14 pagina's, navigatie via het menu en de links (adres eindigt op #home, #lasgoed, #categorie enzovoort). Gebouwd uit dezelfde paginabronnen als het canvas met `tools/site.py` en de kleine vertaler `tools/runtime.js`. Bron in `site/`. Opnieuw bouwen: `python3 tools/gen.py canvas/project`, daarna `python3 tools/site.py canvas/project design-system/project <map met site/up, site/merk/out en site/prod> <uit>`.
+- **Echte producten**: 20 werkkledingproducten met foto en prijs (excl. en incl. btw) van werkgoed.nl/werkkleding staan in `tools/prod.py` en `assets/producten/`. Ze vullen de productlijst Werkjassen en de producten op de beroepspagina's (behalve Lasgoed en Schildersgoed, daar paste niets uit die lijst). Welk product bij welk beroep hoort en wat "kennerskeuze" is, is een voorstel.
+- **Lichaamskaart**: per beroep een getekende vakman in de juiste uitrusting in plaats van het simpele pictogram.
+- **Beroepskaarten** strak gezet: naam schaalt mee met de kaart, vaste opbouw, risico's onderaan op één lijn.
+- Niet gelukt: extra sfeerfoto's per beroep. Unsplash en Pexels blokkeren deze omgeving, Wikimedia en Openverse gaven fouten. Lasgoed, Techniekgoed, Magazijngoed, Chauffeursgoed, Groengoed en Schildersgoed hebben nog geen eigen foto.
+
 ## Update: versie 4, de hele site klikbaar (18 november 2026, avond)
 
 - **14 pagina's op het canvas**, allemaal aan elkaar gelinkt: Home, acht beroepspagina's (Lasgoed, Straatgoed, Bouwgoed, Techniekgoed, Magazijngoed, Chauffeursgoed, Groengoed, Schildersgoed), productlijst Werkjassen (filter op beroep, soort en merk, met een kennerstip per beroep), productpagina Havep Gore-Tex jas 50468 (maat, aantal, past bij, waslabel, samen gekocht), Merken (logo's, filter, eigen webshops), Showroom en voetscan (afspraakformulier dat bevestigt) en Winkelwagen (rekent subtotaal, btw en gratis verzending vanaf €100 uit).

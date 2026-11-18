@@ -1,4 +1,6 @@
 from data import risicos, zone, R
+from prod import p
+from shared import IMG
 
 R.update({'vlamboog': ('vonk', 'Vlamboog'), 'zitten': ('knielen', 'Lang zitten'), 'steenslag': ('zicht', 'Steenslag en splinters'),
           'kettingzaag': ('snijden', 'Kettingzaag'), 'tillen': ('knielen', 'Tillen en bukken'), 'mes': ('snijden', 'Snijden met een mes')})
@@ -44,8 +46,7 @@ TECHNIEK = {
             {'nr': '03', 'kop': 'Een lichte schoen voor de ladder.', 'tekst': 'Je staat veel op trappen en ladders. Een lichte schoen met een stroeve zool scheelt aan het eind van de dag.'},
         ],
         'pakket': ['Werkbroek met kniezakken', 'Kniestukken', 'Overall', 'Softshell jas', 'Montagehandschoenen', 'Veiligheidsbril', 'Stofmasker FFP2', 'Gehoorbescherming', 'Werkschoenen'],
-        'producten': [prod('Kleding', 'Snickers Workwear', 'Werkbroek met kniezakken'), prod('Kleding', '[MERK]', 'Overall'), prod('Kleding', '[MERK]', 'Multinorm jas'),
-                      prod('PBM', '[MERK]', 'Kniestukken'), prod('Handschoenen', '[MERK]', 'Montagehandschoen'), prod('Schoenen', 'Solid Gear', 'Lichte werkschoen')],
+        'producten': [p('klmoverall', soort='Kleding', kenner=True), p('oxxamalia', soort='Kleding'), p('snickers6371', soort='Kleding'), p('carthago', soort='Kleding'), p('snickers9110', soort='PBM', kenner=True), prod('Schoenen', 'Solid Gear', 'Lichte werkschoen')],
         'vragen': [
             {'vraag': 'Wat is multinorm kleding?', 'antwoord': 'Kleding die op meerdere normen tegelijk getest is, bijvoorbeeld op hitte en vlammen, vlamboog en antistatisch. Welke combinatie je nodig hebt, hangt af van je werk.'},
             {'vraag': 'Welke handschoen voor fijn montagewerk?', 'antwoord': 'Een dunne handschoen met een coating op de handpalm geeft grip en gevoel. Voor scherpe randen kies je een snijbestendige versie.'},
@@ -88,8 +89,7 @@ MAGAZIJN = {
             {'nr': '03', 'kop': 'Licht loopt beter.', 'tekst': 'Een zware bouwschoen is niet nodig op een gladde hallenvloer. Een lichte veiligheidsschoen met demping wel.'},
         ],
         'pakket': ['Signaalvest', 'Werkbroek met stretch', 'Fleece', 'Thermojas', 'Thermobroek', 'Grip-handschoenen', 'Snijbestendige handschoenen', 'Veiligheidsschoenen'],
-        'producten': [prod('Kleding', 'Tricorp Workwear', 'Signaalvest'), prod('Kleding', '[MERK]', 'Thermojas'), prod('Kleding', 'Santino', 'Fleece vest'),
-                      prod('Handschoenen', '[MERK]', 'Snijbestendige handschoen'), prod('Schoenen', 'PUMA Safety', 'Lichte veiligheidsschoen'), prod('PBM', '[MERK]', 'Stootpet')],
+        'producten': [p('dassypulse', soort='Kleding', kenner=True), p('dassyhelix', soort='Kleding'), p('portwesthoodie', soort='Kleding'), p('engel4202', soort='Kleding'), p('oxxapilot', soort='Kleding'), prod('Schoenen', 'PUMA Safety', 'Lichte veiligheidsschoen')],
         'vragen': [
             {'vraag': 'Heb ik in het magazijn een S3 schoen nodig?', 'antwoord': 'Dat hangt af van je werk en de regels van je werkgever. Binnen volstaat vaak een lichtere veiligheidsschoen. Werk je ook buiten, dan is S3 handig.'},
             {'vraag': 'Welke handschoen voor de vriescel?', 'antwoord': 'Een gevoerde handschoen die warm houdt en toch grip geeft. Wij laten je verschillende passen in de showroom.'},
@@ -132,10 +132,9 @@ CHAUFFEUR = {
             {'nr': '03', 'kop': 'Leer voor de spanbanden.', 'tekst': 'Spanbanden en touwen schuren. Een leren chauffeurshandschoen houdt dat lang vol.'},
         ],
         'pakket': ['Chauffeurshandschoenen', 'Signaalvest', 'Softshell jas', 'Regenjas met reflectie', 'Werkbroek met stretch', 'Veiligheidsschoenen'],
-        'producten': [{'soort': 'Handschoenen', 'merk': 'Werkgoed', 'naam': 'Chauffeurshandschoenen 10419', 'prijsEx': 'Vanaf €2,99'},
-                      {'soort': 'Kleding', 'merk': 'Havep', 'naam': 'Gore-Tex jas Revolve 50468', 'prijsEx': 'Vanaf €379,95'},
-                      prod('Kleding', 'Tricorp Workwear', 'Signaalvest'), prod('Kleding', '[MERK]', 'Werkbroek met stretch'),
-                      prod('Schoenen', 'PUMA Safety', 'Lichte veiligheidsschoen'), prod('Kleding', '[MERK]', 'Thermojas')],
+        'producten': [{'soort': 'Handschoenen', 'merk': 'Werkhandschoenen', 'naam': 'Chauffeurshandschoenen 10419', 'prijsEx': 'Vanaf €2,99', 'prijsIn': '€3,62', 'foto': IMG['p-handschoen'], 'kenner': True},
+                      {'soort': 'Kleding', 'merk': 'Havep', 'naam': 'Gore-Tex jas Revolve 50468', 'prijsEx': 'Vanaf €379,95', 'prijsIn': '€459,74', 'foto': IMG['p-havep']},
+                      p('havep50461', soort='Kleding'), p('havep10094', soort='Kleding'), p('dassyhelix', soort='Kleding'), prod('Schoenen', 'PUMA Safety', 'Lichte veiligheidsschoen')],
         'vragen': [
             {'vraag': 'Moet ik als chauffeur veiligheidsschoenen dragen?', 'antwoord': 'Bij laden en lossen vaak wel. Dat hangt af van je werkgever en de adressen waar je komt. Een lichte veiligheidsschoen rijdt prima.'},
             {'vraag': 'Welke handschoen voor laden en lossen?', 'antwoord': 'Een leren chauffeurshandschoen geeft grip en kan tegen schuren. Voor koud weer is er een gevoerde versie.'},
@@ -179,8 +178,8 @@ GROEN = {
             {'nr': '03', 'kop': 'Profiel dat modder loslaat.', 'tekst': 'Een zool die dichtslibt geeft geen grip. Kies een profiel dat modder loslaat, op een nat talud merk je het verschil.'},
         ],
         'pakket': ['Werkbroek', 'Regenpak', 'Helm met vizier en oorkappen', 'Zaagbroek', 'Werkhandschoenen', 'Veiligheidsbril', 'Werkschoenen'],
-        'producten': [prod('Kleding', 'Snickers Workwear', 'Werkbroek'), prod('Kleding', '[MERK]', 'Regenpak'), prod('Kleding', '[MERK]', 'Zaagbroek'),
-                      prod('PBM', 'KASK', 'Bosbouwhelm met vizier'), prod('Handschoenen', '[MERK]', 'Werkhandschoen'), prod('Schoenen', '[MERK]', 'Zaaglaars')],
+        'producten': [p('oxxawaldo', soort='Kleding', kenner=True), p('havep50171', soort='Kleding'), p('snickers6371', soort='Kleding'), prod('Kleding', '[MERK]', 'Zaagbroek'),
+                      prod('PBM', 'KASK', 'Bosbouwhelm met vizier'), prod('Schoenen', '[MERK]', 'Zaaglaars')],
         'vragen': [
             {'vraag': 'Welke zaagbroek heb ik nodig?', 'antwoord': 'Dat hangt af van je zaag en hoe je zaagt. Zaagbroeken worden getest in klassen. Wij kijken met je mee en laten je passen.'},
             {'vraag': 'Kan ik gewone werkschoenen dragen bij zagen?', 'antwoord': 'Voor werk met de kettingzaag zijn er schoenen en laarzen met zaagbescherming. Die raden wij aan.'},

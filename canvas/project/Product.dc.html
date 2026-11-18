@@ -237,14 +237,14 @@ a{color:inherit;text-decoration:none}
 
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props='{"menuOpen":{"editor":"boolean","default":false},"$preview":{"width":1440,"height":3300}}'>
+<script type="text/x-dc" data-dc-script data-props='{"menuOpen":{"editor":"boolean","default":false},"$preview":{"width":1440,"height":3800}}'>
 class Component extends DCLogic {
   constructor(props) {
     super(props);
     this.state = Object.assign({ menu: !!this.props.menuOpen }, {"maat": "L", "aantal": 1});
   }
   renderVals() {
-    const D = {"maten": ["S", "M", "L", "XL", "XXL", "3XL"], "specs": [{"label": "Merk", "waarde": "Havep"}, {"label": "Artikel", "waarde": "50468"}, {"label": "Model", "waarde": "Revolve"}, {"label": "Membraan", "waarde": "Gore-Tex"}, {"label": "Kleur", "waarde": "Blauw"}, {"label": "Normen", "waarde": "[CONTROLEREN]"}], "samen": [{"merk": "Werkhandschoenen", "naam": "Chauffeurshandschoenen 10419", "prijsEx": "Vanaf €2,99", "prijsIn": "€3,62", "foto": "/_blob/0253301706a21c19007a14f946f956f5"}, {"merk": "HAIX", "naam": "Black Eagle 50 Mid S3", "prijsEx": "Vanaf €148,68", "prijsIn": "€179,90", "foto": "/_blob/46f4364adf2c6fcdde83e26778323e9f", "voorraad": true}, {"merk": "Solid Gear", "naam": "Prime GTX S7S Mid BOA", "prijsEx": "Vanaf €305,50", "prijsIn": "€369,66", "foto": "/_blob/b6cb072cf00b07c1c4b5979c78adf5a4"}]};
+    const D = {"maten": ["S", "M", "L", "XL", "XXL", "3XL"], "specs": [{"label": "Merk", "waarde": "Havep"}, {"label": "Artikel", "waarde": "50468"}, {"label": "Model", "waarde": "Revolve"}, {"label": "Membraan", "waarde": "Gore-Tex"}, {"label": "Kleur", "waarde": "Blauw"}, {"label": "Normen", "waarde": "[CONTROLEREN]"}], "samen": [{"merk": "Havep", "naam": "Poloshirt Havep 10094", "prijsEx": "€20,95", "prijsIn": "€25,35", "foto": "/_blob/aab429eb9a88b57d7f250de40f12ac81"}, {"merk": "Werkhandschoenen", "naam": "Chauffeurshandschoenen 10419", "prijsEx": "Vanaf €2,99", "prijsIn": "€3,62", "foto": "/_blob/0253301706a21c19007a14f946f956f5"}, {"merk": "HAIX", "naam": "Black Eagle 50 Mid S3", "prijsEx": "Vanaf €148,68", "prijsIn": "€179,90", "foto": "/_blob/46f4364adf2c6fcdde83e26778323e9f", "voorraad": true}, {"merk": "Solid Gear", "naam": "Prime GTX S7S Mid BOA", "prijsEx": "Vanaf €305,50", "prijsIn": "€369,66", "foto": "/_blob/b6cb072cf00b07c1c4b5979c78adf5a4"}]};
     const s = this.state;
     const eur = (n) => '€' + n.toFixed(2).replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, '.');
     const extra = {

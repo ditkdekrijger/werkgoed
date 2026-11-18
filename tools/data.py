@@ -7,6 +7,10 @@ R = {
 }
 
 
+from prod import p
+from shared import IMG
+
+
 def risicos(*keys):
     return [{'icoon': R[k][0], 'naam': R[k][1]} for k in keys]
 
@@ -111,16 +115,8 @@ STRAAT = {
             {'nr': '03', 'kop': 'Laagjes in plaats van één dikke jas.', 'tekst': 'Koud om half zeven, warm om tien uur. Met een signaaljas, een softshell en een thermo onderlaag zit je de hele dag goed.'},
         ],
         'pakket': ['Signaaljas', 'Signaalbroek met kniezakken', 'Kniestukken', 'Regenpak', 'Thermo onderlaag', 'Werkhandschoenen', 'Stofmasker', 'Veiligheidsbril', 'Gehoorbescherming', 'Werkschoenen S3'],
-        'producten': [
-            {'soort': 'Kleding', 'merk': '[MERK]', 'naam': 'Signaaljas [VOORBEELD]', 'prijsEx': '€ [PRIJS]'},
-            {'soort': 'Kleding', 'merk': '[MERK]', 'naam': 'Signaalbroek met kniezakken [VOORBEELD]', 'prijsEx': '€ [PRIJS]'},
-            {'soort': 'Kleding', 'merk': '[MERK]', 'naam': 'Ademend regenpak [VOORBEELD]', 'prijsEx': '€ [PRIJS]'},
-            {'soort': 'PBM', 'merk': '[MERK]', 'naam': 'Kniestukken [VOORBEELD]', 'prijsEx': '€ [PRIJS]'},
-            {'soort': 'PBM', 'merk': 'BLS', 'naam': 'FFP3 stofmasker [VOORBEELD]', 'prijsEx': '€ [PRIJS]'},
-            {'soort': 'Handschoenen', 'merk': '[MERK]', 'naam': 'Grip-handschoen [VOORBEELD]', 'prijsEx': '€ [PRIJS]'},
-            {'soort': 'Schoenen', 'merk': '[MERK]', 'naam': 'Werkschoen S3 met neus [VOORBEELD]', 'prijsEx': '€ [PRIJS]'},
-            {'soort': 'Schoenen', 'merk': '[MERK]', 'naam': 'Asfaltschoen [VOORBEELD]', 'prijsEx': '€ [PRIJS]'},
-        ],
+        'producten': [p('havep80626', soort='Kleding', kenner=True), p('portwestrws', soort='Kleding'), p('havep50171', soort='Kleding'), p('oxxawaldo', soort='Kleding'), p('snickers9110', soort='PBM', kenner=True),
+                      {'soort': 'PBM', 'merk': 'BLS', 'naam': 'FFP3 stofmasker [VOORBEELD]', 'prijsEx': '€ [PRIJS]'}, {'soort': 'Schoenen', 'merk': '[MERK]', 'naam': 'Werkschoen S3 met neus [VOORBEELD]', 'prijsEx': '€ [PRIJS]'}],
         'vragen': [
             {'vraag': 'Welke klasse signaalkleding heb ik nodig?', 'antwoord': 'Dat hangt af van waar je werkt en wat je opdrachtgever vraagt. Bel ons met je project, dan zoeken we het uit.'},
             {'vraag': 'Hoe was ik signaalkleding?', 'antwoord': 'Volg het waslabel. Na veel wassen worden fluo en reflectie minder. Dan is het tijd voor een nieuwe.'},
@@ -168,16 +164,8 @@ BOUW = {
             {'nr': '03', 'kop': 'Holsterzakken zijn geen luxe.', 'tekst': 'Een broek met holster- en kniezakken scheelt je elke dag lopen, bukken en zoeken.'},
         ],
         'pakket': ['Veiligheidshelm', 'Werkbroek met holsterzakken', 'Kniestukken', 'Softshell jas', 'Signaalvest', 'Werkhandschoenen', 'Gehoorbescherming', 'Veiligheidsbril', 'FFP3 maskers', 'Werkschoenen S3'],
-        'producten': [
-            {'soort': 'Kleding', 'merk': 'Snickers Workwear', 'naam': 'Werkbroek met holsterzakken [VOORBEELD]', 'prijsEx': '€ [PRIJS]'},
-            {'soort': 'Kleding', 'merk': '[MERK]', 'naam': 'Softshell jas [VOORBEELD]', 'prijsEx': '€ [PRIJS]'},
-            {'soort': 'Kleding', 'merk': '[MERK]', 'naam': 'Signaalvest [VOORBEELD]', 'prijsEx': '€ [PRIJS]'},
-            {'soort': 'PBM', 'merk': 'KASK', 'naam': 'Helm met kinband [VOORBEELD]', 'prijsEx': '€ [PRIJS]'},
-            {'soort': 'PBM', 'merk': '[MERK]', 'naam': 'Oorkappen voor op de helm [VOORBEELD]', 'prijsEx': '€ [PRIJS]'},
-            {'soort': 'Handschoenen', 'merk': '[MERK]', 'naam': 'Nitril handschoen [VOORBEELD]', 'prijsEx': '€ [PRIJS]'},
-            {'soort': 'Schoenen', 'merk': '[MERK]', 'naam': 'Werkschoen S3 [VOORBEELD]', 'prijsEx': '€ [PRIJS]'},
-            {'soort': 'Schoenen', 'merk': '[MERK]', 'naam': 'Laars S5 [VOORBEELD]', 'prijsEx': '€ [PRIJS]'},
-        ],
+        'producten': [p('snickers6371', soort='Kleding', kenner=True), p('dassyaustin', soort='Kleding'), p('havep50461', soort='Kleding'), p('snickers1112', soort='Kleding'), p('snickers9110', soort='PBM', kenner=True),
+                      {'soort': 'PBM', 'merk': 'KASK', 'naam': 'Helm met kinband [VOORBEELD]', 'prijsEx': '€ [PRIJS]'}, {'soort': 'Schoenen', 'merk': '[MERK]', 'naam': 'Laars S5 [VOORBEELD]', 'prijsEx': '€ [PRIJS]'}],
         'vragen': [
             {'vraag': 'Wat is het verschil tussen S3 en S5?', 'antwoord': 'S3 is een veiligheidsschoen met teen- en zoolbescherming en een waterafstotende bovenkant. S5 is die bescherming in een laars van rubber of kunststof, voor nat werk.'},
             {'vraag': 'Welke helm neem ik voor werk op hoogte?', 'antwoord': 'Een helm met kinband blijft zitten als je bukt of valt. Vraag ons welke helm past bij jouw werk en je bouwplaats.'},

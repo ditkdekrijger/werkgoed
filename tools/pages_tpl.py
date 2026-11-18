@@ -1,5 +1,6 @@
 import json
 from shared import IMG, MERK_LOGO, MENU_JS, BEROEPEN
+from prod import p
 
 KRUIMEL = '<nav aria-label="Kruimelpad" class="wg-small" style="color:var(--ink-muted);display:flex;flex-wrap:wrap;gap:8px">%s</nav>'
 
@@ -51,15 +52,17 @@ class Component extends DCLogic {
 # ------------------------------------------------------------------ Categorie
 JASSEN = [
     {'id': 'havep', 'merk': 'Havep', 'naam': 'Gore-Tex jas Revolve 50468', 'prijsEx': 'Vanaf €379,95', 'prijsIn': '€459,74', 'foto': IMG['p-havep'], 'soort': 'Regenjas', 'beroepen': ['straat', 'chauffeur', 'groen', 'bouw'], 'kenner': True},
-    {'id': 'dassy', 'merk': 'Dassy', 'naam': 'Hyper wind- en waterdichte werkjas', 'prijsEx': '€ [PRIJS]', 'prijsIn': '', 'foto': IMG['dassy'], 'soort': 'Winterjas', 'beroepen': ['bouw', 'techniek', 'magazijn'], 'kenner': False},
-    {'id': 'snickers', 'merk': 'Snickers Workwear', 'naam': 'Winddicht softshell jack 1205', 'prijsEx': '€ [PRIJS]', 'prijsIn': '', 'foto': IMG['softshell'], 'soort': 'Softshell', 'beroepen': ['bouw', 'techniek', 'chauffeur', 'groen'], 'kenner': True},
-    {'id': 'tricorp', 'merk': 'Tricorp Workwear', 'naam': 'Signaaljas klasse 3 [VOORBEELD]', 'prijsEx': '€ [PRIJS]', 'prijsIn': '', 'foto': '', 'soort': 'Signaaljas', 'beroepen': ['straat', 'chauffeur', 'magazijn'], 'kenner': False},
+    p('snickers1112', soort='Winterjas', beroepen=['bouw', 'straat', 'techniek'], kenner=True),
+    p('engel1871', soort='Winterjas', beroepen=['magazijn', 'chauffeur', 'bouw'], kenner=False),
+    p('havep50171', soort='Regenjas', beroepen=['straat', 'groen', 'chauffeur'], kenner=False),
+    p('dassynordix', soort='Winterjas', beroepen=['bouw', 'techniek', 'magazijn'], kenner=False),
+    p('dassyaustin', soort='Winterjas', beroepen=['bouw', 'magazijn'], kenner=False),
+    p('havep50461', soort='Softshell', beroepen=['techniek', 'chauffeur', 'bouw', 'schilder'], kenner=True),
+    p('carthago', soort='Softshell', beroepen=['techniek', 'magazijn', 'chauffeur'], kenner=False),
+    p('oxxapilot', soort='Winterjas', beroepen=['magazijn', 'chauffeur'], kenner=False),
+    p('dassypulse', soort='Sweatjas', beroepen=['magazijn', 'techniek', 'schilder'], kenner=False),
+    p('oxxawaldo', soort='Regenpak', beroepen=['groen', 'straat'], kenner=False),
     {'id': 'las', 'merk': '[MERK]', 'naam': 'Lasjas klasse 2 [VOORBEELD]', 'prijsEx': '€ [PRIJS]', 'prijsIn': '', 'foto': '', 'soort': 'Lasjas', 'beroepen': ['las'], 'kenner': True},
-    {'id': 'multi', 'merk': '[MERK]', 'naam': 'Multinorm jas [VOORBEELD]', 'prijsEx': '€ [PRIJS]', 'prijsIn': '', 'foto': '', 'soort': 'Multinorm', 'beroepen': ['techniek', 'las'], 'kenner': False},
-    {'id': 'santino', 'merk': 'Santino', 'naam': 'Softshell jas [VOORBEELD]', 'prijsEx': '€ [PRIJS]', 'prijsIn': '', 'foto': '', 'soort': 'Softshell', 'beroepen': ['magazijn', 'chauffeur', 'schilder'], 'kenner': False},
-    {'id': 'thermo', 'merk': '[MERK]', 'naam': 'Thermojas voor de vriescel [VOORBEELD]', 'prijsEx': '€ [PRIJS]', 'prijsIn': '', 'foto': '', 'soort': 'Winterjas', 'beroepen': ['magazijn', 'chauffeur'], 'kenner': False},
-    {'id': 'regen', 'merk': 'Havep', 'naam': 'Regenjas met reflectie [VOORBEELD]', 'prijsEx': '€ [PRIJS]', 'prijsIn': '', 'foto': '', 'soort': 'Regenjas', 'beroepen': ['straat', 'groen', 'chauffeur'], 'kenner': False},
-    {'id': 'schilder', 'merk': '[MERK]', 'naam': 'Schildersjas wit [VOORBEELD]', 'prijsEx': '€ [PRIJS]', 'prijsIn': '', 'foto': '', 'soort': 'Werkjas', 'beroepen': ['schilder'], 'kenner': False},
 ]
 TIPS = {
     'las': 'Voor lassers raden wij laskleding aan die op spatten getest is. Klasse 2 bij elektrode, MAG en boven je hoofd lassen.',
@@ -152,7 +155,7 @@ CATEGORIE_BODY = '''
 
 CATEGORIE_JS = '''    const beroepen = [{ k: '', naam: 'Alles' }].concat(D.beroepen);
     const soorten = ['Alles'].concat(D.jassen.map((p) => p.soort).filter((x, i, a) => a.indexOf(x) === i));
-    const merken = D.jassen.map((p) => p.merk).filter((x, i, a) => x.indexOf('[') < 0 && a.indexOf(x) === i);
+    const merken = D.jassen.map((p) => p.merk).filter((x, i, a) => x && x.indexOf('[') < 0 && a.indexOf(x) === i);
     let lijst = D.jassen.filter((p) => (s.soort === 'Alles' || p.soort === s.soort) && (!s.merken.length || s.merken.indexOf(p.merk) >= 0));
     if (s.beroep) lijst = lijst.filter((p) => p.beroepen.indexOf(s.beroep) >= 0).sort((a, b) => (b.kenner ? 1 : 0) - (a.kenner ? 1 : 0));
     const extra = {
@@ -310,7 +313,7 @@ PRODUCT = {
     'data': {'maten': ['S', 'M', 'L', 'XL', 'XXL', '3XL'],
              'specs': [{'label': 'Merk', 'waarde': 'Havep'}, {'label': 'Artikel', 'waarde': '50468'}, {'label': 'Model', 'waarde': 'Revolve'},
                        {'label': 'Membraan', 'waarde': 'Gore-Tex'}, {'label': 'Kleur', 'waarde': 'Blauw'}, {'label': 'Normen', 'waarde': '[CONTROLEREN]'}],
-             'samen': [{'merk': 'Werkhandschoenen', 'naam': 'Chauffeurshandschoenen 10419', 'prijsEx': 'Vanaf €2,99', 'prijsIn': '€3,62', 'foto': IMG['p-handschoen']},
+             'samen': [p('havep10094'), {'merk': 'Werkhandschoenen', 'naam': 'Chauffeurshandschoenen 10419', 'prijsEx': 'Vanaf €2,99', 'prijsIn': '€3,62', 'foto': IMG['p-handschoen']},
                        {'merk': 'HAIX', 'naam': 'Black Eagle 50 Mid S3', 'prijsEx': 'Vanaf €148,68', 'prijsIn': '€179,90', 'foto': IMG['p-haix'], 'voorraad': True},
                        {'merk': 'Solid Gear', 'naam': 'Prime GTX S7S Mid BOA', 'prijsEx': 'Vanaf €305,50', 'prijsIn': '€369,66', 'foto': IMG['p-solidgear']}]},
     'js': PRODUCT_JS,

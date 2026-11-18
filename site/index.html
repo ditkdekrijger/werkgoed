@@ -1,0 +1,34 @@
+<title>Werkgoed 2.0</title>
+<meta name="description" content="Klikbaar ontwerp van de nieuwe werkgoed.nl">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&display=swap">
+<link rel="stylesheet" href="wg/tokens.css">
+<link rel="stylesheet" href="wg/bundle.css">
+<style>
+body{margin:0;background:#ffffff;color:#16212c;font-family:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:inherit;text-decoration:none}
+.wg-display{font-size:clamp(52px,8vw,124px)}
+.wg-mega{font-size:clamp(84px,14vw,216px)}
+.wg-h2{font-size:clamp(34px,4.6vw,68px)}
+.wg-nav a:hover,.wg-nav a[aria-current="page"]{text-decoration:underline;text-decoration-color:#ff6a13;text-decoration-thickness:3px;text-underline-offset:6px}
+.wg-ul:hover{text-decoration:underline;text-decoration-color:#ff6a13;text-decoration-thickness:2px;text-underline-offset:4px}
+.wg-tile:hover{border-color:#16212c}
+.wg-pill:hover{border-color:#16212c}
+.wg-menuknop:hover{border-color:#ff6a13}
+.wg-iconknop:hover{border-color:#16212c}
+.wg-mega-toep:hover{background:#f5f3ee}
+.wg-faq summary{list-style:none;cursor:pointer}
+.wg-faq summary::-webkit-details-marker{display:none}
+.wg-faq[open] .wg-faq-plus{transform:rotate(45deg)}
+.wg-step:hover{background:#16212c;color:#ffffff}
+.wg-foto{display:block;width:100%;height:100%;object-fit:cover}
+
+html, body { background: #ffffff; }
+#app { min-height: 100vh; background: var(--surface); }
+.wg-laden { display: grid; place-items: center; min-height: 60vh; font: 600 18px/1.4 "Archivo", system-ui, sans-serif; color: #57616b; }
+</style>
+<div id="app"><div class="wg-laden">Werkgoed laadt…</div></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
+<script src="wg/bundle.js"></script>
+<script src="pages.js"></script>
+<script src="runtime.js"></script>

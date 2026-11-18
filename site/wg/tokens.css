@@ -1,0 +1,71 @@
+/* Werkgoed - generated from tokens.json */
+:root, [data-theme="light"], [data-theme="dark"] {
+  color-scheme: light;
+  --surface: #ffffff;
+  --surface-sunken: #f5f3ee;
+  --canvas: #ebe5d8;
+  --ink: #16212c;
+  --ink-muted: #57616b;
+  --line: #16212c24;
+  --line-strong: #79818a;
+  --marine: #1c2d3f;
+  --night: var(--marine);
+  --on-night: #ffffff;
+  --on-night-muted: #c3ccd6;
+  --signal: var(--vlam);
+  --on-signal: #16212c;
+  --signal-soft: var(--vlam-soft);
+  --vlam: #ff6a13;
+  --on-vlam: #16212c;
+  --vlam-soft: #ffe6d6;
+  --vlam-ink: #b23f00;
+  --staal: #3c6382;
+  --focus: #16212c;
+  --ok: #1b7a43;
+  --alert: #c4271f;
+  --beroep-las: #f2e0d0;
+  --beroep-las-deep: #8a3f12;
+  --beroep-straat: #f3dcd3;
+  --beroep-straat-deep: #8f3324;
+  --beroep-bouw: #e7ddc9;
+  --beroep-bouw-deep: #5f4b26;
+  --beroep-techniek: #dae5ef;
+  --beroep-techniek-deep: #2c5677;
+  --beroep-magazijn: #e3e6e9;
+  --beroep-magazijn-deep: #3e4954;
+  --beroep-chauffeur: #dfe2f2;
+  --beroep-chauffeur-deep: #343f80;
+  --beroep-groen: #dbe8d3;
+  --beroep-groen-deep: #2f5a26;
+  --beroep-schilder: #eeeae3;
+  --beroep-schilder-deep: #4f4a42;
+}
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+  --radius-pill: 999px;
+  --radius-sheet: 32px;
+  --radius-card: 20px;
+  --radius-tile: 14px;
+  --radius-sm: 8px;
+  --font-sans: "Archivo", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+.wg-mega { font-family: var(--font-sans); font-size: 176px; line-height: 0.84; font-weight: 800; letter-spacing: -0.05em; }
+.wg-display { font-family: var(--font-sans); font-size: 88px; line-height: 0.95; font-weight: 700; letter-spacing: -0.035em; }
+.wg-h1 { font-family: var(--font-sans); font-size: 56px; line-height: 1; font-weight: 700; letter-spacing: -0.03em; }
+.wg-h2 { font-family: var(--font-sans); font-size: 40px; line-height: 1.05; font-weight: 700; letter-spacing: -0.03em; }
+.wg-h3 { font-family: var(--font-sans); font-size: 24px; line-height: 1.15; font-weight: 600; letter-spacing: -0.02em; }
+.wg-lead { font-family: var(--font-sans); font-size: 22px; line-height: 1.35; font-weight: 500; letter-spacing: -0.01em; }
+.wg-body { font-family: var(--font-sans); font-size: 17px; line-height: 1.55; font-weight: 400; }
+.wg-small { font-family: var(--font-sans); font-size: 14px; line-height: 1.4; font-weight: 500; }
+.wg-label { font-family: var(--font-sans); font-size: 13px; line-height: 1.3; font-weight: 600; letter-spacing: 0.01em; }
+.wg-price { font-family: var(--font-sans); font-size: 22px; line-height: 1; font-weight: 700; letter-spacing: -0.01em; }
+.wg-code { font-family: var(--font-sans); font-size: 13px; line-height: 1.2; font-weight: 600; letter-spacing: 0.02em; }
