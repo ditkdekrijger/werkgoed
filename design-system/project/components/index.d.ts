@@ -24,7 +24,18 @@ export declare function Card(props: CardProps): React.ReactElement;
 export interface StreepProps { height?: number }
 export declare function Streep(props: StreepProps): React.ReactElement;
 
-export interface ProductKaartProps { merk?: string; naam: string; prijsEx: string; prijsIn?: string; voorraad?: boolean; image?: string; href?: string; badge?: string }
+export interface ProductKaartProps { merk?: string; naam: string; prijsEx: string; prijsIn?: string; voorraad?: boolean; image?: string; href?: string; badge?: string; kenner?: boolean }
+
+export interface MerktekenProps { size?: number; tone?: 'vlam' | 'inherit'; label?: string; className?: string }
+export declare function Merkteken(props: MerktekenProps): React.ReactElement;
+export interface LatProps { height?: number; tone?: 'vlam' | 'marine' | 'licht'; className?: string }
+export declare function Lat(props: LatProps): React.ReactElement;
+export interface WaslabelProps { titel?: string; regels: { label: string; waarde: string }[]; voet?: string; className?: string }
+export declare function Waslabel(props: WaslabelProps): React.ReactElement;
+export interface ZegelProps { tekst?: string; size?: number; id?: string; className?: string }
+export declare function Zegel(props: ZegelProps): React.ReactElement;
+export interface FotoPlekProps { beroep?: BeroepSleutel; className?: string; children?: React.ReactNode }
+export declare function FotoPlek(props: FotoPlekProps): React.ReactElement;
 export declare function ProductKaart(props: ProductKaartProps): React.ReactElement;
 
 export interface BeroepKaartProps { beroep: BeroepSleutel; naam: string; regel?: string; risicos?: IcoonNaam[]; icoon?: IcoonNaam; href?: string; className?: string }
@@ -42,4 +53,4 @@ export interface Beroep { naam: string; beroep?: BeroepSleutel; regel: string; e
 export interface BeroepKiezerProps { beroepen: Beroep[]; defaultIndex?: number; href?: string; knop?: string }
 export declare function BeroepKiezer(props: BeroepKiezerProps): React.ReactElement;
 
-declare global { interface Window { Werkgoed: { Button: typeof Button; Tag: typeof Tag; Badge: typeof Badge; Icoon: typeof Icoon; Heading: typeof Heading; Card: typeof Card; Streep: typeof Streep; ProductKaart: typeof ProductKaart; BeroepKaart: typeof BeroepKaart; Lichaamskaart: typeof Lichaamskaart; Werkdag: typeof Werkdag; BeroepKiezer: typeof BeroepKiezer } } }
+declare global { interface Window { Werkgoed: { Button: typeof Button; Tag: typeof Tag; Badge: typeof Badge; Icoon: typeof Icoon; Heading: typeof Heading; Card: typeof Card; Streep: typeof Streep; ProductKaart: typeof ProductKaart; Merkteken: typeof Merkteken; Lat: typeof Lat; Waslabel: typeof Waslabel; Zegel: typeof Zegel; FotoPlek: typeof FotoPlek; BeroepKaart: typeof BeroepKaart; Lichaamskaart: typeof Lichaamskaart; Werkdag: typeof Werkdag; BeroepKiezer: typeof BeroepKiezer } } }

@@ -1,0 +1,12 @@
+<!-- @dsCard group="Merk" height=160 -->
+<!doctype html>
+<html lang="nl">
+<head><meta charset="utf-8"><title>preview</title></head>
+<body>
+<div id="root" style="padding:24px"></div>
+<script>
+  var W = window.Werkgoed, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h('div', { className: 'wg-row', style: { gap: 24 } }, h(W.Zegel, { size: 120, id: 'a' }), h(W.Zegel, { size: 96, id: 'b', tekst: 'kennerspakket' }), h(W.Zegel, { size: 64, id: 'c', tekst: 'pasvorm' })));
+</script>
+</body>
+</html>

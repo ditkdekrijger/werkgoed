@@ -1,4 +1,4 @@
-/* @ds-bundle: {"format":4,"namespace":"Werkgoed","components":[{"name":"Button"},{"name":"Tag"},{"name":"Badge"},{"name":"Icoon"},{"name":"Heading"},{"name":"Card"},{"name":"Streep"},{"name":"ProductKaart"},{"name":"BeroepKaart"},{"name":"Lichaamskaart"},{"name":"Werkdag"},{"name":"BeroepKiezer"}]} */
+/* @ds-bundle: {"format":4,"namespace":"Werkgoed","components":[{"name":"Button"},{"name":"Tag"},{"name":"Badge"},{"name":"Icoon"},{"name":"Heading"},{"name":"Card"},{"name":"Streep"},{"name":"Merkteken"},{"name":"Lat"},{"name":"Waslabel"},{"name":"Zegel"},{"name":"FotoPlek"},{"name":"ProductKaart"},{"name":"BeroepKaart"},{"name":"Lichaamskaart"},{"name":"Werkdag"},{"name":"BeroepKiezer"}]} */
 (function () {
   var React = window.React;
   var h = React.createElement;
@@ -51,6 +51,56 @@
     voet: ['M8 21c-2.5 0-3.5-2.5-3-5.5S7 9 9 9s2.5 2 2.2 4.5-.7 4-1 5.5S9.5 21 8 21z', 'M11.5 5.2a1.2 1.2 0 1 0 0-.1z', 'M14.5 6.2a1 1 0 1 0 0-.1z', 'M16.8 8a.9.9 0 1 0 0-.1z', 'M18.5 10.2a.8.8 0 1 0 0-.1z'],
     advies: ['M4 5.5h16v10H10l-4.5 4v-4H4z', 'M8 9.5h8', 'M8 12h5']
   };
+
+
+  /* Merkelementen, afgeleid van het W-blok uit het logo van werkgoed.nl */
+  var MARK = 'M124.12,0H11.99C5.36,0,0,5.36,0,11.99v112.13c0,6.62,5.36,11.99,11.99,11.99h112.13c6.62,0,11.99-5.36,11.99-11.99V11.99c0-6.62-5.36-11.99-11.99-11.99ZM71.74,10.16c0-1.27,1.03-2.31,2.31-2.31h9.28c1.27,0,2.31,1.03,2.31,2.31v37.30c0,1.27-1.03,2.31-2.31,2.31h-9.28c-1.27,0-2.31-1.03-2.31-2.31V10.16ZM50.45,10.16c0-1.27,1.03-2.31,2.31-2.31h9.28c1.27,0,2.31,1.03,2.31,2.31v37.30c0,1.27-1.03,2.31-2.31,2.31h-9.28c-1.27,0-2.31-1.03-2.31-2.31V10.16ZM21.76,47.46c0,1.27-1.03,2.31-2.31,2.31h-9.28c-1.27,0-2.31-1.03-2.31-2.31V10.16c0-1.27,1.03-2.31,2.31-2.31h9.28c1.27,0,2.31,1.03,2.31,2.31v37.30ZM29.15,47.46V10.16c0-1.27,1.03-2.31,2.31-2.31h9.28c1.27,0,2.31,1.03,2.31,2.31v37.30c0,1.27-1.03,2.31-2.31,2.31h-9.28c-1.27,0-2.31-1.03-2.31-2.31ZM103.08,114.62c0,7.51-6.09,13.61-13.61,13.61h-42.82c-7.51,0-13.61-6.09-13.61-13.61v-55.87h14.47v55.17h13.58v-41.01h13.93v41.01h13.58v-55.17h14.47v55.87ZM106.96,47.46c0,1.27-1.03,2.31-2.31,2.31h-9.28c-1.27,0-2.31-1.03-2.31-2.31V10.16c0-1.27,1.03-2.31,2.31-2.31h9.28c1.27,0,2.31,1.03,2.31,2.31v37.30ZM128.25,47.46c0,1.27-1.03,2.31-2.31,2.31h-9.28c-1.27,0-2.31-1.03-2.31-2.31V10.16c0-1.27,1.03-2.31,2.31-2.31h9.28c1.27,0,2.31,1.03,2.31,2.31v37.30Z';
+
+  function Merkteken(p) {
+    var size = p.size || 40;
+    return h('svg', { className: cx('wg-merkteken', p.tone === 'inherit' ? 'wg-merkteken-inherit' : null, p.className), width: size, height: size, viewBox: '0 0 136.12 136.12', role: p.label ? 'img' : undefined, 'aria-label': p.label || undefined, 'aria-hidden': p.label ? undefined : 'true', focusable: 'false' },
+      h('path', { d: MARK, fill: 'currentColor', fillRule: 'evenodd' }));
+  }
+
+  function Lat(p) {
+    var hgt = p.height || 28;
+    var id = 'wglat' + (p.tone || 'vlam');
+    return h('svg', { className: cx('wg-lat', 'wg-lat-' + (p.tone || 'vlam'), p.className), width: '100%', height: hgt, 'aria-hidden': 'true', focusable: 'false' },
+      h('defs', null, h('pattern', { id: id, width: 24, height: hgt, patternUnits: 'userSpaceOnUse' },
+        h('rect', { x: 0, y: 0, width: 14, height: hgt, rx: 4, fill: 'currentColor' }))),
+      h('rect', { width: '100%', height: hgt, fill: 'url(#' + id + ')' }));
+  }
+
+  function Waslabel(p) {
+    var regels = p.regels || [];
+    return h('div', { className: cx('wg-waslabel', p.className) },
+      h('div', { className: 'wg-waslabel-kop' }, h(Merkteken, { size: 22 }), h('span', null, p.titel || 'werkgoed')),
+      h('dl', { className: 'wg-waslabel-lijst' }, regels.map(function (r, k) {
+        return h('div', { key: k, className: 'wg-waslabel-regel' }, h('dt', null, r.label), h('dd', null, r.waarde));
+      })),
+      p.voet ? h('p', { className: 'wg-waslabel-voet' }, p.voet) : null);
+  }
+
+  function Zegel(p) {
+    var size = p.size || 120;
+    var tekst = (p.tekst || 'kennerskeuze') + ' · werkgoed · ';
+    var id = 'wgzegel' + (p.id || '1');
+    return h('svg', { className: cx('wg-zegel', p.className), width: size, height: size, viewBox: '0 0 120 120', role: 'img', 'aria-label': (p.tekst || 'kennerskeuze') + ', Werkgoed' },
+      h('circle', { cx: 60, cy: 60, r: 58, fill: 'var(--vlam)' }),
+      h('circle', { cx: 60, cy: 60, r: 50, fill: 'none', stroke: 'var(--on-vlam)', strokeWidth: 1, strokeDasharray: '2 3' }),
+      h('defs', null, h('path', { id: id, d: 'M60,60 m-41,0 a41,41 0 1,1 82,0 a41,41 0 1,1 -82,0' })),
+      h('text', { fill: 'var(--on-vlam)', style: { font: '700 10.5px var(--font-sans)', letterSpacing: '.12em' } },
+        h('textPath', { href: '#' + id, startOffset: '0', textLength: 255, lengthAdjust: 'spacing' }, tekst)),
+      h('g', { transform: 'translate(43 43) scale(.25)' }, h('path', { d: MARK, fill: 'var(--marine)', fillRule: 'evenodd' })));
+  }
+
+  function FotoPlek(p) {
+    var b = p.beroep;
+    var style = b ? { background: 'var(--beroep-' + b + ')', color: 'var(--beroep-' + b + '-deep)' } : undefined;
+    return h('div', { className: cx('wg-fotoplek', p.className), style: style },
+      h(Merkteken, { size: 160, tone: 'inherit', className: 'wg-fotoplek-teken' }),
+      h('span', { className: 'wg-fotoplek-tekst' }, h('strong', null, 'Foto volgt'), p.children));
+  }
 
   function Icoon(p) {
     var paths = ICONS[p.naam] || ICONS.vonk;
@@ -114,7 +164,8 @@
     var voorraad = p.voorraad;
     var foto = h('div', { className: 'wg-product-foto' },
       p.image ? h('img', { src: p.image, alt: '' }) : h('span', null, 'Productfoto uit de webshop'),
-      p.badge ? h(Badge, { tone: 'vlam' }, p.badge) : null);
+      p.badge ? h(Badge, { tone: 'vlam' }, p.badge) : null,
+      p.kenner ? h(Zegel, { size: 64, id: 'pk' + (p.naam || '').length, className: 'wg-product-zegel' }) : null);
     var status = voorraad === undefined ? null : h('span', { className: cx('wg-voorraad', voorraad ? 'wg-voorraad-ok' : 'wg-voorraad-nee') },
       h('i', { 'aria-hidden': 'true' }), voorraad ? 'Uit voorraad leverbaar' : 'Niet op voorraad');
     return h('a', { className: 'wg-product', href: p.href || '#' },
@@ -237,6 +288,6 @@
   window.Werkgoed = window.Werkgoed || {};
   Object.assign(window.Werkgoed, {
     Button: Button, Tag: Tag, Badge: Badge, Icoon: Icoon, Heading: Heading, Card: Card, Streep: Streep,
-    ProductKaart: ProductKaart, BeroepKaart: BeroepKaart, Lichaamskaart: Lichaamskaart, Werkdag: Werkdag, BeroepKiezer: BeroepKiezer
+    ProductKaart: ProductKaart, Merkteken: Merkteken, Lat: Lat, Waslabel: Waslabel, Zegel: Zegel, FotoPlek: FotoPlek, BeroepKaart: BeroepKaart, Lichaamskaart: Lichaamskaart, Werkdag: Werkdag, BeroepKiezer: BeroepKiezer
   });
 })();

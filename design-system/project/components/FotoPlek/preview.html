@@ -1,0 +1,12 @@
+<!-- @dsCard group="Merk" height=280 -->
+<!doctype html>
+<html lang="nl">
+<head><meta charset="utf-8"><title>preview</title></head>
+<body>
+<div id="root" style="padding:24px"></div>
+<script>
+  var W = window.Werkgoed, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h('div', { style: { display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12 } }, ['techniek', 'groen', null].map(function (b, k) { return h('div', { key: k, style: { height: 220, borderRadius: 20, overflow: 'hidden' } }, h(W.FotoPlek, { beroep: b || undefined }, 'Een monteur in een kruipruimte')); })));
+</script>
+</body>
+</html>

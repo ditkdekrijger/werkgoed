@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<title>Werkgoed winkelwagen</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="ds/wg/tokens.css">
+<link rel="stylesheet" href="ds/wg/components/bundle.css">
+<script src="ds/wg/components/bundle.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&display=swap">
+<style>
+body{margin:0;background:#ffffff;color:#16212c;font-family:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:inherit;text-decoration:none}
+.wg-display{font-size:clamp(52px,8vw,124px)}
+.wg-mega{font-size:clamp(84px,14vw,216px)}
+.wg-h2{font-size:clamp(34px,4.6vw,68px)}
+.wg-nav a:hover,.wg-nav a[aria-current="page"]{text-decoration:underline;text-decoration-color:#ff6a13;text-decoration-thickness:3px;text-underline-offset:6px}
+.wg-ul:hover{text-decoration:underline;text-decoration-color:#ff6a13;text-decoration-thickness:2px;text-underline-offset:4px}
+.wg-tile:hover{border-color:#16212c}
+.wg-pill:hover{border-color:#16212c}
+.wg-menuknop:hover{border-color:#ff6a13}
+.wg-iconknop:hover{border-color:#16212c}
+.wg-mega-toep:hover{background:#f5f3ee}
+.wg-faq summary{list-style:none;cursor:pointer}
+.wg-faq summary::-webkit-details-marker{display:none}
+.wg-faq[open] .wg-faq-plus{transform:rotate(45deg)}
+.wg-step:hover{background:#16212c;color:#ffffff}
+.wg-foto{display:block;width:100%;height:100%;object-fit:cover}
+</style>
+</helmet>
+<div style="--gutter:clamp(20px,4.2vw,72px);width:100%;max-width:1440px;margin:0 auto;box-sizing:border-box;background:var(--surface);color:var(--ink);font-family:var(--font-sans)">
+
+<!-- topbalk -->
+<div class="wg-night" style="background:var(--marine);color:var(--on-night);font:500 13px/1.3 var(--font-sans)">
+<div style="display:flex;flex-wrap:wrap;gap:6px 32px;justify-content:space-between;padding:10px var(--gutter)">
+<div style="display:flex;flex-wrap:wrap;gap:4px 24px;color:var(--on-night-muted)"><span style="display:inline-flex;align-items:center;gap:8px"><x-import component-from-global-scope="Werkgoed.Icoon" naam="voorraad" size="16"></x-import>Uit voorraad leverbaar</span><span style="display:inline-flex;align-items:center;gap:8px"><x-import component-from-global-scope="Werkgoed.Icoon" naam="levering" size="16"></x-import>Snelle levering</span><span style="display:inline-flex;align-items:center;gap:8px"><x-import component-from-global-scope="Werkgoed.Icoon" naam="verzending" size="16"></x-import>Gratis verzending vanaf €100 excl. btw</span></div>
+<div style="display:flex;flex-wrap:wrap;gap:4px 24px;color:var(--on-night-muted)"><span style="display:inline-flex;align-items:center;gap:8px"><x-import component-from-global-scope="Werkgoed.Icoon" naam="klok" size="16"></x-import>Showroom open van 08:30 tot 17:30</span><a href="tel:0184701212" style="display:inline-flex;align-items:center;gap:8px;color:var(--on-night)"><x-import component-from-global-scope="Werkgoed.Icoon" naam="telefoon" size="16"></x-import>0184-701212</a></div>
+</div>
+</div>
+
+<!-- header -->
+<header style="position:relative;display:flex;flex-wrap:wrap;align-items:center;gap:16px 36px;padding:18px var(--gutter);border-bottom:1px solid var(--line)">
+<a href="Main.dc.html" aria-label="Werkgoed, naar de homepage" style="display:block;line-height:0"><img src="/_blob/4ae74013851478061537ab80687f318f" alt="Werkgoed, werkt beter" style="height:52px;width:auto"></a>
+<nav class="wg-nav" aria-label="Hoofdmenu" style="display:flex;flex-wrap:wrap;align-items:center;gap:8px 28px;font:600 16px/1.3 var(--font-sans);flex:1 1 420px">
+<button type="button" class="wg-menuknop" aria-expanded="{{menuOpen}}" aria-controls="assortiment" onClick="{{toggleMenu}}" style="display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 14px 0 16px;border-radius:var(--radius-pill);border:1px solid {{menuRand}};background:{{menuBg}};color:{{menuKleur}};font:600 16px/1 var(--font-sans);cursor:pointer"><x-import component-from-global-scope="Werkgoed.Icoon" naam="menu" size="20"></x-import>Assortiment<span style="display:inline-flex;transform:{{menuDraai}}"><x-import component-from-global-scope="Werkgoed.Icoon" naam="omlaag" size="18"></x-import></span></button>
+<a href="Main.dc.html#beroep">Per beroep</a><a href="Merken.dc.html">Merken</a><a href="Showroom.dc.html">Showroom</a><a href="tel:0184701212">Advies</a>
+</nav>
+<div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center">
+<label style="display:flex;align-items:center;gap:10px;border:1px solid var(--line-strong);border-radius:var(--radius-pill);padding:0 18px;height:48px;min-width:220px;box-sizing:border-box;color:var(--ink-muted)"><x-import component-from-global-scope="Werkgoed.Icoon" naam="zoek" size="20"></x-import><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Zoek</span>
+<input type="search" placeholder="Zoek schoen, jas of merk" style="border:0;outline:0;background:transparent;font:400 15px var(--font-sans);color:var(--ink);flex:1;min-width:0;height:44px">
+</label>
+<a href="#" class="wg-iconknop" aria-label="Klantportaal" style="display:grid;place-items:center;width:48px;height:48px;border-radius:50%;border:1px solid var(--line-strong)"><x-import component-from-global-scope="Werkgoed.Icoon" naam="account" size="22"></x-import></a>
+<a href="Winkelwagen.dc.html" class="wg-iconknop" aria-label="Winkelwagen, 2 artikelen" style="position:relative;display:grid;place-items:center;width:48px;height:48px;border-radius:50%;background:var(--marine);color:var(--on-night)"><x-import component-from-global-scope="Werkgoed.Icoon" naam="wagen" size="22"></x-import><span aria-hidden="true" style="position:absolute;top:-2px;right:-2px;display:grid;place-items:center;min-width:20px;height:20px;padding:0 5px;box-sizing:border-box;border-radius:10px;background:var(--vlam);color:var(--on-vlam);font:700 12px/1 var(--font-sans)">2</span></a>
+</div>
+
+<!-- uitklapmenu assortiment -->
+<div id="assortiment" style="display:{{menuDisplay}};position:absolute;left:0;right:0;top:100%;z-index:20;background:var(--surface);color:var(--ink);border-top:1px solid var(--line);border-bottom:3px solid var(--vlam)">
+<div style="display:flex;flex-wrap:wrap;gap:40px 40px;padding:40px var(--gutter) 48px">
+<div style="flex:3 1 600px;min-width:0;display:flex;flex-direction:column;gap:24px">
+<span class="wg-label" style="color:var(--ink-muted)">soort</span>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:32px 24px"><div style="display:flex;flex-direction:column;gap:14px"><span style="display:flex;align-items:center;gap:10px;font:700 18px/1.2 var(--font-sans);font-variation-settings:'wdth' 90"><x-import component-from-global-scope="Werkgoed.Icoon" naam="jas" size="24"></x-import>Werkkleding</span><ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;font:500 16px/1.3 var(--font-sans)"><li><a class="wg-ul" href="Categorie.dc.html">Jassen</a></li><li><a class="wg-ul" href="Categorie.dc.html">Broeken</a></li><li><a class="wg-ul" href="Categorie.dc.html">Overalls</a></li><li><a class="wg-ul" href="Categorie.dc.html">Shirts en truien</a></li><li><a class="wg-ul" href="Categorie.dc.html">Softshells en bodywarmers</a></li><li><a class="wg-ul" href="Categorie.dc.html">Regenkleding</a></li><li><a class="wg-ul" href="Categorie.dc.html">Signaalkleding</a></li></ul></div><div style="display:flex;flex-direction:column;gap:14px"><span style="display:flex;align-items:center;gap:10px;font:700 18px/1.2 var(--font-sans);font-variation-settings:'wdth' 90"><x-import component-from-global-scope="Werkgoed.Icoon" naam="schoen" size="24"></x-import>Werkschoenen</span><ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;font:500 16px/1.3 var(--font-sans)"><li><a class="wg-ul" href="Categorie.dc.html">Lage werkschoenen</a></li><li><a class="wg-ul" href="Categorie.dc.html">Hoge werkschoenen</a></li><li><a class="wg-ul" href="Categorie.dc.html">Laarzen</a></li><li><a class="wg-ul" href="Categorie.dc.html">Inlegzolen</a></li><li><a class="wg-ul" href="Categorie.dc.html">Voetscan en maat</a></li></ul></div><div style="display:flex;flex-direction:column;gap:14px"><span style="display:flex;align-items:center;gap:10px;font:700 18px/1.2 var(--font-sans);font-variation-settings:'wdth' 90"><x-import component-from-global-scope="Werkgoed.Icoon" naam="handschoen" size="24"></x-import>Werkhandschoenen</span><ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;font:500 16px/1.3 var(--font-sans)"><li><a class="wg-ul" href="Categorie.dc.html">Montage</a></li><li><a class="wg-ul" href="Categorie.dc.html">Snijbestendig</a></li><li><a class="wg-ul" href="Categorie.dc.html">Lassen</a></li><li><a class="wg-ul" href="Categorie.dc.html">Chauffeurs</a></li><li><a class="wg-ul" href="Categorie.dc.html">Winter</a></li></ul></div><div style="display:flex;flex-direction:column;gap:14px"><span style="display:flex;align-items:center;gap:10px;font:700 18px/1.2 var(--font-sans);font-variation-settings:'wdth' 90"><x-import component-from-global-scope="Werkgoed.Icoon" naam="helm" size="24"></x-import>PBM</span><ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;font:500 16px/1.3 var(--font-sans)"><li><a class="wg-ul" href="Categorie.dc.html">Helmen</a></li><li><a class="wg-ul" href="Categorie.dc.html">Gehoorbescherming</a></li><li><a class="wg-ul" href="Categorie.dc.html">Adembescherming</a></li><li><a class="wg-ul" href="Categorie.dc.html">Veiligheidsbrillen</a></li><li><a class="wg-ul" href="Categorie.dc.html">Valbeveiliging</a></li></ul></div></div>
+</div>
+<div style="flex:1 1 230px;min-width:0;display:flex;flex-direction:column;gap:24px;border-left:1px solid var(--line);padding-left:32px">
+<span class="wg-label" style="color:var(--ink-muted)">merken</span>
+<ul style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 20px;font:500 16px/1.3 var(--font-sans)"><li><a class="wg-ul" href="Merken.dc.html">HAIX</a></li><li><a class="wg-ul" href="Merken.dc.html">LOWA Work</a></li><li><a class="wg-ul" href="Merken.dc.html">Sixton</a></li><li><a class="wg-ul" href="Merken.dc.html">Solid Gear</a></li><li><a class="wg-ul" href="Merken.dc.html">Grisport Safety</a></li><li><a class="wg-ul" href="Merken.dc.html">PUMA Safety</a></li><li><a class="wg-ul" href="Merken.dc.html">Redbrick</a></li><li><a class="wg-ul" href="Merken.dc.html">Snickers Workwear</a></li><li><a class="wg-ul" href="Merken.dc.html">Tricorp Workwear</a></li><li><a class="wg-ul" href="Merken.dc.html">Santino</a></li><li><a class="wg-ul" href="Merken.dc.html">Dassy</a></li><li><a class="wg-ul" href="Merken.dc.html">Havep</a></li><li><a class="wg-ul" href="Merken.dc.html">BLS</a></li><li><a class="wg-ul" href="Merken.dc.html">KASK</a></li></ul>
+<a class="wg-ul" href="Merken.dc.html" style="font:600 16px/1.3 var(--font-sans)">Alle merken →</a>
+</div>
+<div style="flex:1 1 240px;min-width:0;display:flex;flex-direction:column;gap:16px;border-left:1px solid var(--line);padding-left:32px">
+<span class="wg-label" style="color:var(--ink-muted)">toepassing</span>
+<ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px"><li><a class="wg-mega-toep" href="Lasgoed.dc.html" style="display:flex;align-items:center;gap:12px;min-height:44px;padding:0 10px;border-radius:var(--radius-sm);font:600 16px/1.2 var(--font-sans)"><span style="display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--beroep-las);color:var(--beroep-las-deep)"><x-import component-from-global-scope="Werkgoed.Icoon" naam="las" size="18"></x-import></span>Lasser</a></li><li><a class="wg-mega-toep" href="Straatgoed.dc.html" style="display:flex;align-items:center;gap:12px;min-height:44px;padding:0 10px;border-radius:var(--radius-sm);font:600 16px/1.2 var(--font-sans)"><span style="display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--beroep-straat);color:var(--beroep-straat-deep)"><x-import component-from-global-scope="Werkgoed.Icoon" naam="straat" size="18"></x-import></span>Stratenmaker</a></li><li><a class="wg-mega-toep" href="Bouwgoed.dc.html" style="display:flex;align-items:center;gap:12px;min-height:44px;padding:0 10px;border-radius:var(--radius-sm);font:600 16px/1.2 var(--font-sans)"><span style="display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--beroep-bouw);color:var(--beroep-bouw-deep)"><x-import component-from-global-scope="Werkgoed.Icoon" naam="bouw" size="18"></x-import></span>Bouwer</a></li><li><a class="wg-mega-toep" href="Techniekgoed.dc.html" style="display:flex;align-items:center;gap:12px;min-height:44px;padding:0 10px;border-radius:var(--radius-sm);font:600 16px/1.2 var(--font-sans)"><span style="display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--beroep-techniek);color:var(--beroep-techniek-deep)"><x-import component-from-global-scope="Werkgoed.Icoon" naam="techniek" size="18"></x-import></span>Monteur</a></li><li><a class="wg-mega-toep" href="Magazijngoed.dc.html" style="display:flex;align-items:center;gap:12px;min-height:44px;padding:0 10px;border-radius:var(--radius-sm);font:600 16px/1.2 var(--font-sans)"><span style="display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--beroep-magazijn);color:var(--beroep-magazijn-deep)"><x-import component-from-global-scope="Werkgoed.Icoon" naam="magazijn" size="18"></x-import></span>Magazijnmedewerker</a></li><li><a class="wg-mega-toep" href="Chauffeursgoed.dc.html" style="display:flex;align-items:center;gap:12px;min-height:44px;padding:0 10px;border-radius:var(--radius-sm);font:600 16px/1.2 var(--font-sans)"><span style="display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--beroep-chauffeur);color:var(--beroep-chauffeur-deep)"><x-import component-from-global-scope="Werkgoed.Icoon" naam="chauffeur" size="18"></x-import></span>Chauffeur</a></li><li><a class="wg-mega-toep" href="Groengoed.dc.html" style="display:flex;align-items:center;gap:12px;min-height:44px;padding:0 10px;border-radius:var(--radius-sm);font:600 16px/1.2 var(--font-sans)"><span style="display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--beroep-groen);color:var(--beroep-groen-deep)"><x-import component-from-global-scope="Werkgoed.Icoon" naam="groen" size="18"></x-import></span>Hovenier</a></li><li><a class="wg-mega-toep" href="Schildersgoed.dc.html" style="display:flex;align-items:center;gap:12px;min-height:44px;padding:0 10px;border-radius:var(--radius-sm);font:600 16px/1.2 var(--font-sans)"><span style="display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--beroep-schilder);color:var(--beroep-schilder-deep)"><x-import component-from-global-scope="Werkgoed.Icoon" naam="schilder" size="18"></x-import></span>Schilder</a></li></ul>
+</div>
+<a href="Showroom.dc.html" style="position:relative;flex:1 1 220px;min-width:0;max-width:300px;min-height:320px;border-radius:var(--radius-card);overflow:hidden;color:var(--on-night)">
+<img class="wg-foto" src="/_blob/6bdd95d6ecbd918a1370a9976eb22927" alt="" style="position:absolute;inset:0">
+<span style="position:absolute;left:0;right:0;bottom:0;padding:20px;display:flex;flex-direction:column;gap:6px;background:var(--marine)">
+<span class="wg-label" style="color:var(--on-night-muted)">showroom</span>
+<span style="font:700 22px/1.1 var(--font-sans);font-variation-settings:'wdth' 90">Pas je werkschoen bij ons in Hardinxveld</span>
+</span>
+</a>
+</div>
+</div>
+</header>
+
+<section style="padding:clamp(28px,3.5vw,48px) var(--gutter) 0;display:flex;flex-direction:column;gap:24px">
+<nav aria-label="Kruimelpad" class="wg-small" style="color:var(--ink-muted);display:flex;flex-wrap:wrap;gap:8px"><a class="wg-ul" href="Main.dc.html">Home</a><span aria-hidden="true">/</span><span style="color:var(--ink)">Winkelwagen</span></nav>
+<h1 class="wg-heading" style="margin:0;font:800 clamp(48px,6vw,88px)/.92 var(--font-sans);font-variation-settings:'wdth' 82;letter-spacing:-.045em">Je winkelwagen</h1>
+</section>
+
+<section style="padding:32px var(--gutter) clamp(56px,7vw,112px);display:flex;flex-wrap:wrap;gap:32px 48px;align-items:flex-start">
+<div style="flex:999 1 560px;min-width:0;display:flex;flex-direction:column">
+<sc-for list="{{regels}}" as="r" hint-placeholder-count="2">
+<div style="display:flex;flex-wrap:wrap;gap:20px;align-items:center;padding:24px 0;border-top:1px solid var(--line)">
+<div style="width:120px;height:120px;flex:none;background:var(--surface-sunken);border-radius:var(--radius-tile);display:grid;place-items:center;overflow:hidden"><img src="{{r.foto}}" alt="" style="width:86%;height:86%;object-fit:contain;mix-blend-mode:multiply"></div>
+<div style="flex:1 1 220px;min-width:0;display:flex;flex-direction:column;gap:6px">
+<span class="wg-small" style="color:var(--ink-muted)">{{r.merk}}</span>
+<a class="wg-ul" href="Product.dc.html" style="font:700 22px/1.2 var(--font-sans);font-variation-settings:'wdth' 90">{{r.naam}}</a>
+<span class="wg-small" style="color:var(--ink-muted)">{{r.optie}}</span>
+</div>
+<div style="display:flex;align-items:center;gap:6px;border:1px solid var(--line-strong);border-radius:var(--radius-pill);padding:2px">
+<button class="wg-step" type="button" aria-label="Eén minder" onClick="{{r.minder}}" style="width:40px;height:40px;border-radius:50%;border:0;background:transparent;color:var(--ink);font:600 20px/1 var(--font-sans);cursor:pointer">−</button>
+<span aria-live="polite" style="min-width:2ch;text-align:center;font:700 17px/1 var(--font-sans);font-variant-numeric:tabular-nums">{{r.aantal}}</span>
+<button class="wg-step" type="button" aria-label="Eén meer" onClick="{{r.meer}}" style="width:40px;height:40px;border-radius:50%;border:0;background:transparent;color:var(--ink);font:600 20px/1 var(--font-sans);cursor:pointer">+</button>
+</div>
+<div style="min-width:140px;text-align:right;display:flex;flex-direction:column;gap:4px">
+<span style="font:800 22px/1 var(--font-sans);font-variation-settings:'wdth' 85">{{r.totaal}}</span>
+<span class="wg-small" style="color:var(--ink-muted)">{{r.stuk}} per stuk excl. btw</span>
+</div>
+</div>
+</sc-for>
+<div style="border-top:1px solid var(--line);padding-top:24px;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center">
+<a class="wg-ul" href="Categorie.dc.html" style="font:600 16px/1.3 var(--font-sans)">← Verder winkelen</a>
+<span class="wg-small" style="color:var(--ink-muted)">Bestel je voor je ploeg? <a class="wg-ul" href="mailto:info@werkgoed.nl" style="color:var(--ink);font-weight:600">Vraag een offerte</a></span>
+</div>
+</div>
+
+<aside aria-label="Overzicht" style="flex:1 1 340px;min-width:0;background:var(--canvas);border-radius:var(--radius-sheet);padding:clamp(24px,3vw,40px);display:flex;flex-direction:column;gap:18px">
+<h2 class="wg-heading wg-h3" style="margin:0">Overzicht</h2>
+<div style="display:flex;flex-direction:column;gap:10px;background:var(--surface);border-radius:var(--radius-tile);padding:16px">
+<span class="wg-small" style="display:flex;align-items:center;gap:8px;font-weight:600"><x-import component-from-global-scope="Werkgoed.Icoon" naam="verzending" size="20"></x-import>{{verzendTekst}}</span>
+<div role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{verzendPct}}" aria-label="Op weg naar gratis verzending" style="height:10px;border-radius:5px;background:var(--surface-sunken);overflow:hidden"><div style="height:100%;width:{{verzendBreedte}};background:var(--vlam);border-radius:5px"></div></div>
+</div>
+<dl style="margin:0;display:flex;flex-direction:column;font:500 16px/1.4 var(--font-sans)">
+<div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line)"><dt>Subtotaal excl. btw</dt><dd style="margin:0;font-weight:700">{{subtotaal}}</dd></div>
+<div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line)"><dt>Verzending</dt><dd style="margin:0;font-weight:700">{{verzending}}</dd></div>
+<div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line)"><dt>Btw 21%</dt><dd style="margin:0;font-weight:700">{{btw}}</dd></div>
+<div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0 0"><dt style="font-weight:700">Totaal incl. btw</dt><dd style="margin:0;font:800 32px/1 var(--font-sans);font-variation-settings:'wdth' 85">{{totaal}}</dd></div>
+</dl>
+<x-import component-from-global-scope="Werkgoed.Button" variant="signal" href="#">Ga verder naar afrekenen</x-import>
+<ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;font:500 14px/1.4 var(--font-sans);color:var(--ink-muted)">
+<li style="display:flex;gap:10px;align-items:center"><x-import component-from-global-scope="Werkgoed.Icoon" naam="voorraad" size="18"></x-import>Uit voorraad leverbaar</li>
+<li style="display:flex;gap:10px;align-items:center"><x-import component-from-global-scope="Werkgoed.Icoon" naam="levering" size="18"></x-import>Snelle levering</li>
+<li style="display:flex;gap:10px;align-items:center"><x-import component-from-global-scope="Werkgoed.Icoon" naam="locatie" size="18"></x-import>Of haal het op in de showroom</li>
+</ul>
+</aside>
+</section>
+<div style="padding:0 var(--gutter)"><x-import component-from-global-scope="Werkgoed.Lat" height="{{latHoogte}}"></x-import></div>
+
+<!-- footer -->
+<footer class="wg-night" style="background:var(--marine);color:var(--on-night);padding:0 var(--gutter) 40px">
+<div style="display:flex;flex-wrap:wrap;gap:40px 64px;padding:56px 0 48px">
+<div style="flex:1 1 200px;display:flex;flex-direction:column;gap:12px;font:400 16px/1.4 var(--font-sans)">
+<span class="wg-label" style="color:var(--on-night-muted)">per beroep</span>
+<a class="wg-ul" href="Lasgoed.dc.html">Lasgoed</a><a class="wg-ul" href="Straatgoed.dc.html">Straatgoed</a><a class="wg-ul" href="Bouwgoed.dc.html">Bouwgoed</a><a class="wg-ul" href="Techniekgoed.dc.html">Techniekgoed</a><a class="wg-ul" href="Magazijngoed.dc.html">Magazijngoed</a><a class="wg-ul" href="Chauffeursgoed.dc.html">Chauffeursgoed</a><a class="wg-ul" href="Groengoed.dc.html">Groengoed</a><a class="wg-ul" href="Schildersgoed.dc.html">Schildersgoed</a>
+</div>
+<div style="flex:1 1 200px;display:flex;flex-direction:column;gap:12px;font:400 16px/1.4 var(--font-sans)">
+<span class="wg-label" style="color:var(--on-night-muted)">assortiment</span>
+<a class="wg-ul" href="Categorie.dc.html">Werkschoenen</a><a class="wg-ul" href="Categorie.dc.html">Werkkleding</a><a class="wg-ul" href="Categorie.dc.html">Werkhandschoenen</a><a class="wg-ul" href="Categorie.dc.html">Persoonlijke beschermingsmiddelen</a><a class="wg-ul" href="Merken.dc.html">Merken</a><a class="wg-ul" href="Showroom.dc.html">Showroom en voetscan</a>
+</div>
+<div style="flex:1 1 200px;display:flex;flex-direction:column;gap:12px;font:400 16px/1.4 var(--font-sans)">
+<span class="wg-label" style="color:var(--on-night-muted)">klantenservice</span>
+<a class="wg-ul" href="#">Over Werkgoed</a><a class="wg-ul" href="#">Verzending en levering</a><a class="wg-ul" href="#">Retourneren en ruilen</a><a class="wg-ul" href="#">Haix maattabel</a><a class="wg-ul" href="#">Klachten en feedback</a>
+</div>
+<div style="flex:1 1 200px;display:flex;flex-direction:column;gap:12px;font:400 16px/1.4 var(--font-sans)">
+<span class="wg-label" style="color:var(--on-night-muted)">onze webshops</span>
+<a class="wg-ul" href="#">Haix werkschoenen</a><a class="wg-ul" href="#">LOWA werkschoenen</a><a class="wg-ul" href="#">Cofra werkschoenen</a><a class="wg-ul" href="#">BLS adembescherming</a>
+</div>
+<div style="flex:1 1 220px;display:flex;flex-direction:column;gap:14px;font:400 16px/1.4 var(--font-sans)">
+<span class="wg-label" style="color:var(--on-night-muted)">contact</span>
+<span style="display:flex;gap:10px"><x-import component-from-global-scope="Werkgoed.Icoon" naam="locatie" size="20"></x-import><span>Wiedhaak 1<br>3371 KD Hardinxveld-Giessendam</span></span>
+<a class="wg-ul" href="tel:0184701212" style="display:flex;gap:10px;align-items:center"><x-import component-from-global-scope="Werkgoed.Icoon" naam="telefoon" size="20"></x-import>0184-701212</a>
+<a class="wg-ul" href="mailto:info@werkgoed.nl" style="display:flex;gap:10px;align-items:center"><x-import component-from-global-scope="Werkgoed.Icoon" naam="mail" size="20"></x-import>info@werkgoed.nl</a>
+</div>
+</div>
+<div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px;padding:8px 0 40px">
+<img src="/_blob/dd24f422379e7ed500375de8e10eb692" alt="Werkgoed, werkt beter" style="height:clamp(56px,7vw,96px);width:auto">
+<span style="font:700 clamp(28px,3.4vw,48px)/1.02 var(--font-sans);font-variation-settings:'wdth' 90;letter-spacing:-.03em;max-width:16ch;text-align:right">Past altijd goed. Bij &rsquo;t werk wat je doet.</span>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:12px 32px;justify-content:space-between;border-top:1px solid rgba(255,255,255,.2);padding-top:24px;font:400 14px/1.4 var(--font-sans);color:var(--on-night-muted)">
+<span>2026 Werkgoed bedrijfskleding en PBM</span>
+<span style="display:flex;flex-wrap:wrap;gap:8px 24px"><a class="wg-ul" href="#">Privacy en disclaimer</a><a class="wg-ul" href="#">Cookies</a><a class="wg-ul" href="#">Instagram</a><a class="wg-ul" href="#">LinkedIn</a><a class="wg-ul" href="#">YouTube</a></span>
+</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"menuOpen":{"editor":"boolean","default":false},"$preview":{"width":1440,"height":2200}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = Object.assign({ menu: !!this.props.menuOpen }, {"aantallen": [1, 12]});
+  }
+  renderVals() {
+    const D = {"regels": [{"merk": "Havep", "naam": "Gore-Tex jas Revolve 50468", "optie": "Blauw, maat L", "prijs": 379.95, "foto": "/_blob/86877bea416e24339641f118d529da85"}, {"merk": "Werkhandschoenen", "naam": "Chauffeurshandschoenen 10419", "optie": "Ongevoerd", "prijs": 2.99, "foto": "/_blob/0253301706a21c19007a14f946f956f5"}]};
+    const s = this.state;
+    const eur = (n) => '€' + n.toFixed(2).replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    const regels = D.regels.map((r, i) => {
+      const n = s.aantallen[i];
+      return Object.assign({}, r, {
+        aantal: n, stuk: eur(r.prijs), totaal: eur(r.prijs * n),
+        minder: () => { const a = s.aantallen.slice(); a[i] = Math.max(1, a[i] - 1); this.setState({ aantallen: a }); },
+        meer: () => { const a = s.aantallen.slice(); a[i] = a[i] + 1; this.setState({ aantallen: a }); }
+      });
+    });
+    const sub = D.regels.reduce((t, r, i) => t + r.prijs * s.aantallen[i], 0);
+    const gratis = sub >= 100;
+    const pct = Math.min(100, Math.round(sub));
+    const extra = {
+      regels: regels,
+      subtotaal: eur(sub),
+      verzending: gratis ? 'Gratis' : '[VERZENDKOSTEN]',
+      btw: eur(sub * 0.21),
+      totaal: eur(sub * 1.21),
+      verzendTekst: gratis ? 'Je verzending is gratis.' : 'Nog ' + eur(100 - sub) + ' tot gratis verzending.',
+      verzendPct: pct,
+      verzendBreedte: pct + '%'
+    };
+    return Object.assign({
+      yes: true,
+      no: false,
+      latHoogte: 28,
+      menuOpen: s.menu ? 'true' : 'false',
+      menuDisplay: s.menu ? 'block' : 'none',
+      menuBg: s.menu ? 'var(--marine)' : 'transparent',
+      menuKleur: s.menu ? 'var(--on-night)' : 'var(--ink)',
+      menuRand: s.menu ? 'var(--marine)' : 'var(--ink)',
+      menuDraai: s.menu ? 'rotate(180deg)' : 'none',
+      toggleMenu: () => this.setState({ menu: !s.menu }),
+    }, extra);
+  }
+}
+</script>
+</body>
+</html>

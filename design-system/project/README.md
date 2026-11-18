@@ -81,12 +81,28 @@ Component `Icoon`: lijniconen op een 24-raster met lijn 1,5px, ronde uiteinden, 
 
 Het logo komt van werkgoed.nl: het W-blok met de woordmerk WERKGOED en de regel "werkt beter!". In dit systeem staat het W-blok in oranje en de letters in `ink` op licht, of in wit op `marine`. Hoogte in de header 52px, in de footer 56 tot 96px. Vraag Werkgoed om het originele logobestand in alle varianten.
 
+## Merkelementen
+
+Alles komt uit het logo. Het W-blok heeft zes latten en een W; daar bouwen we op.
+
+- **Merkteken** (`Merkteken`): het W-blok los. De afzender naast een kicker, bovenaan advies, in de kennerskaarten.
+- **Lat** (`Lat`): de zes latten uitgerekt tot een rij. Het merkpatroon en de scheiding boven de footer, één per pagina.
+- **Zegel** (`Zegel`): een oranje stempel met "kennerskeuze", "kennerspakket" of "pasvorm". Werkgoed zet zijn naam onder een advies. Geen keurmerk.
+- **Waslabel** (`Waslabel`): specificaties, normen en keuzehulp in de vorm van het label in een jas.
+- **FotoPlek** (`FotoPlek`): een ontbrekende foto in huisstijl, met de beschrijving van de foto die er moet komen.
+- **De belofte**: "Past altijd goed. Bij 't werk wat je doet." staat groot in de hero van Home en klein rechts in de footer, naast het logo.
+- **Grote koppen** op paginaniveau (Werkjassen, Je winkelwagen, Pas het bij ons) in 800, breedte 82%, met één oranje markering.
+
+## Paginatypes
+
+Home, beroepspagina (acht stuks, zelfde opbouw), productlijst met beroepsfilter, productpagina, merken, showroom met voetscan en winkelwagen. Elke pagina heeft dezelfde topbalk, header met uitklapmenu, Lat en footer.
+
 ## Navigatie
 
 De header heeft een uitklapmenu "Assortiment" (net als grote vakwinkels): soort (werkkleding, werkschoenen, werkhandschoenen, PBM met hun subgroepen), merken en toepassing (lasser, stratenmaker, bouwer en de andere beroepen, met hun beroepskleur). Rechts een fototegel naar de showroom. Daarnaast de links Per beroep, Merken, Showroom en Advies.
 
 ## Gebruik in code
 
-De componenten staan in `components/bundle.js` als `window.Werkgoed` en verwachten React 18. Laad `tokens.css` en `components/bundle.css` eerst. Componenten: `Button`, `Tag`, `Badge`, `Icoon`, `Heading`, `Card`, `Streep`, `ProductKaart`, `BeroepKaart`, `Lichaamskaart`, `Werkdag`, `BeroepKiezer`.
+De componenten staan in `components/bundle.js` als `window.Werkgoed` en verwachten React 18. Laad `tokens.css` en `components/bundle.css` eerst. Componenten: `Button`, `Tag`, `Badge`, `Icoon`, `Heading`, `Card`, `Streep`, `Merkteken`, `Lat`, `Waslabel`, `Zegel`, `FotoPlek`, `ProductKaart`, `BeroepKaart`, `Lichaamskaart`, `Werkdag`, `BeroepKiezer`.
 
-De homepage: topbalk (`marine`), header, hero met `Heading size="display"`, de beroepenwand met `BeroepKaart`, zo werkt het, per soort in `Card`, merken als `Tag`-filter met tegels, hardlopers met `ProductKaart`, Streep, showroom op `marine`, footer.
+De homepage: topbalk (`marine`), header, hero met `Heading size="display"`, de beroepenwand met `BeroepKaart`, zo werkt het, per soort in `Card`, merken als `Tag`-filter met tegels, hardlopers met `ProductKaart`, Lat, showroom op `marine`, footer.

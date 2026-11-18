@@ -65,11 +65,32 @@ body { margin: 0; font-family: var(--font-sans); background: var(--surface); col
 /* Streep */
 .wg-streep { width: 100%; background: repeating-linear-gradient(-45deg, var(--signal) 0 16px, var(--marine) 16px 32px); }
 
+/* Merkelementen */
+.wg-merkteken { display: inline-block; flex: none; color: var(--vlam); vertical-align: middle; }
+.wg-merkteken-inherit { color: inherit; }
+.wg-lat { display: block; color: var(--vlam); }
+.wg-lat-marine { color: var(--marine); }
+.wg-lat-licht { color: var(--on-night); }
+.wg-waslabel { position: relative; box-sizing: border-box; background: var(--surface); color: var(--ink); border-radius: var(--radius-sm); padding: 18px 20px; outline: 1px dashed var(--line-strong); outline-offset: -8px; font: 500 14px/1.4 var(--font-sans); }
+.wg-waslabel-kop { display: flex; align-items: center; gap: 8px; padding-bottom: 10px; margin-bottom: 6px; border-bottom: 1px solid var(--line); font: 700 13px/1 var(--font-sans); font-variation-settings: 'wdth' 75; letter-spacing: .08em; }
+.wg-waslabel-lijst { margin: 0; display: flex; flex-direction: column; }
+.wg-waslabel-regel { display: flex; justify-content: space-between; gap: 16px; padding: 7px 0; border-bottom: 1px solid var(--line); }
+.wg-waslabel-regel dt { color: var(--ink-muted); }
+.wg-waslabel-regel dd { margin: 0; font-weight: 600; font-variation-settings: 'wdth' 75; text-align: right; }
+.wg-waslabel-voet { margin: 10px 0 0; font: 500 12px/1.4 var(--font-sans); color: var(--ink-muted); }
+.wg-zegel { display: block; flex: none; }
+.wg-fotoplek { position: relative; display: flex; align-items: flex-start; width: 100%; height: 100%; min-height: 200px; box-sizing: border-box; padding: 24px; overflow: hidden; background: var(--canvas); color: var(--ink-muted); }
+.wg-fotoplek-teken { position: absolute; right: -6%; bottom: -8%; width: 62%; height: auto; max-width: 440px; opacity: .16; }
+.wg-fotoplek-tekst { position: relative; display: flex; flex-direction: column; gap: 4px; max-width: 30ch; font: 500 14px/1.4 var(--font-sans); color: var(--ink); }
+.wg-fotoplek-tekst strong { font-weight: 700; }
+
 /* ProductKaart */
 .wg-product { display: flex; flex-direction: column; gap: var(--space-4); color: var(--ink); text-decoration: none; }
 .wg-product-foto { position: relative; aspect-ratio: 3 / 2; box-sizing: border-box; border-radius: var(--radius-tile); background: var(--surface-sunken); display: flex; align-items: flex-end; padding: var(--space-4); overflow: hidden; color: var(--ink-muted); font: 500 13px/1.3 var(--font-sans); }
 .wg-product-foto img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
 .wg-product-foto .wg-badge { position: absolute; top: var(--space-3); left: var(--space-3); }
+.wg-product-zegel { position: absolute; top: var(--space-3); right: var(--space-3); }
+.wg-product-foto img { mix-blend-mode: multiply; }
 .wg-product-body { display: flex; flex-direction: column; gap: 6px; }
 .wg-product-merk { color: var(--ink-muted); font: 500 14px/1.3 var(--font-sans); }
 .wg-product-naam { margin: 0; font: 600 20px/1.15 var(--font-sans); font-variation-settings: 'wdth' 90; letter-spacing: -.02em; }
