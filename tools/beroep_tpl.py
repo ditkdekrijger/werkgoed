@@ -15,9 +15,7 @@ BODY = '''
 <x-import component-from-global-scope="Werkgoed.Button" variant="outline" arrow="{{no}}" href="tel:0184701212">Bel een kenner</x-import>
 </div>
 </div>
-<div style="flex:1 1 320px;min-width:0;max-width:520px;aspect-ratio:4/5;background:var(--surface);border-radius:var(--radius-sheet);overflow:hidden">
-<img class="wg-foto" src="[[HEROIMG]]" alt="[[HEROALT]]">
-</div>
+[[HEROBLOK]]
 </div>
 
 <!-- takenkiezer -->
@@ -56,8 +54,8 @@ BODY = '''
 <span class="wg-label" style="color:var(--ink-muted)">een dag als [[PERSOON]]</span>
 <x-import component-from-global-scope="Werkgoed.Heading" size="h2" accent="tot eind.">Je werk, van begin</x-import>
 <p class="wg-lead" style="margin:0;max-width:34ch">[[DAGINTRO]]</p>
-<div style="aspect-ratio:4/3;background:var(--surface-sunken);border-radius:var(--radius-tile);padding:20px;box-sizing:border-box;display:flex;align-items:flex-end">
-<span class="wg-small" style="color:var(--ink-muted)">Foto: [[DAGFOTO]] [EIGEN FOTO]</span>
+<div style="aspect-ratio:4/3;border-radius:var(--radius-tile);overflow:hidden">
+<x-import component-from-global-scope="Werkgoed.FotoPlek" beroep="[[K]]">[[DAGFOTO]]</x-import>
 </div>
 </div>
 <div style="flex:1.6 1 520px;min-width:0">
@@ -87,7 +85,7 @@ BODY = '''
 <sc-for list="{{kenners}}" as="k" hint-placeholder-count="3">
 <x-import component-from-global-scope="Werkgoed.Card" tone="marine">
 <div style="display:flex;flex-direction:column;gap:16px;min-height:280px;padding:var(--space-3)">
-<span style="font:800 56px/1 var(--font-sans);font-variation-settings:'wdth' 75;color:var(--signal);font-variant-numeric:tabular-nums">{{k.nr}}</span>
+<span style="display:flex;justify-content:space-between;align-items:center"><span style="font:800 56px/1 var(--font-sans);font-variation-settings:'wdth' 75;color:var(--vlam);font-variant-numeric:tabular-nums">{{k.nr}}</span><x-import component-from-global-scope="Werkgoed.Merkteken" size="36"></x-import></span>
 <h3 class="wg-heading wg-h3" style="margin:auto 0 0;font-size:clamp(24px,2.2vw,30px)">{{k.kop}}</h3>
 <p class="wg-body" style="margin:0;color:var(--on-night-muted)">{{k.tekst}}</p>
 </div>
@@ -100,7 +98,7 @@ BODY = '''
 <section id="pakket" style="padding:clamp(56px,8vw,128px) var(--gutter) 0">
 <div style="background:var(--canvas);border-radius:var(--radius-sheet);padding:clamp(28px,4vw,64px);display:flex;flex-wrap:wrap;gap:40px 56px;align-items:stretch">
 <div style="flex:1.5 1 480px;min-width:0;display:flex;flex-direction:column;gap:24px">
-<span class="wg-label" style="color:var(--ink-muted)">jouw pakket</span>
+<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px"><span class="wg-label" style="color:var(--ink-muted)">jouw pakket</span><x-import component-from-global-scope="Werkgoed.Zegel" size="104" id="pakket" tekst="kennerspakket"></x-import></div>
 <x-import component-from-global-scope="Werkgoed.Heading" size="h2" accent="zelf samengesteld.">Het [[TITELKLEIN]]pakket,</x-import>
 <p class="wg-lead" style="margin:0;max-width:44ch">Dit geven wij een [[PERSOON]] meestal mee. Zet uit wat je al hebt.</p>
 <div role="group" aria-label="Onderdelen van het pakket" style="display:flex;flex-wrap:wrap;gap:10px">
@@ -139,7 +137,7 @@ BODY = '''
 </div>
 <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:24px 16px;margin-top:40px">
 <sc-for list="{{producten}}" as="p" hint-placeholder-count="4">
-<x-import component-from-global-scope="Werkgoed.ProductKaart" merk="{{p.merk}}" naam="{{p.naam}}" prijs-ex="{{p.prijsEx}}" href="#"></x-import>
+<x-import component-from-global-scope="Werkgoed.ProductKaart" merk="{{p.merk}}" naam="{{p.naam}}" prijs-ex="{{p.prijsEx}}" image="{{p.foto}}" kenner="{{p.kenner}}" href="Product.dc.html"></x-import>
 </sc-for>
 </div>
 </section>
@@ -191,7 +189,7 @@ BODY = '''
 </div>
 </section>
 
-<x-import component-from-global-scope="Werkgoed.Streep" height="{{streepHoogte}}"></x-import>
+<div style="padding:0 var(--gutter)"><x-import component-from-global-scope="Werkgoed.Lat" height="{{latHoogte}}"></x-import></div>
 '''
 
 SCRIPT = '''<script type="text/x-dc" data-dc-script data-props='{"menuOpen":{"editor":"boolean","default":false},"$preview":{"width":1440,"height":[[H]]}}'>
@@ -216,6 +214,7 @@ class Component extends DCLogic {
       no: false,
       icoonMaat: 28,
       streepHoogte: 24,
+      latHoogte: 28,
 [[MENU_JS]]      taken: D.taken.map((t, i) => ({ naam: t.naam, active: i === s.taak, pick: () => this.setState({ taak: i }) })),
       taak: taak,
       momenten: D.momenten,
@@ -228,7 +227,7 @@ class Component extends DCLogic {
       meer: () => this.setState({ aantal: Math.min(250, s.aantal + 1) }),
       samenvatting: gekozen + ' onderdelen per persoon. ' + (gekozen * s.aantal) + ' artikelen voor de hele ploeg.',
       filters: soorten.map((f) => ({ naam: f, active: f === s.soort, pick: () => this.setState({ soort: f }) })),
-      producten: D.producten.filter((x) => s.soort === 'Alles' || x.soort === s.soort),
+      producten: D.producten.filter((x) => s.soort === 'Alles' || x.soort === s.soort).map((x) => Object.assign({ foto: '', kenner: false }, x)),
       vragen: D.vragen,
       andere: D.andere
     };

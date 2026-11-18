@@ -8,6 +8,13 @@ Redesign van werkgoed.nl, next level. Kernboodschap: "Past altijd goed. Bij 't w
 
 Schrijfregels van Dick: Nederlands, je en jij, kort en direct, geen gedachtestreepjes of em-dashes in teksten.
 
+## Update: versie 4, de hele site klikbaar (18 november 2026, avond)
+
+- **14 pagina's op het canvas**, allemaal aan elkaar gelinkt: Home, acht beroepspagina's (Lasgoed, Straatgoed, Bouwgoed, Techniekgoed, Magazijngoed, Chauffeursgoed, Groengoed, Schildersgoed), productlijst Werkjassen (filter op beroep, soort en merk, met een kennerstip per beroep), productpagina Havep Gore-Tex jas 50468 (maat, aantal, past bij, waslabel, samen gekocht), Merken (logo's, filter, eigen webshops), Showroom en voetscan (afspraakformulier dat bevestigt) en Winkelwagen (rekent subtotaal, btw en gratis verzending vanaf €100 uit).
+- **Merkelementen uit het W-blok van het logo**: `Merkteken`, `Lat` (de zes latten als scheiding, vervangt de Streep), `Zegel` ("kennerskeuze", "kennerspakket", "pasvorm"), `Waslabel` (specs en keuzehulp als jaslabel) en `FotoPlek` (ontbrekende foto in huisstijl). `ProductKaart` kreeg `kenner`.
+- Teksten van de vijf nieuwe beroepen staan in `tools/data2.py`, de winkelpagina's in `tools/pages_tpl.py`. Alles blijft voorbeeldtekst tot Werkgoed het controleert, inclusief normcodes (zoals EN 61482-2, EN ISO 11393, EN 812, EN ISO 374).
+- Open: echte foto's voor de vijf nieuwe beroepen (nu `FotoPlek`), maten en specs van de Havep jas uit de webshop, openingsdagen van de showroom, de zes ontbrekende merklogo's, de echte bestemmingen van "Klantenservice"-links en afrekenen.
+
 ## Update: versie 3 (18 november 2026, eind van de middag)
 
 Op verzoek van Dick:

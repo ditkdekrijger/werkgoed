@@ -15,7 +15,7 @@ BODY = '''
 </div>
 <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:12px">
 <x-import component-from-global-scope="Werkgoed.Button" variant="signal" href="#beroep">Kies je beroep</x-import>
-<x-import component-from-global-scope="Werkgoed.Button" variant="outline" arrow="{{no}}" href="#showroom">Kom langs in de showroom</x-import>
+<x-import component-from-global-scope="Werkgoed.Button" variant="outline" arrow="{{no}}" href="Showroom.dc.html">Kom langs in de showroom</x-import>
 </div>
 </div>
 </div>
@@ -107,7 +107,7 @@ BODY = '''
 <img src="{{c.foto}}" alt="{{c.alt}}" style="width:96px;height:96px;border-radius:var(--radius-tile);object-fit:cover">
 <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;flex:1">
 <sc-for list="{{c.items}}" as="i" hint-placeholder-count="5">
-<li style="border-top:1px solid {{c.line}}"><a class="wg-ul" href="#" style="display:flex;justify-content:space-between;gap:12px;padding:13px 0;font:500 17px/1.3 var(--font-sans)"><span>{{i}}</span><span aria-hidden="true">→</span></a></li>
+<li style="border-top:1px solid {{c.line}}"><a class="wg-ul" href="Categorie.dc.html" style="display:flex;justify-content:space-between;gap:12px;padding:13px 0;font:500 17px/1.3 var(--font-sans)"><span>{{i}}</span><span aria-hidden="true">→</span></a></li>
 </sc-for>
 </ul>
 </div>
@@ -131,7 +131,7 @@ BODY = '''
 </div>
 <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-top:40px">
 <sc-for list="{{merken}}" as="m" hint-placeholder-count="14">
-<a class="wg-tile" href="#" style="display:flex;flex-direction:column;justify-content:space-between;gap:28px;min-height:150px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-tile);padding:20px;box-sizing:border-box;transition:background-color .16s ease,border-color .16s ease">
+<a class="wg-tile" href="Merken.dc.html" style="display:flex;flex-direction:column;justify-content:space-between;gap:28px;min-height:150px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-tile);padding:20px;box-sizing:border-box;transition:background-color .16s ease,border-color .16s ease">
 <span class="wg-small" style="color:var(--ink-muted)">{{m.soort}}</span>
 <sc-if value="{{m.logo}}" hint-placeholder-val="{{yes}}">
 <img src="{{m.logo}}" alt="{{m.naam}}" style="height:44px;width:auto;max-width:100%;object-fit:contain;object-position:left center;align-self:flex-start">
@@ -152,24 +152,25 @@ BODY = '''
 </div>
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:24px 16px;margin-top:40px">
 <sc-for list="{{producten}}" as="p" hint-placeholder-count="4">
-<x-import component-from-global-scope="Werkgoed.ProductKaart" merk="{{p.merk}}" naam="{{p.naam}}" prijs-ex="{{p.prijsEx}}" prijs-in="{{p.prijsIn}}" voorraad="{{p.voorraad}}" image="{{p.foto}}" href="#"></x-import>
+<x-import component-from-global-scope="Werkgoed.ProductKaart" merk="{{p.merk}}" naam="{{p.naam}}" prijs-ex="{{p.prijsEx}}" prijs-in="{{p.prijsIn}}" voorraad="{{p.voorraad}}" image="{{p.foto}}" kenner="{{p.kenner}}" href="Product.dc.html"></x-import>
 </sc-for>
 </div>
 </section>
 
 <!-- streep + showroom -->
-<div style="margin-top:clamp(56px,8vw,128px)">
-<x-import component-from-global-scope="Werkgoed.Streep" height="{{streepHoogte}}"></x-import>
+<div style="margin-top:clamp(56px,8vw,128px);padding:0 var(--gutter) 0">
+<x-import component-from-global-scope="Werkgoed.Lat" height="{{latHoogte}}"></x-import>
 </div>
+<div style="height:24px"></div>
 <section id="showroom" class="wg-night" style="background:var(--marine);color:var(--on-night);padding:clamp(56px,8vw,128px) var(--gutter);display:flex;flex-wrap:wrap;gap:48px;align-items:flex-end;border-bottom:1px solid rgba(255,255,255,.2)">
 <div style="flex:1 1 480px;min-width:0;display:flex;flex-direction:column;gap:28px;align-items:flex-start">
-<span class="wg-label" style="color:var(--on-night-muted)">showroom en voetscan</span>
+<span style="display:flex;align-items:center;gap:12px"><x-import component-from-global-scope="Werkgoed.Merkteken" size="32"></x-import><span class="wg-label" style="color:var(--on-night-muted)">showroom en voetscan</span></span>
 <x-import component-from-global-scope="Werkgoed.Heading" size="h2" tone="night" accent="pas je bij ons.">Je werkschoen</x-import>
 <p class="wg-lead" style="margin:0;max-width:40ch;color:var(--on-night-muted)">Loop binnen langs de A15. Pas je werkschoen en laat je voeten scannen, dan weet je zeker dat hij goed zit.</p>
 <div style="width:100%;aspect-ratio:3/2;border-radius:var(--radius-card);overflow:hidden;margin-top:8px"><img class="wg-foto" src="[[IMG_showroom]]" alt="De showroom van Werkgoed in Hardinxveld-Giessendam"></div>
 <div style="display:flex;flex-wrap:wrap;gap:12px">
-<x-import component-from-global-scope="Werkgoed.Button" variant="signal" href="#">Plan je voetscan</x-import>
-<x-import component-from-global-scope="Werkgoed.Button" variant="outline-light" arrow="{{no}}" href="#">Route naar de showroom</x-import>
+<x-import component-from-global-scope="Werkgoed.Button" variant="signal" href="Showroom.dc.html#voetscan">Plan je voetscan</x-import>
+<x-import component-from-global-scope="Werkgoed.Button" variant="outline-light" arrow="{{no}}" href="Showroom.dc.html">Bekijk de showroom</x-import>
 </div>
 </div>
 <div style="flex:1 1 320px;min-width:0;display:flex;flex-direction:column;border-top:1px solid rgba(255,255,255,.2)">
@@ -197,6 +198,7 @@ class Component extends DCLogic {
       yes: true,
       no: false,
       streepHoogte: 24,
+      latHoogte: 28,
 [[MENU_JS]]      beroepen: D.beroepen,
       zones: D.zones,
       categorieen: [
@@ -208,10 +210,10 @@ class Component extends DCLogic {
       merkFilters: filters.map((f) => ({ naam: f, active: f === m, pick: () => this.setState({ merk: f }) })),
       merken: D.merken.filter((x) => m === 'Alle' || x.soort === m).map((x) => Object.assign({}, x, { logo: D.logos[x.naam] || '', geenLogo: !D.logos[x.naam] })),
       producten: [
-        { merk: 'Werkhandschoenen', naam: 'Chauffeurshandschoenen 10419', prijsEx: 'Vanaf €2,99', prijsIn: '€3,62', foto: D.img['p-handschoen'] },
-        { merk: 'Havep', naam: 'Gore-Tex jas Revolve 50468', prijsEx: 'Vanaf €379,95', prijsIn: '€459,74', foto: D.img['p-havep'] },
-        { merk: 'HAIX', naam: 'Black Eagle 50 Mid S3', prijsEx: 'Vanaf €148,68', prijsIn: '€179,90', voorraad: true, foto: D.img['p-haix'] },
-        { merk: 'Solid Gear', naam: 'Prime GTX S7S Mid BOA', prijsEx: 'Vanaf €305,50', prijsIn: '€369,66', foto: D.img['p-solidgear'] }
+        { merk: 'Werkhandschoenen', naam: 'Chauffeurshandschoenen 10419', prijsEx: 'Vanaf €2,99', prijsIn: '€3,62', foto: D.img['p-handschoen'], kenner: false },
+        { merk: 'Havep', naam: 'Gore-Tex jas Revolve 50468', prijsEx: 'Vanaf €379,95', prijsIn: '€459,74', foto: D.img['p-havep'], kenner: true },
+        { merk: 'HAIX', naam: 'Black Eagle 50 Mid S3', prijsEx: 'Vanaf €148,68', prijsIn: '€179,90', voorraad: true, foto: D.img['p-haix'], kenner: false },
+        { merk: 'Solid Gear', naam: 'Prime GTX S7S Mid BOA', prijsEx: 'Vanaf €305,50', prijsIn: '€369,66', foto: D.img['p-solidgear'], kenner: false }
       ]
     };
   }

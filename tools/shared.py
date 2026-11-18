@@ -66,16 +66,16 @@ MEGA_SOORT = [
 ]
 MEGA_MERKEN = ['HAIX', 'LOWA Work', 'Sixton', 'Solid Gear', 'Grisport Safety', 'PUMA Safety', 'Redbrick', 'Snickers Workwear', 'Tricorp Workwear', 'Santino', 'Dassy', 'Havep', 'BLS', 'KASK']
 MEGA_TOEP = [('las', 'Lasser', 'Lasgoed.dc.html'), ('straat', 'Stratenmaker', 'Straatgoed.dc.html'), ('bouw', 'Bouwer', 'Bouwgoed.dc.html'),
-             ('techniek', 'Monteur', '#'), ('magazijn', 'Magazijnmedewerker', '#'), ('chauffeur', 'Chauffeur', '#'), ('groen', 'Hovenier', '#'), ('schilder', 'Schilder', '#')]
+             ('techniek', 'Monteur', 'Techniekgoed.dc.html'), ('magazijn', 'Magazijnmedewerker', 'Magazijngoed.dc.html'), ('chauffeur', 'Chauffeur', 'Chauffeursgoed.dc.html'), ('groen', 'Hovenier', 'Groengoed.dc.html'), ('schilder', 'Schilder', 'Schildersgoed.dc.html')]
 
 
 def mega():
     kol = []
     for icn, kop, items in MEGA_SOORT:
-        li = ''.join('<li><a class="wg-ul" href="#">%s</a></li>' % x for x in items)
+        li = ''.join('<li><a class="wg-ul" href="Categorie.dc.html">%s</a></li>' % x for x in items)
         kol.append('<div style="display:flex;flex-direction:column;gap:14px"><span style="display:flex;align-items:center;gap:10px;font:700 18px/1.2 var(--font-sans);font-variation-settings:\'wdth\' 90">'
                    + ico(icn, 24) + kop + '</span><ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;font:500 16px/1.3 var(--font-sans)">' + li + '</ul></div>')
-    merken = ''.join('<li><a class="wg-ul" href="#">%s</a></li>' % m for m in MEGA_MERKEN)
+    merken = ''.join('<li><a class="wg-ul" href="Merken.dc.html">%s</a></li>' % m for m in MEGA_MERKEN)
     toep = ''.join('<li><a class="wg-mega-toep" href="%s" style="display:flex;align-items:center;gap:12px;min-height:44px;padding:0 10px;border-radius:var(--radius-sm);font:600 16px/1.2 var(--font-sans)">'
                    '<span style="display:grid;place-items:center;width:32px;height:32px;border-radius:50%%;background:var(--beroep-%s);color:var(--beroep-%s-deep)">%s</span>%s</a></li>'
                    % (h, k, k, ico(k, 18), n) for k, n, h in MEGA_TOEP)
@@ -90,13 +90,13 @@ def mega():
 <div style="flex:1 1 230px;min-width:0;display:flex;flex-direction:column;gap:24px;border-left:1px solid var(--line);padding-left:32px">
 <span class="wg-label" style="color:var(--ink-muted)">merken</span>
 <ul style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 20px;font:500 16px/1.3 var(--font-sans)">''' + merken + '''</ul>
-<a class="wg-ul" href="Main.dc.html#merken" style="font:600 16px/1.3 var(--font-sans)">Alle merken →</a>
+<a class="wg-ul" href="Merken.dc.html" style="font:600 16px/1.3 var(--font-sans)">Alle merken →</a>
 </div>
 <div style="flex:1 1 240px;min-width:0;display:flex;flex-direction:column;gap:16px;border-left:1px solid var(--line);padding-left:32px">
 <span class="wg-label" style="color:var(--ink-muted)">toepassing</span>
 <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px">''' + toep + '''</ul>
 </div>
-<a href="Main.dc.html#showroom" style="position:relative;flex:1 1 220px;min-width:0;max-width:300px;min-height:320px;border-radius:var(--radius-card);overflow:hidden;color:var(--on-night)">
+<a href="Showroom.dc.html" style="position:relative;flex:1 1 220px;min-width:0;max-width:300px;min-height:320px;border-radius:var(--radius-card);overflow:hidden;color:var(--on-night)">
 <img class="wg-foto" src="''' + IMG['showroom'] + '''" alt="" style="position:absolute;inset:0">
 <span style="position:absolute;left:0;right:0;bottom:0;padding:20px;display:flex;flex-direction:column;gap:6px;background:var(--marine)">
 <span class="wg-label" style="color:var(--on-night-muted)">showroom</span>
@@ -109,7 +109,7 @@ def mega():
 
 
 def topbar_header(active):
-    nav_links = [('Per beroep', 'Main.dc.html#beroep'), ('Merken', 'Main.dc.html#merken'), ('Showroom', 'Main.dc.html#showroom'), ('Advies', 'tel:0184701212')]
+    nav_links = [('Per beroep', 'Main.dc.html#beroep'), ('Merken', 'Merken.dc.html'), ('Showroom', 'Showroom.dc.html'), ('Advies', 'tel:0184701212')]
     links = ''.join('<a href="%s"%s>%s</a>' % (h, ' aria-current="page"' if n == active else '', n) for n, h in nav_links)
 
     def usp(i, t):
@@ -135,7 +135,7 @@ def topbar_header(active):
 <input type="search" placeholder="Zoek schoen, jas of merk" style="border:0;outline:0;background:transparent;font:400 15px var(--font-sans);color:var(--ink);flex:1;min-width:0;height:44px">
 </label>
 <a href="#" class="wg-iconknop" aria-label="Klantportaal" style="display:grid;place-items:center;width:48px;height:48px;border-radius:50%;border:1px solid var(--line-strong)">''' + ico('account', 22) + '''</a>
-<a href="#" class="wg-iconknop" aria-label="Winkelwagen" style="display:grid;place-items:center;width:48px;height:48px;border-radius:50%;background:var(--marine);color:var(--on-night)">''' + ico('wagen', 22) + '''</a>
+<a href="Winkelwagen.dc.html" class="wg-iconknop" aria-label="Winkelwagen, 2 artikelen" style="position:relative;display:grid;place-items:center;width:48px;height:48px;border-radius:50%;background:var(--marine);color:var(--on-night)">''' + ico('wagen', 22) + '''<span aria-hidden="true" style="position:absolute;top:-2px;right:-2px;display:grid;place-items:center;min-width:20px;height:20px;padding:0 5px;box-sizing:border-box;border-radius:10px;background:var(--vlam);color:var(--on-vlam);font:700 12px/1 var(--font-sans)">2</span></a>
 </div>
 ''' + mega() + '''</header>
 '''
@@ -147,11 +147,11 @@ FOOTER = '''
 <div style="display:flex;flex-wrap:wrap;gap:40px 64px;padding:56px 0 48px">
 <div style="flex:1 1 200px;display:flex;flex-direction:column;gap:12px;font:400 16px/1.4 var(--font-sans)">
 <span class="wg-label" style="color:var(--on-night-muted)">per beroep</span>
-<a class="wg-ul" href="Lasgoed.dc.html">Lasgoed</a><a class="wg-ul" href="Straatgoed.dc.html">Straatgoed</a><a class="wg-ul" href="Bouwgoed.dc.html">Bouwgoed</a><a class="wg-ul" href="Main.dc.html#beroep">Alle beroepen</a>
+<a class="wg-ul" href="Lasgoed.dc.html">Lasgoed</a><a class="wg-ul" href="Straatgoed.dc.html">Straatgoed</a><a class="wg-ul" href="Bouwgoed.dc.html">Bouwgoed</a><a class="wg-ul" href="Techniekgoed.dc.html">Techniekgoed</a><a class="wg-ul" href="Magazijngoed.dc.html">Magazijngoed</a><a class="wg-ul" href="Chauffeursgoed.dc.html">Chauffeursgoed</a><a class="wg-ul" href="Groengoed.dc.html">Groengoed</a><a class="wg-ul" href="Schildersgoed.dc.html">Schildersgoed</a>
 </div>
 <div style="flex:1 1 200px;display:flex;flex-direction:column;gap:12px;font:400 16px/1.4 var(--font-sans)">
 <span class="wg-label" style="color:var(--on-night-muted)">assortiment</span>
-<a class="wg-ul" href="#">Werkschoenen</a><a class="wg-ul" href="#">Werkkleding</a><a class="wg-ul" href="#">Werkhandschoenen</a><a class="wg-ul" href="#">Persoonlijke beschermingsmiddelen</a><a class="wg-ul" href="#">Diensten</a>
+<a class="wg-ul" href="Categorie.dc.html">Werkschoenen</a><a class="wg-ul" href="Categorie.dc.html">Werkkleding</a><a class="wg-ul" href="Categorie.dc.html">Werkhandschoenen</a><a class="wg-ul" href="Categorie.dc.html">Persoonlijke beschermingsmiddelen</a><a class="wg-ul" href="Merken.dc.html">Merken</a><a class="wg-ul" href="Showroom.dc.html">Showroom en voetscan</a>
 </div>
 <div style="flex:1 1 200px;display:flex;flex-direction:column;gap:12px;font:400 16px/1.4 var(--font-sans)">
 <span class="wg-label" style="color:var(--on-night-muted)">klantenservice</span>
@@ -195,9 +195,9 @@ BEROEPEN = [
     {'k': 'las', 'naam': 'las', 'href': 'Lasgoed.dc.html', 'regel': 'Vonken, spatten, hitte en lasrook.', 'risicos': ['vonk', 'hitte', 'stof']},
     {'k': 'straat', 'naam': 'straat', 'href': 'Straatgoed.dc.html', 'regel': 'Op je knieën, langs de weg, in elk weer.', 'risicos': ['zicht', 'knielen', 'regen']},
     {'k': 'bouw', 'naam': 'bouw', 'href': 'Bouwgoed.dc.html', 'regel': 'Hoogte, stof en lawaai op de bouwplaats.', 'risicos': ['hoogte', 'stof', 'lawaai']},
-    {'k': 'techniek', 'naam': 'techniek', 'href': '#', 'regel': 'Kruipen, knielen en precies werken.', 'risicos': ['knielen', 'snijden', 'zicht']},
-    {'k': 'magazijn', 'naam': 'magazijn', 'href': '#', 'regel': 'Tussen pallets, heftrucks en koude hallen.', 'risicos': ['zicht', 'kou', 'snijden']},
-    {'k': 'chauffeur', 'naam': 'chauffeurs', 'href': '#', 'regel': 'Urenlang rijden, laden en lossen.', 'risicos': ['zicht', 'kou', 'snijden']},
-    {'k': 'groen', 'naam': 'groen', 'href': '#', 'regel': 'Buiten met machines, takken en weer.', 'risicos': ['lawaai', 'regen', 'snijden']},
-    {'k': 'schilder', 'naam': 'schilders', 'href': '#', 'regel': 'Spatten, dampen en lange dagen op de trap.', 'risicos': ['chemie', 'stof', 'hoogte']},
+    {'k': 'techniek', 'naam': 'techniek', 'href': 'Techniekgoed.dc.html', 'regel': 'Kruipen, knielen en precies werken.', 'risicos': ['knielen', 'snijden', 'zicht']},
+    {'k': 'magazijn', 'naam': 'magazijn', 'href': 'Magazijngoed.dc.html', 'regel': 'Tussen pallets, heftrucks en koude hallen.', 'risicos': ['zicht', 'kou', 'snijden']},
+    {'k': 'chauffeur', 'naam': 'chauffeurs', 'href': 'Chauffeursgoed.dc.html', 'regel': 'Urenlang rijden, laden en lossen.', 'risicos': ['zicht', 'kou', 'snijden']},
+    {'k': 'groen', 'naam': 'groen', 'href': 'Groengoed.dc.html', 'regel': 'Buiten met machines, takken en weer.', 'risicos': ['lawaai', 'regen', 'snijden']},
+    {'k': 'schilder', 'naam': 'schilders', 'href': 'Schildersgoed.dc.html', 'regel': 'Spatten, dampen en lange dagen op de trap.', 'risicos': ['chemie', 'stof', 'hoogte']},
 ]
